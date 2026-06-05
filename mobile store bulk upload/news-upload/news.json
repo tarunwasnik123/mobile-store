@@ -1,0 +1,122 @@
+[
+  {
+    "title": "iPhone 16 Series Official Launch",
+    "category": "news",
+    "summary": "Apple unveils iPhone 16 with revolutionary features",
+    "content": "Apple officially launches the iPhone 16 series featuring the A18 Pro chip, titanium design, improved camera system with advanced computational photography, and enhanced AI capabilities. The new models include iPhone 16, iPhone 16 Plus, iPhone 16 Pro, and iPhone 16 Pro Max with prices starting from $799.",
+    "image": "iphone-16-launch.jpg",
+    "date": "2025-09-15T00:00:00.000Z"
+  },
+  {
+    "title": "Samsung Galaxy S25 Ultra Pre-orders Open",
+    "category": "news",
+    "summary": "Galaxy S25 Ultra now available for pre-order worldwide",
+    "content": "Samsung opens pre-orders for the Galaxy S25 Ultra globally, featuring the Snapdragon 8 Gen 4 processor, improved AI capabilities with Galaxy AI 2.0, S Pen Pro, and enhanced camera system. The device comes with a 200MP main camera and promises 7 generations of Android updates.",
+    "image": "galaxy-s25-preorder.jpg",
+    "date": "2025-08-20T00:00:00.000Z"
+  },
+  {
+    "title": "Google Pixel 9 Pro XL Leaked Specifications",
+    "category": "news",
+    "summary": "Complete specs of Pixel 9 Pro XL surface online",
+    "content": "Detailed specifications of the upcoming Google Pixel 9 Pro XL have been leaked, revealing a 6.8-inch LTPO OLED display, Tensor G4 chip, 24GB RAM, and a triple camera setup with 64MP main sensor. The device is expected to feature enhanced AI capabilities and improved battery life.",
+    "image": "pixel-9-leak.jpg",
+    "date": "2025-07-10T00:00:00.000Z"
+  },
+  {
+    "title": "OnePlus 13 Confirmed Release Date",
+    "category": "news",
+    "summary": "OnePlus 13 set for October launch with OxygenOS 15",
+    "content": "OnePlus confirms the release date for the OnePlus 13 smartphone, scheduled for October 2025. The device will feature the Snapdragon 8 Gen 4 processor, 120W fast charging, and OxygenOS 15 based on Android 15. Early rumors suggest a 200MP camera and improved gaming performance.",
+    "image": "oneplus-13-announcement.jpg",
+    "date": "2025-06-05T00:00:00.000Z"
+  },
+  {
+    "title": "Xiaomi 15 Ultra Global Availability",
+    "category": "news",
+    "summary": "Xiaomi 15 Ultra now available in international markets",
+    "content": "Xiaomi announces global availability of the Xiaomi 15 Ultra, featuring Leica-powered quad camera system, Snapdragon 8 Gen 4 processor, and 120W wired charging. The device comes with HyperOS 2.0 and promises 4 years of Android updates and 5 years of security patches.",
+    "image": "xiaomi-15-global.jpg",
+    "date": "2025-05-12T00:00:00.000Z"
+  },
+  {
+    "title": "iPhone 16 Pro Max Camera Review",
+    "category": "reviews",
+    "summary": "In-depth review of iPhone 16 Pro Max camera capabilities",
+    "content": "Our comprehensive review of the iPhone 16 Pro Max camera system reveals exceptional low-light performance, 8K 120fps video recording, and advanced computational photography. The 48MP main sensor with tetraprism design delivers professional-grade results, though battery life takes a hit during intensive photography sessions.",
+    "image": "iphone-16-camera-review.jpg",
+    "date": "2025-10-01T00:00:00.000Z"
+  },
+  {
+    "title": "Samsung Galaxy S25 Ultra Battery Test",
+    "category": "reviews",
+    "summary": "Galaxy S25 Ultra battery life tested extensively",
+    "content": "After extensive testing, the Samsung Galaxy S25 Ultra delivers impressive battery life of up to 10 hours of screen-on-time with heavy usage. The 5000mAh battery combined with 45W fast charging provides all-day performance, though gaming and video recording drain the battery faster than expected.",
+    "image": "galaxy-s25-battery-review.jpg",
+    "date": "2025-09-18T00:00:00.000Z"
+  },
+  {
+    "title": "Google Pixel 9 Performance Benchmark",
+    "category": "reviews",
+    "summary": "Pixel 9 performance analysis and benchmark results",
+    "content": "Benchmark testing of the Google Pixel 9 reveals excellent performance with Tensor G4 chip achieving high scores in AnTuTu and Geekbench. The device handles multitasking smoothly and gaming performance is outstanding, though it runs slightly warm during extended gaming sessions. AI features work seamlessly without impacting performance.",
+    "image": "pixel-9-performance-review.jpg",
+    "date": "2025-08-25T00:00:00.000Z"
+  },
+  {
+    "title": "OnePlus 13 Display Quality Assessment",
+    "category": "reviews",
+    "summary": "OnePlus 13 display delivers premium viewing experience",
+    "content": "The OnePlus 13 features a 6.7-inch 2K AMOLED display with 120Hz refresh rate and Dolby Vision support. Our review confirms excellent color accuracy, deep blacks, and smooth scrolling. Peak brightness reaches 1800 nits, making it perfect for outdoor viewing, though the always-on display could be brighter.",
+    "image": "oneplus-13-display-review.jpg",
+    "date": "2025-07-30T00:00:00.000Z"
+  },
+  {
+    "title": "Xiaomi 15 Ultra Value Analysis",
+    "category": "reviews",
+    "summary": "Is Xiaomi 15 Ultra worth the premium price?",
+    "content": "Our value analysis of the Xiaomi 15 Ultra reveals excellent bang-for-buck at $999. The device offers flagship-level performance, Leica cameras, and fast charging comparable to $1500 competitors. Software experience is smooth with timely updates, though some bloatware is present. Overall, it's one of the best value flagship phones available.",
+    "image": "xiaomi-15-value-review.jpg",
+    "date": "2025-06-20T00:00:00.000Z"
+  },
+  {
+    "title": "iPhone 17 Design Leaks Surface",
+    "category": "leaks",
+    "summary": "iPhone 17 design renders reveal major changes",
+    "content": "Exclusive leaks show iPhone 17 with redesigned back panel, under-display Face ID, and curved display edges. The device is rumored to feature titanium frame, improved camera bump design, and Action Button replacement. Battery capacity increases to 4000mAh with improved efficiency.",
+    "image": "iphone-17-design-leak.jpg",
+    "date": "2025-11-01T00:00:00.000Z"
+  },
+  {
+    "title": "Samsung Galaxy S26 Ultra Specifications Leak",
+    "category": "leaks",
+    "summary": "Complete Galaxy S26 Ultra specs leaked online",
+    "content": "Detailed specifications of the Samsung Galaxy S26 Ultra have been leaked, revealing Snapdragon 8 Gen 5 processor, 24GB RAM, 1TB storage option, and 200MP main camera with periscope telephoto. The device will feature improved S Pen latency and enhanced AI capabilities with Galaxy AI 3.0.",
+    "image": "galaxy-s26-specs-leak.jpg",
+    "date": "2025-10-15T00:00:00.000Z"
+  },
+  {
+    "title": "Google Pixel 10 Pricing Information",
+    "category": "leaks",
+    "summary": "Pixel 10 series pricing details leaked",
+    "content": "Pricing information for the Google Pixel 10 series has been leaked, with Pixel 10 starting at $699, Pixel 10 Pro at $999, and Pixel 10 Pro XL at $1199. All models will include 7 years of Android updates and unlimited Google Photos storage. The Pixel 10 Pro features a titanium frame and improved camera system.",
+    "image": "pixel-10-pricing-leak.jpg",
+    "date": "2025-09-08T00:00:00.000Z"
+  },
+  {
+    "title": "OnePlus 14 Concept Design Revealed",
+    "category": "leaks",
+    "summary": "OnePlus 14 concept shows radical design changes",
+    "content": "Concept designs for the OnePlus 14 reveal a major redesign with circular camera module, under-display fingerprint scanner, and sliding camera mechanism. The device is rumored to feature 200W charging, 16GB RAM, and OxygenOS 16 with improved customization options.",
+    "image": "oneplus-14-concept-leak.jpg",
+    "date": "2025-08-12T00:00:00.000Z"
+  },
+  {
+    "title": "Xiaomi 16 Ultra Camera Samples Leak",
+    "category": "leaks",
+    "summary": "Xiaomi 16 Ultra camera samples showcase pro-level photography",
+    "content": "Leaked camera samples from the Xiaomi 16 Ultra demonstrate exceptional photography capabilities with 50MP Leica main sensor. The samples show improved dynamic range, better color science, and professional-grade bokeh. The device is expected to compete directly with iPhone 16 Pro Max in camera performance.",
+    "image": "xiaomi-16-camera-leak.jpg",
+    "date": "2025-07-25T00:00:00.000Z"
+  }
+]

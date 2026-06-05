@@ -1,0 +1,2871 @@
+[
+  {
+    "name": "Google Pixel 9",
+    "brand": "google",
+    "price": 69999,
+    "image": "google_pixel_9.jpg",
+    "pros": [
+      "Pure Android experience",
+      "Outstanding camera",
+      "7 years of updates",
+      "AI features"
+    ],
+    "cons": [
+      "Average battery life",
+      "No wireless charging",
+      "Limited storage options"
+    ],
+    "faqs": [
+      {
+        "question": "How many years of updates?",
+        "answer": "7 years of Android updates and security patches."
+      },
+      {
+        "question": "Camera quality?",
+        "answer": "Excellent computational photography with AI enhancement."
+      },
+      {
+        "question": "Tensor chip performance?",
+        "answer": "Google Tensor G4 offers smooth performance and AI capabilities."
+      },
+      {
+        "question": "Storage expandable?",
+        "answer": "No, storage is not expandable."
+      }
+    ],
+    "specs": {
+      "General": {
+        "OperatingSystem": "Android 15",
+        "CustomUI": "Stock Android",
+        "LaunchDate": "2026-08-15",
+        "OSUpdate": "Up to 7 years"
+      },
+      "Performance": {
+        "Chipset": "Google Tensor G4",
+        "CPU": "Octa-core",
+        "GPU": "Mali-G715 MP7",
+        "RAM": "12 GB",
+        "RAMType": "LPDDR5X",
+        "Architecture": "64 bit",
+        "Fabrication": "3 nm",
+        "PerformanceTestResults": "Excellent",
+        "BootupTime": "8 seconds",
+        "AnTuTuScore": "1250000"
+      },
+      "Storage": {
+        "InternalStorage": "256 GB",
+        "StorageType": "UFS 3.1"
+      },
+      "Display": {
+        "Type": "OLED",
+        "Size": "6.3 inches",
+        "Resolution": "2400 x 1080",
+        "RefreshRate": "120 Hz",
+        "ScreenToBodyRatio": "88%",
+        "BezelLessDisplay": "Yes",
+        "PixelDensity": "416 PPI",
+        "PeakBrightness": "1600 nits",
+        "HBMBrightness": "2500 nits",
+        "AspectRatio": "20:9"
+      },
+      "RearCamera": {
+        "Camera": {
+          "Primary": "50 MP",
+          "Secondary": "48 MP"
+        }
+      },
+      "FrontCamera": {
+        "Camera": "13 MP"
+      },
+      "Battery": {
+        "Capacity": "4700 mAh",
+        "QuickCharging": "30W",
+        "WirelessCharging": "21W",
+        "BatteryChargingTime": "75 minutes to 100%"
+      },
+      "SoundAudio": {
+        "Loudspeakers": "Stereo",
+        "HeadphoneConnection": "USB Type-C",
+        "SoundTechnology": "Dolby Atmos"
+      },
+      "NetworkConnectivity": {
+        "SIMSlot": "Single SIM",
+        "SIMType": "Nano SIM",
+        "WiFi": "Wi-Fi 6E",
+        "NetworkSupport": "5G, 4G LTE",
+        "VoLTE": "Yes",
+        "Bluetooth": "5.4",
+        "GPS": "GPS, GLONASS, BDS, Galileo",
+        "NFC": "Yes"
+      },
+      "Sensors": {
+        "Fingerprint": "In-display",
+        "FingerprintSensorType": "Optical",
+        "FingerprintSensorPosition": "Under display",
+        "OtherSensors": [
+          "Accelerometer",
+          "Gyroscope",
+          "Compass",
+          "Proximity",
+          "Barometer",
+          "Ambient Light"
+        ]
+      }
+    }
+  },
+  {
+    "name": "Google Pixel 9 Pro",
+    "brand": "google",
+    "price": 99999,
+    "image": "google_pixel_9_pro.jpg",
+    "pros": [
+      "Outstanding camera",
+      "7 years of updates",
+      "Temperature sensor",
+      "Telephoto lens"
+    ],
+    "cons": ["Expensive", "Average battery life", "Large bezels"],
+    "faqs": [
+      {
+        "question": "Does it have telephoto?",
+        "answer": "Yes, 48MP telephoto lens with 5x optical zoom."
+      },
+      {
+        "question": "Temperature sensor?",
+        "answer": "Yes, includes temperature and humidity sensor."
+      },
+      {
+        "question": "Display quality?",
+        "answer": "6.7-inch LTPO OLED with 120Hz refresh rate."
+      },
+      {
+        "question": "AI features?",
+        "answer": "Advanced AI photo editing and Google Gemini integration."
+      }
+    ],
+    "specs": {
+      "General": {
+        "OperatingSystem": "Android 15",
+        "CustomUI": "Stock Android",
+        "LaunchDate": "2026-08-15",
+        "OSUpdate": "Up to 7 years"
+      },
+      "Performance": {
+        "Chipset": "Google Tensor G4",
+        "CPU": "Octa-core",
+        "GPU": "Mali-G715 MP7",
+        "RAM": "16 GB",
+        "RAMType": "LPDDR5X",
+        "Architecture": "64 bit",
+        "Fabrication": "3 nm",
+        "PerformanceTestResults": "Excellent",
+        "BootupTime": "6 seconds",
+        "AnTuTuScore": "1350000"
+      },
+      "Storage": {
+        "InternalStorage": "512 GB",
+        "StorageType": "UFS 3.1"
+      },
+      "Display": {
+        "Type": "LTPO OLED",
+        "Size": "6.7 inches",
+        "Resolution": "2992 x 1344",
+        "RefreshRate": "120 Hz",
+        "ScreenToBodyRatio": "89%",
+        "BezelLessDisplay": "Yes",
+        "PixelDensity": "489 PPI",
+        "PeakBrightness": "1800 nits",
+        "HBMBrightness": "2700 nits",
+        "AspectRatio": "20:9"
+      },
+      "RearCamera": {
+        "Camera": {
+          "Primary": "50 MP",
+          "Secondary": "48 MP",
+          "Tertiary": "48 MP"
+        }
+      },
+      "FrontCamera": {
+        "Camera": "13 MP"
+      },
+      "Battery": {
+        "Capacity": "5000 mAh",
+        "QuickCharging": "35W",
+        "WirelessCharging": "25W",
+        "BatteryChargingTime": "70 minutes to 100%"
+      },
+      "SoundAudio": {
+        "Loudspeakers": "Stereo",
+        "HeadphoneConnection": "USB Type-C",
+        "SoundTechnology": "Dolby Atmos"
+      },
+      "NetworkConnectivity": {
+        "SIMSlot": "Single SIM",
+        "SIMType": "Nano SIM",
+        "WiFi": "Wi-Fi 6E",
+        "NetworkSupport": "5G, 4G LTE",
+        "VoLTE": "Yes",
+        "Bluetooth": "5.4",
+        "GPS": "GPS, GLONASS, BDS, Galileo",
+        "NFC": "Yes"
+      },
+      "Sensors": {
+        "Fingerprint": "In-display",
+        "FingerprintSensorType": "Optical",
+        "FingerprintSensorPosition": "Under display",
+        "OtherSensors": [
+          "Accelerometer",
+          "Gyroscope",
+          "Compass",
+          "Proximity",
+          "Barometer",
+          "Ambient Light",
+          "Temperature",
+          "Humidity"
+        ]
+      }
+    }
+  },
+  {
+    "name": "iPhone 17",
+    "brand": "apple",
+    "price": 89900,
+    "image": "iphone17.jpg",
+    "pros": [
+      "Excellent battery life",
+      "High-resolution camera",
+      "Smooth performance",
+      "Premium build quality"
+    ],
+    "cons": ["Expensive price", "No expandable storage", "Lightning connector"],
+    "faqs": [
+      {
+        "question": "Does this phone have 5G?",
+        "answer": "Yes, it supports 5G connectivity."
+      },
+      {
+        "question": "Will I get a charger in the box?",
+        "answer": "No, charger is not included in the box."
+      },
+      {
+        "question": "How is the camera quality?",
+        "answer": "The camera quality is excellent with 48MP main sensor."
+      },
+      {
+        "question": "What is the iOS version?",
+        "answer": "It runs on iOS 19."
+      }
+    ],
+    "specs": {
+      "General": {
+        "OperatingSystem": "iOS 19",
+        "CustomUI": "iOS",
+        "LaunchDate": "2026-09-15",
+        "OSUpdate": "Up to 5 years"
+      },
+      "Performance": {
+        "Chipset": "Apple A19",
+        "CPU": "6-core",
+        "GPU": "6-core GPU",
+        "RAM": "8 GB",
+        "RAMType": "LPDDR5",
+        "Architecture": "64 bit",
+        "Fabrication": "3 nm",
+        "PerformanceTestResults": "Excellent",
+        "BootupTime": "18 seconds",
+        "AnTuTuScore": "1350000"
+      },
+      "Storage": {
+        "InternalStorage": "128 GB",
+        "StorageType": "NVMe"
+      },
+      "Display": {
+        "Type": "OLED",
+        "Size": "6.1 inches",
+        "Resolution": "2556 x 1179",
+        "RefreshRate": "60 Hz",
+        "ScreenToBodyRatio": "86%",
+        "BezelLessDisplay": "Yes",
+        "PixelDensity": "460 PPI",
+        "PeakBrightness": "2200 nits",
+        "HBMBrightness": "1800 nits",
+        "AspectRatio": "19.5:9"
+      },
+      "RearCamera": {
+        "Camera": {
+          "Primary": "48 MP",
+          "Secondary": "12 MP"
+        }
+      },
+      "FrontCamera": {
+        "Camera": "12 MP"
+      },
+      "Battery": {
+        "Capacity": "3500 mAh",
+        "QuickCharging": "25W",
+        "WirelessCharging": "15W",
+        "BatteryChargingTime": "45 minutes to 50%"
+      },
+      "SoundAudio": {
+        "Loudspeakers": "Stereo",
+        "HeadphoneConnection": "Lightning",
+        "SoundTechnology": "Dolby Atmos"
+      },
+      "NetworkConnectivity": {
+        "SIMSlot": "Single SIM",
+        "SIMType": "Nano SIM",
+        "WiFi": "Wi-Fi 6E",
+        "NetworkSupport": "5G, 4G LTE",
+        "VoLTE": "Yes",
+        "Bluetooth": "5.4",
+        "GPS": "GPS, GLONASS, Galileo",
+        "NFC": "Yes"
+      },
+      "Sensors": {
+        "Fingerprint": "Face ID",
+        "FingerprintSensorType": "3D",
+        "FingerprintSensorPosition": "Notch",
+        "OtherSensors": ["Accelerometer", "Gyroscope", "Compass", "Barometer"]
+      }
+    }
+  },
+  {
+    "name": "iPhone 17 Pro",
+    "brand": "apple",
+    "price": 149900,
+    "image": "iphone17-pro.jpg",
+    "pros": [
+      "Titanium build",
+      "A19 Pro chip",
+      "Pro camera system",
+      "Action Button"
+    ],
+    "cons": ["Very expensive", "Heavy weight", "No charger included"],
+    "faqs": [
+      {
+        "question": "Does it have USB-C?",
+        "answer": "Yes, iPhone 17 Pro features USB-C connectivity."
+      },
+      {
+        "question": "How is the battery life?",
+        "answer": "Excellent battery life with up to 32 hours of video playback."
+      },
+      {
+        "question": "Is it waterproof?",
+        "answer": "Yes, IP68 water and dust resistance."
+      },
+      {
+        "question": "What storage options?",
+        "answer": "Available in 128GB, 256GB, 512GB, and 1TB variants."
+      }
+    ],
+    "specs": {
+      "General": {
+        "OperatingSystem": "iOS 19",
+        "CustomUI": "iOS",
+        "LaunchDate": "2026-09-15",
+        "OSUpdate": "Up to 5 years"
+      },
+      "Performance": {
+        "Chipset": "Apple A19 Pro",
+        "CPU": "6-core",
+        "GPU": "6-core GPU",
+        "RAM": "8 GB",
+        "RAMType": "LPDDR5",
+        "Architecture": "64 bit",
+        "Fabrication": "3 nm",
+        "PerformanceTestResults": "Outstanding",
+        "BootupTime": "16 seconds",
+        "AnTuTuScore": "1450000"
+      },
+      "Storage": {
+        "InternalStorage": "256 GB",
+        "StorageType": "NVMe"
+      },
+      "Display": {
+        "Type": "OLED",
+        "Size": "6.1 inches",
+        "Resolution": "2556 x 1179",
+        "RefreshRate": "120 Hz",
+        "ScreenToBodyRatio": "88%",
+        "BezelLessDisplay": "Yes",
+        "PixelDensity": "460 PPI",
+        "PeakBrightness": "2200 nits",
+        "HBMBrightness": "1800 nits",
+        "AspectRatio": "19.5:9"
+      },
+      "RearCamera": {
+        "Camera": {
+          "Primary": "48 MP",
+          "Secondary": "12 MP",
+          "Tertiary": "12 MP"
+        }
+      },
+      "FrontCamera": {
+        "Camera": "12 MP"
+      },
+      "Battery": {
+        "Capacity": "3600 mAh",
+        "QuickCharging": "30W",
+        "WirelessCharging": "15W",
+        "BatteryChargingTime": "45 minutes to 50%"
+      },
+      "SoundAudio": {
+        "Loudspeakers": "Stereo",
+        "HeadphoneConnection": "USB Type-C",
+        "SoundTechnology": "Dolby Atmos"
+      },
+      "NetworkConnectivity": {
+        "SIMSlot": "Dual SIM",
+        "SIMType": "Nano SIM + eSIM",
+        "WiFi": "Wi-Fi 6E",
+        "NetworkSupport": "5G, 4G LTE",
+        "VoLTE": "Yes",
+        "Bluetooth": "5.4",
+        "GPS": "GPS, GLONASS, Galileo, BeiDou",
+        "NFC": "Yes"
+      },
+      "Sensors": {
+        "Fingerprint": "Face ID",
+        "FingerprintSensorType": "3D",
+        "FingerprintSensorPosition": "Notch",
+        "OtherSensors": [
+          "Accelerometer",
+          "Gyroscope",
+          "Compass",
+          "Barometer",
+          "LiDAR"
+        ]
+      }
+    }
+  },
+  {
+    "name": "iPhone 17 Pro Max",
+    "brand": "apple",
+    "price": 169900,
+    "image": "iphone17-pro-max.jpg",
+    "pros": [
+      "Largest display",
+      "Best battery life",
+      "Pro camera system",
+      "Titanium build"
+    ],
+    "cons": ["Extremely expensive", "Very heavy", "Large size"],
+    "faqs": [
+      {
+        "question": "Display size?",
+        "answer": "6.9-inch Super Retina XDR display."
+      },
+      {
+        "question": "Battery life?",
+        "answer": "All-day battery with up to 38 hours of video playback."
+      },
+      {
+        "question": "Camera system?",
+        "answer": "Advanced triple camera system with 48MP main sensor."
+      },
+      {
+        "question": "Storage options?",
+        "answer": "Available in 256GB, 512GB, and 1TB variants."
+      }
+    ],
+    "specs": {
+      "General": {
+        "OperatingSystem": "iOS 19",
+        "CustomUI": "iOS",
+        "LaunchDate": "2026-09-15",
+        "OSUpdate": "Up to 5 years"
+      },
+      "Performance": {
+        "Chipset": "Apple A19 Pro",
+        "CPU": "6-core",
+        "GPU": "6-core GPU",
+        "RAM": "8 GB",
+        "RAMType": "LPDDR5",
+        "Architecture": "64 bit",
+        "Fabrication": "3 nm",
+        "PerformanceTestResults": "Outstanding",
+        "BootupTime": "15 seconds",
+        "AnTuTuScore": "1500000"
+      },
+      "Storage": {
+        "InternalStorage": "256 GB",
+        "StorageType": "NVMe"
+      },
+      "Display": {
+        "Type": "OLED",
+        "Size": "6.9 inches",
+        "Resolution": "2796 x 1290",
+        "RefreshRate": "120 Hz",
+        "ScreenToBodyRatio": "91%",
+        "BezelLessDisplay": "Yes",
+        "PixelDensity": "460 PPI",
+        "PeakBrightness": "2200 nits",
+        "HBMBrightness": "1800 nits",
+        "AspectRatio": "19.5:9"
+      },
+      "RearCamera": {
+        "Camera": {
+          "Primary": "48 MP",
+          "Secondary": "12 MP",
+          "Tertiary": "12 MP"
+        }
+      },
+      "FrontCamera": {
+        "Camera": "12 MP"
+      },
+      "Battery": {
+        "Capacity": "4680 mAh",
+        "QuickCharging": "30W",
+        "WirelessCharging": "15W",
+        "BatteryChargingTime": "50 minutes to 50%"
+      },
+      "SoundAudio": {
+        "Loudspeakers": "Stereo",
+        "HeadphoneConnection": "USB Type-C",
+        "SoundTechnology": "Dolby Atmos"
+      },
+      "NetworkConnectivity": {
+        "SIMSlot": "Dual SIM",
+        "SIMType": "Nano SIM + eSIM",
+        "WiFi": "Wi-Fi 6E",
+        "NetworkSupport": "5G, 4G LTE",
+        "VoLTE": "Yes",
+        "Bluetooth": "5.4",
+        "GPS": "GPS, GLONASS, Galileo, BeiDou",
+        "NFC": "Yes"
+      },
+      "Sensors": {
+        "Fingerprint": "Face ID",
+        "FingerprintSensorType": "3D",
+        "FingerprintSensorPosition": "Notch",
+        "OtherSensors": [
+          "Accelerometer",
+          "Gyroscope",
+          "Compass",
+          "Barometer",
+          "LiDAR"
+        ]
+      }
+    }
+  },
+  {
+    "name": "Samsung Galaxy S26",
+    "brand": "samsung",
+    "price": "84999",
+    "image": "samsung_galaxy_s26.jpg",
+    "pros": [
+      "Excellent display",
+      "Long software support",
+      "S Pen included",
+      "AI features"
+    ],
+    "cons": ["Expensive", "No charger included", "Heavy"],
+    "faqs": [
+      {
+        "question": "Does it have S Pen?",
+        "answer": "Yes, S Pen is included in the box."
+      },
+      {
+        "question": "How many years of updates?",
+        "answer": "7 years of Android updates and security patches."
+      },
+      {
+        "question": "Is it waterproof?",
+        "answer": "Yes, IP68 water and dust resistance."
+      },
+      {
+        "question": "What AI features?",
+        "answer": "Galaxy AI includes photo editing, live translation, and productivity tools."
+      }
+    ],
+    "specs": {
+      "General": {
+        "OperatingSystem": "Android 16",
+        "CustomUI": "One UI 8.0",
+        "LaunchDate": "2027-01-20",
+        "OSUpdate": "Up to 7 years"
+      },
+      "Performance": {
+        "Chipset": "Exynos 2500",
+        "CPU": "Octa-core",
+        "GPU": "Xclipse 950",
+        "RAM": "12 GB",
+        "RAMType": "LPDDR5X",
+        "Architecture": "64 bit",
+        "Fabrication": "3 nm",
+        "PerformanceTestResults": "Excellent",
+        "BootupTime": "10 seconds",
+        "AnTuTuScore": "1550000"
+      },
+      "Storage": {
+        "InternalStorage": "256 GB",
+        "StorageType": "UFS 4.0"
+      },
+      "Display": {
+        "Type": "Dynamic AMOLED 2X",
+        "Size": "6.2 inches",
+        "Resolution": "2340 x 1080",
+        "RefreshRate": "120 Hz",
+        "ScreenToBodyRatio": "89%",
+        "BezelLessDisplay": "Yes",
+        "PixelDensity": "416 PPI",
+        "PeakBrightness": "2800 nits",
+        "HBMBrightness": "1900 nits",
+        "AspectRatio": "19.5:9"
+      },
+      "RearCamera": {
+        "Camera": {
+          "Primary": "50 MP",
+          "Secondary": "12 MP",
+          "Tertiary": "10 MP"
+        }
+      },
+      "FrontCamera": {
+        "Camera": "12 MP"
+      },
+      "Battery": {
+        "Capacity": "4200 mAh",
+        "QuickCharging": "25W",
+        "WirelessCharging": "15W",
+        "BatteryChargingTime": "55 minutes to 100%"
+      },
+      "SoundAudio": {
+        "Loudspeakers": "Stereo",
+        "HeadphoneConnection": "USB Type-C",
+        "SoundTechnology": "Dolby Atmos"
+      },
+      "NetworkConnectivity": {
+        "SIMSlot": "Dual SIM",
+        "SIMType": "Nano SIM",
+        "WiFi": "Wi-Fi 7",
+        "NetworkSupport": "5G, 4G LTE",
+        "VoLTE": "Yes",
+        "Bluetooth": "5.4",
+        "GPS": "GPS, GLONASS, BDS, Galileo",
+        "NFC": "Yes"
+      },
+      "Sensors": {
+        "Fingerprint": "Ultrasonic",
+        "FingerprintSensorType": "In-display",
+        "FingerprintSensorPosition": "Under display",
+        "OtherSensors": [
+          "Accelerometer",
+          "Gyroscope",
+          "Compass",
+          "Proximity",
+          "Barometer",
+          "Light"
+        ]
+      }
+    }
+  },
+  {
+    "name": "Samsung Galaxy S26 Ultra",
+    "brand": "samsung",
+    "price": "139999",
+    "image": "samsung_galaxy_s26_ultra.jpg",
+    "pros": [
+      "Premium build",
+      "S Pen included",
+      "200MP camera",
+      "All-day battery"
+    ],
+    "cons": ["Very expensive", "Large and heavy", "No charger included"],
+    "faqs": [
+      {
+        "question": "Does it have S Pen?",
+        "answer": "Yes, premium S Pen is included."
+      },
+      {
+        "question": "Camera quality?",
+        "answer": "200MP main sensor with excellent zoom capabilities."
+      },
+      {
+        "question": "Battery life?",
+        "answer": "5500mAh battery with all-day performance."
+      },
+      {
+        "question": "Water resistance?",
+        "answer": "IP68 rating for water and dust resistance."
+      }
+    ],
+    "specs": {
+      "General": {
+        "OperatingSystem": "Android 16",
+        "CustomUI": "One UI 8.0",
+        "LaunchDate": "2027-01-20",
+        "OSUpdate": "Up to 7 years"
+      },
+      "Performance": {
+        "Chipset": "Snapdragon 8 Gen 5",
+        "CPU": "Octa-core",
+        "GPU": "Adreno 850",
+        "RAM": "16 GB",
+        "RAMType": "LPDDR5X",
+        "Architecture": "64 bit",
+        "Fabrication": "3 nm",
+        "PerformanceTestResults": "Outstanding",
+        "BootupTime": "8 seconds",
+        "AnTuTuScore": "1650000"
+      },
+      "Storage": {
+        "InternalStorage": "512 GB",
+        "StorageType": "UFS 4.0"
+      },
+      "Display": {
+        "Type": "Dynamic AMOLED 2X",
+        "Size": "6.8 inches",
+        "Resolution": "3120 x 1440",
+        "RefreshRate": "120 Hz",
+        "ScreenToBodyRatio": "89.9%",
+        "BezelLessDisplay": "Yes",
+        "PixelDensity": "505 PPI",
+        "PeakBrightness": "2800 nits",
+        "HBMBrightness": "1900 nits",
+        "AspectRatio": "19.3:9"
+      },
+      "RearCamera": {
+        "Camera": {
+          "Primary": "200 MP",
+          "Secondary": "50 MP",
+          "Tertiary": "12 MP"
+        }
+      },
+      "FrontCamera": {
+        "Camera": "12 MP"
+      },
+      "Battery": {
+        "Capacity": "5500 mAh",
+        "QuickCharging": "45W",
+        "WirelessCharging": "15W",
+        "BatteryChargingTime": "55 minutes to 100%"
+      },
+      "SoundAudio": {
+        "Loudspeakers": "Stereo",
+        "HeadphoneConnection": "USB Type-C",
+        "SoundTechnology": "Dolby Atmos"
+      },
+      "NetworkConnectivity": {
+        "SIMSlot": "Dual SIM",
+        "SIMType": "Nano SIM",
+        "WiFi": "Wi-Fi 7",
+        "NetworkSupport": "5G, 4G LTE",
+        "VoLTE": "Yes",
+        "Bluetooth": "5.4",
+        "GPS": "GPS, GLONASS, BDS, Galileo",
+        "NFC": "Yes"
+      },
+      "Sensors": {
+        "Fingerprint": "Ultrasonic",
+        "FingerprintSensorType": "In-display",
+        "FingerprintSensorPosition": "Under display",
+        "OtherSensors": [
+          "Accelerometer",
+          "Gyroscope",
+          "Compass",
+          "Proximity",
+          "Barometer",
+          "Light",
+          "Laser AF"
+        ]
+      }
+    }
+  },
+  {
+    "name": "OnePlus 14",
+    "brand": "oneplus",
+    "price": "64999",
+    "image": "oneplus_14.jpg",
+    "pros": [
+      "Fast charging",
+      "Smooth OxygenOS",
+      "Good performance",
+      "Premium design"
+    ],
+    "cons": ["Average battery life", "No wireless charging", "Heavy"],
+    "faqs": [
+      {
+        "question": "Charging speed?",
+        "answer": "120W SuperVOOC charging, 0-100% in 22 minutes."
+      },
+      {
+        "question": "OxygenOS experience?",
+        "answer": "Clean, bloat-free Android experience with useful features."
+      },
+      {
+        "question": "Gaming performance?",
+        "answer": "Excellent gaming with HyperBoost technology."
+      },
+      {
+        "question": "Camera quality?",
+        "answer": "Triple camera with 64MP main sensor."
+      }
+    ],
+    "specs": {
+      "General": {
+        "OperatingSystem": "Android 15",
+        "CustomUI": "OxygenOS 15",
+        "LaunchDate": "2026-10-10",
+        "OSUpdate": "Up to 4 years"
+      },
+      "Performance": {
+        "Chipset": "Snapdragon 8 Gen 4",
+        "CPU": "Octa-core",
+        "GPU": "Adreno 830",
+        "RAM": "16 GB",
+        "RAMType": "LPDDR5X",
+        "Architecture": "64 bit",
+        "Fabrication": "3 nm",
+        "PerformanceTestResults": "Excellent",
+        "BootupTime": "13 seconds",
+        "AnTuTuScore": "1500000"
+      },
+      "Storage": {
+        "InternalStorage": "256 GB",
+        "StorageType": "UFS 2.2"
+      },
+      "Display": {
+        "Type": "AMOLED",
+        "Size": "6.82 inches",
+        "Resolution": "2780 x 1264",
+        "RefreshRate": "120 Hz",
+        "ScreenToBodyRatio": "92.8%",
+        "BezelLessDisplay": "Yes",
+        "PixelDensity": "450 PPI",
+        "PeakBrightness": "1800 nits",
+        "HBMBrightness": "4800 nits",
+        "AspectRatio": "20:9"
+      },
+      "RearCamera": {
+        "Camera": {
+          "Primary": "64 MP",
+          "Secondary": "50 MP",
+          "Tertiary": "8 MP"
+        }
+      },
+      "FrontCamera": {
+        "Camera": "32 MP"
+      },
+      "Battery": {
+        "Capacity": "5500 mAh",
+        "QuickCharging": "120W",
+        "WirelessCharging": "50W",
+        "BatteryChargingTime": "22 minutes to 100%"
+      },
+      "SoundAudio": {
+        "Loudspeakers": "Stereo",
+        "HeadphoneConnection": "USB Type-C",
+        "SoundTechnology": "Dolby Atmos"
+      },
+      "NetworkConnectivity": {
+        "SIMSlot": "Dual SIM",
+        "SIMType": "Nano SIM",
+        "WiFi": "Wi-Fi 7",
+        "NetworkSupport": "5G, 4G LTE",
+        "VoLTE": "Yes",
+        "Bluetooth": "5.4",
+        "GPS": "GPS, GLONASS, BDS",
+        "NFC": "Yes"
+      },
+      "Sensors": {
+        "Fingerprint": "In-display",
+        "FingerprintSensorType": "Optical",
+        "FingerprintSensorPosition": "Under display",
+        "OtherSensors": [
+          "Accelerometer",
+          "Gyroscope",
+          "Compass",
+          "Proximity",
+          "Color Temperature"
+        ]
+      }
+    }
+  },
+  {
+    "name": "OnePlus 14 Pro",
+    "brand": "oneplus",
+    "price": "79999",
+    "image": "oneplus_14_pro.jpg",
+    "pros": [
+      "Fastest charging",
+      "Hasselblad cameras",
+      "Premium build",
+      "120Hz display"
+    ],
+    "cons": ["Expensive", "Average battery life", "Heavy"],
+    "faqs": [
+      {
+        "question": "Charging speed?",
+        "answer": "150W SuperVOOC charging, fastest in the industry."
+      },
+      {
+        "question": "Camera partnership?",
+        "answer": "Hasselblad Natural Color Optimization for professional photography."
+      },
+      {
+        "question": "Display quality?",
+        "answer": "6.82-inch AMOLED with 120Hz refresh rate."
+      },
+      {
+        "question": "Gaming features?",
+        "answer": "Advanced cooling system and gaming optimizations."
+      }
+    ],
+    "specs": {
+      "General": {
+        "OperatingSystem": "Android 15",
+        "CustomUI": "OxygenOS 15",
+        "LaunchDate": "2026-10-10",
+        "OSUpdate": "Up to 4 years"
+      },
+      "Performance": {
+        "Chipset": "Snapdragon 8 Gen 4",
+        "CPU": "Octa-core",
+        "GPU": "Adreno 830",
+        "RAM": "24 GB",
+        "RAMType": "LPDDR5X",
+        "Architecture": "64 bit",
+        "Fabrication": "3 nm",
+        "PerformanceTestResults": "Outstanding",
+        "BootupTime": "11 seconds",
+        "AnTuTuScore": "1600000"
+      },
+      "Storage": {
+        "InternalStorage": "512 GB",
+        "StorageType": "UFS 2.2"
+      },
+      "Display": {
+        "Type": "AMOLED",
+        "Size": "6.82 inches",
+        "Resolution": "2780 x 1264",
+        "RefreshRate": "120 Hz",
+        "ScreenToBodyRatio": "93.2%",
+        "BezelLessDisplay": "Yes",
+        "PixelDensity": "450 PPI",
+        "PeakBrightness": "2000 nits",
+        "HBMBrightness": "5000 nits",
+        "AspectRatio": "20:9"
+      },
+      "RearCamera": {
+        "Camera": {
+          "Primary": "64 MP",
+          "Secondary": "50 MP",
+          "Tertiary": "8 MP"
+        }
+      },
+      "FrontCamera": {
+        "Camera": "32 MP"
+      },
+      "Battery": {
+        "Capacity": "6000 mAh",
+        "QuickCharging": "150W",
+        "WirelessCharging": "50W",
+        "BatteryChargingTime": "18 minutes to 100%"
+      },
+      "SoundAudio": {
+        "Loudspeakers": "Stereo",
+        "HeadphoneConnection": "USB Type-C",
+        "SoundTechnology": "Dolby Atmos"
+      },
+      "NetworkConnectivity": {
+        "SIMSlot": "Dual SIM",
+        "SIMType": "Nano SIM",
+        "WiFi": "Wi-Fi 7",
+        "NetworkSupport": "5G, 4G LTE",
+        "VoLTE": "Yes",
+        "Bluetooth": "5.4",
+        "GPS": "GPS, GLONASS, BDS",
+        "NFC": "Yes"
+      },
+      "Sensors": {
+        "Fingerprint": "In-display",
+        "FingerprintSensorType": "Optical",
+        "FingerprintSensorPosition": "Under display",
+        "OtherSensors": [
+          "Accelerometer",
+          "Gyroscope",
+          "Compass",
+          "Proximity",
+          "Color Temperature"
+        ]
+      }
+    }
+  },
+  {
+    "name": "Xiaomi 16",
+    "brand": "xiaomi",
+    "price": "59999",
+    "image": "xiaomi_16.jpg",
+    "pros": [
+      "Leica camera partnership",
+      "HyperOS experience",
+      "Good value",
+      "Fast charging"
+    ],
+    "cons": ["Average battery life", "No wireless charging", "Heavy"],
+    "faqs": [
+      {
+        "question": "Leica cameras?",
+        "answer": "Yes, Leica-tuned camera system for better photography."
+      },
+      {
+        "question": "HyperOS?",
+        "answer": "Xiaomi's new custom OS with improved performance."
+      },
+      {
+        "question": "Charging speed?",
+        "answer": "90W wired charging, charges quickly."
+      },
+      {
+        "question": "Display quality?",
+        "answer": "6.36-inch AMOLED with 120Hz refresh rate."
+      }
+    ],
+    "specs": {
+      "General": {
+        "OperatingSystem": "Android 15",
+        "CustomUI": "HyperOS",
+        "LaunchDate": "2026-11-15",
+        "OSUpdate": "Up to 4 years"
+      },
+      "Performance": {
+        "Chipset": "Snapdragon 8 Gen 4",
+        "CPU": "Octa-core",
+        "GPU": "Adreno 830",
+        "RAM": "12 GB",
+        "RAMType": "LPDDR5X",
+        "Architecture": "64 bit",
+        "Fabrication": "3 nm",
+        "PerformanceTestResults": "Excellent",
+        "BootupTime": "13 seconds",
+        "AnTuTuScore": "1480000"
+      },
+      "Storage": {
+        "InternalStorage": "256 GB",
+        "StorageType": "UFS 2.2"
+      },
+      "Display": {
+        "Type": "AMOLED",
+        "Size": "6.36 inches",
+        "Resolution": "2670 x 1200",
+        "RefreshRate": "120 Hz",
+        "ScreenToBodyRatio": "89.8%",
+        "BezelLessDisplay": "Yes",
+        "PixelDensity": "460 PPI",
+        "PeakBrightness": "2000 nits",
+        "HBMBrightness": "3200 nits",
+        "AspectRatio": "20:9"
+      },
+      "RearCamera": {
+        "Camera": {
+          "Primary": "50 MP",
+          "Secondary": "50 MP",
+          "Tertiary": "50 MP"
+        }
+      },
+      "FrontCamera": {
+        "Camera": "32 MP"
+      },
+      "Battery": {
+        "Capacity": "4610 mAh",
+        "QuickCharging": "90W",
+        "WirelessCharging": "No",
+        "BatteryChargingTime": "30 minutes to 100%"
+      },
+      "SoundAudio": {
+        "Loudspeakers": "Stereo",
+        "HeadphoneConnection": "USB Type-C",
+        "SoundTechnology": "Dolby Atmos"
+      },
+      "NetworkConnectivity": {
+        "SIMSlot": "Dual SIM",
+        "SIMType": "Nano SIM",
+        "WiFi": "Wi-Fi 7",
+        "NetworkSupport": "5G, 4G LTE",
+        "VoLTE": "Yes",
+        "Bluetooth": "5.4",
+        "GPS": "GPS, GLONASS, BDS",
+        "NFC": "Yes"
+      },
+      "Sensors": {
+        "Fingerprint": "In-display",
+        "FingerprintSensorType": "Optical",
+        "FingerprintSensorPosition": "Under display",
+        "OtherSensors": [
+          "Accelerometer",
+          "Gyroscope",
+          "Compass",
+          "Proximity",
+          "IR Blaster"
+        ]
+      }
+    }
+  },
+  {
+    "name": "Xiaomi 16 Ultra",
+    "brand": "xiaomi",
+    "price": "109999",
+    "image": "xiaomi_16_ultra.jpg",
+    "pros": [
+      "Professional camera",
+      "Leica partnership",
+      "Premium build",
+      "Fast charging"
+    ],
+    "cons": ["Very expensive", "Large and heavy", "No wireless charging"],
+    "faqs": [
+      {
+        "question": "Camera system?",
+        "answer": "Quad camera with Leica tuning, 50MP main sensor."
+      },
+      {
+        "question": "Build quality?",
+        "answer": "Premium titanium and leather design."
+      },
+      {
+        "question": "Battery capacity?",
+        "answer": "6000mAh with 90W charging."
+      },
+      {
+        "question": "Display size?",
+        "answer": "6.73-inch AMOLED with 120Hz refresh rate."
+      }
+    ],
+    "specs": {
+      "General": {
+        "OperatingSystem": "Android 15",
+        "CustomUI": "HyperOS",
+        "LaunchDate": "2026-11-15",
+        "OSUpdate": "Up to 4 years"
+      },
+      "Performance": {
+        "Chipset": "Snapdragon 8 Gen 4",
+        "CPU": "Octa-core",
+        "GPU": "Adreno 830",
+        "RAM": "16 GB",
+        "RAMType": "LPDDR5X",
+        "Architecture": "64 bit",
+        "Fabrication": "3 nm",
+        "PerformanceTestResults": "Outstanding",
+        "BootupTime": "10 seconds",
+        "AnTuTuScore": "1580000"
+      },
+      "Storage": {
+        "InternalStorage": "512 GB",
+        "StorageType": "UFS 2.2"
+      },
+      "Display": {
+        "Type": "AMOLED",
+        "Size": "6.73 inches",
+        "Resolution": "3200 x 1440",
+        "RefreshRate": "120 Hz",
+        "ScreenToBodyRatio": "89.6%",
+        "BezelLessDisplay": "Yes",
+        "PixelDensity": "522 PPI",
+        "PeakBrightness": "3200 nits",
+        "HBMBrightness": "2800 nits",
+        "AspectRatio": "20:9"
+      },
+      "RearCamera": {
+        "Camera": {
+          "Primary": "50 MP",
+          "Secondary": "50 MP",
+          "Tertiary": "50 MP"
+        }
+      },
+      "FrontCamera": {
+        "Camera": "32 MP"
+      },
+      "Battery": {
+        "Capacity": "6000 mAh",
+        "QuickCharging": "90W",
+        "WirelessCharging": "80W",
+        "BatteryChargingTime": "35 minutes to 100%"
+      },
+      "SoundAudio": {
+        "Loudspeakers": "Stereo",
+        "HeadphoneConnection": "USB Type-C",
+        "SoundTechnology": "Dolby Atmos"
+      },
+      "NetworkConnectivity": {
+        "SIMSlot": "Dual SIM",
+        "SIMType": "Nano SIM",
+        "WiFi": "Wi-Fi 7",
+        "NetworkSupport": "5G, 4G LTE",
+        "VoLTE": "Yes",
+        "Bluetooth": "5.4",
+        "GPS": "GPS, GLONASS, BDS, Galileo",
+        "NFC": "Yes"
+      },
+      "Sensors": {
+        "Fingerprint": "In-display",
+        "FingerprintSensorType": "Optical",
+        "FingerprintSensorPosition": "Under display",
+        "OtherSensors": [
+          "Accelerometer",
+          "Gyroscope",
+          "Compass",
+          "Proximity",
+          "IR Blaster",
+          "Laser AF"
+        ]
+      }
+    }
+  },
+  {
+    "name": "Vivo X300 Pro",
+    "brand": "vivo",
+    "price": "69999",
+    "image": "vivo_x300_pro.jpg",
+    "pros": [
+      "Zeiss camera partnership",
+      "Fast charging",
+      "Good display",
+      "Lightweight"
+    ],
+    "cons": ["Average battery life", "No wireless charging", "Funtouch OS"],
+    "faqs": [
+      {
+        "question": "Zeiss cameras?",
+        "answer": "Yes, Zeiss optics for improved photography."
+      },
+      {
+        "question": "Charging speed?",
+        "answer": "120W flash charging technology."
+      },
+      {
+        "question": "Display quality?",
+        "answer": "6.78-inch AMOLED with 120Hz refresh rate."
+      },
+      {
+        "question": "Gaming performance?",
+        "answer": "Good gaming with MediaTek Dimensity 9400."
+      }
+    ],
+    "specs": {
+      "General": {
+        "OperatingSystem": "Android 15",
+        "CustomUI": "Funtouch OS 15",
+        "LaunchDate": "2026-12-20",
+        "OSUpdate": "Up to 3 years"
+      },
+      "Performance": {
+        "Chipset": "MediaTek Dimensity 9400",
+        "CPU": "Octa-core",
+        "GPU": "Immortalis-G720 MC4",
+        "RAM": "16 GB",
+        "RAMType": "LPDDR5X",
+        "Architecture": "64 bit",
+        "Fabrication": "3 nm",
+        "PerformanceTestResults": "Excellent",
+        "BootupTime": "12 seconds",
+        "AnTuTuScore": "1450000"
+      },
+      "Storage": {
+        "InternalStorage": "256 GB",
+        "StorageType": "UFS 2.2"
+      },
+      "Display": {
+        "Type": "AMOLED",
+        "Size": "6.78 inches",
+        "Resolution": "2800 x 1260",
+        "RefreshRate": "120 Hz",
+        "ScreenToBodyRatio": "94%",
+        "BezelLessDisplay": "Yes",
+        "PixelDensity": "453 PPI",
+        "PeakBrightness": "2000 nits",
+        "HBMBrightness": "4200 nits",
+        "AspectRatio": "20:9"
+      },
+      "RearCamera": {
+        "Camera": {
+          "Primary": "50 MP",
+          "Secondary": "50 MP",
+          "Tertiary": "64 MP"
+        }
+      },
+      "FrontCamera": {
+        "Camera": "32 MP"
+      },
+      "Battery": {
+        "Capacity": "6000 mAh",
+        "QuickCharging": "120W",
+        "WirelessCharging": "No",
+        "BatteryChargingTime": "25 minutes to 100%"
+      },
+      "SoundAudio": {
+        "Loudspeakers": "Stereo",
+        "HeadphoneConnection": "USB Type-C",
+        "SoundTechnology": "Dolby Atmos"
+      },
+      "NetworkConnectivity": {
+        "SIMSlot": "Dual SIM",
+        "SIMType": "Nano SIM",
+        "WiFi": "Wi-Fi 7",
+        "NetworkSupport": "5G, 4G LTE",
+        "VoLTE": "Yes",
+        "Bluetooth": "5.4",
+        "GPS": "GPS, GLONASS, BDS",
+        "NFC": "Yes"
+      },
+      "Sensors": {
+        "Fingerprint": "In-display",
+        "FingerprintSensorType": "Optical",
+        "FingerprintSensorPosition": "Under display",
+        "OtherSensors": ["Accelerometer", "Gyroscope", "Compass", "Proximity"]
+      }
+    }
+  },
+  {
+    "name": "Oppo Find X9 Pro",
+    "brand": "oppo",
+    "price": "99999",
+    "image": "oppo_find_x9_pro.jpg",
+    "pros": [
+      "Hasselblad cameras",
+      "ColorOS experience",
+      "Fast charging",
+      "Premium design"
+    ],
+    "cons": ["Expensive", "Average battery life", "Heavy"],
+    "faqs": [
+      {
+        "question": "Hasselblad cameras?",
+        "answer": "Yes, Hasselblad Natural Color Optimization."
+      },
+      {
+        "question": "ColorOS version?",
+        "answer": "ColorOS 15 based on Android 15."
+      },
+      {
+        "question": "Charging speed?",
+        "answer": "120W SuperVOOC charging."
+      },
+      {
+        "question": "Display quality?",
+        "answer": "6.74-inch AMOLED with 120Hz refresh rate."
+      }
+    ],
+    "specs": {
+      "General": {
+        "OperatingSystem": "Android 15",
+        "CustomUI": "ColorOS 15",
+        "LaunchDate": "2027-01-10",
+        "OSUpdate": "Up to 3 years"
+      },
+      "Performance": {
+        "Chipset": "Snapdragon 8 Gen 4",
+        "CPU": "Octa-core",
+        "GPU": "Adreno 830",
+        "RAM": "16 GB",
+        "RAMType": "LPDDR5X",
+        "Architecture": "64 bit",
+        "Fabrication": "3 nm",
+        "PerformanceTestResults": "Excellent",
+        "BootupTime": "14 seconds",
+        "AnTuTuScore": "1520000"
+      },
+      "Storage": {
+        "InternalStorage": "512 GB",
+        "StorageType": "UFS 2.2"
+      },
+      "Display": {
+        "Type": "AMOLED",
+        "Size": "6.74 inches",
+        "Resolution": "2772 x 1240",
+        "RefreshRate": "120 Hz",
+        "ScreenToBodyRatio": "93.4%",
+        "BezelLessDisplay": "Yes",
+        "PixelDensity": "451 PPI",
+        "PeakBrightness": "1600 nits",
+        "HBMBrightness": "1100 nits",
+        "AspectRatio": "20:9"
+      },
+      "RearCamera": {
+        "Camera": {
+          "Primary": "50 MP",
+          "Secondary": "50 MP",
+          "Tertiary": "50 MP"
+        }
+      },
+      "FrontCamera": {
+        "Camera": "32 MP"
+      },
+      "Battery": {
+        "Capacity": "5000 mAh",
+        "QuickCharging": "120W",
+        "WirelessCharging": "50W",
+        "BatteryChargingTime": "28 minutes to 100%"
+      },
+      "SoundAudio": {
+        "Loudspeakers": "Stereo",
+        "HeadphoneConnection": "USB Type-C",
+        "SoundTechnology": "Dolby Atmos"
+      },
+      "NetworkConnectivity": {
+        "SIMSlot": "Dual SIM",
+        "SIMType": "Nano SIM",
+        "WiFi": "Wi-Fi 7",
+        "NetworkSupport": "5G, 4G LTE",
+        "VoLTE": "Yes",
+        "Bluetooth": "5.4",
+        "GPS": "GPS, GLONASS, BDS",
+        "NFC": "Yes"
+      },
+      "Sensors": {
+        "Fingerprint": "In-display",
+        "FingerprintSensorType": "Optical",
+        "FingerprintSensorPosition": "Under display",
+        "OtherSensors": ["Accelerometer", "Gyroscope", "Compass", "Proximity"]
+      }
+    }
+  },
+  {
+    "name": "Realme GT 6",
+    "brand": "realme",
+    "price": "44999",
+    "image": "realme_gt_6.jpg",
+    "pros": [
+      "Affordable performance",
+      "Fast charging",
+      "Good display",
+      "Clean software"
+    ],
+    "cons": ["Average camera", "No wireless charging", "Realme UI"],
+    "faqs": [
+      {
+        "question": "Charging speed?",
+        "answer": "180W UltraDart charging, 0-100% in 17 minutes."
+      },
+      {
+        "question": "Gaming performance?",
+        "answer": "Excellent gaming with Snapdragon 8 Gen 4."
+      },
+      {
+        "question": "Display quality?",
+        "answer": "6.74-inch AMOLED with 144Hz refresh rate."
+      },
+      {
+        "question": "Camera setup?",
+        "answer": "Triple camera with 50MP ultra-wide."
+      }
+    ],
+    "specs": {
+      "General": {
+        "OperatingSystem": "Android 15",
+        "CustomUI": "Realme UI 5.0",
+        "LaunchDate": "2026-09-01",
+        "OSUpdate": "Up to 3 years"
+      },
+      "Performance": {
+        "Chipset": "Snapdragon 8 Gen 4",
+        "CPU": "Octa-core",
+        "GPU": "Adreno 830",
+        "RAM": "12 GB",
+        "RAMType": "LPDDR5X",
+        "Architecture": "64 bit",
+        "Fabrication": "3 nm",
+        "PerformanceTestResults": "Excellent",
+        "BootupTime": "18 seconds",
+        "AnTuTuScore": "1420000"
+      },
+      "Storage": {
+        "InternalStorage": "256 GB",
+        "StorageType": "UFS 2.2"
+      },
+      "Display": {
+        "Type": "AMOLED",
+        "Size": "6.74 inches",
+        "Resolution": "2772 x 1240",
+        "RefreshRate": "144 Hz",
+        "ScreenToBodyRatio": "94.2%",
+        "BezelLessDisplay": "Yes",
+        "PixelDensity": "451 PPI",
+        "PeakBrightness": "1600 nits",
+        "HBMBrightness": "750 nits",
+        "AspectRatio": "20:9"
+      },
+      "RearCamera": {
+        "Camera": {
+          "Primary": "50 MP",
+          "Secondary": "50 MP",
+          "Tertiary": "50 MP"
+        }
+      },
+      "FrontCamera": {
+        "Camera": "32 MP"
+      },
+      "Battery": {
+        "Capacity": "5500 mAh",
+        "QuickCharging": "180W",
+        "WirelessCharging": "No",
+        "BatteryChargingTime": "17 minutes to 100%"
+      },
+      "SoundAudio": {
+        "Loudspeakers": "Stereo",
+        "HeadphoneConnection": "USB Type-C",
+        "SoundTechnology": "Dolby Atmos"
+      },
+      "NetworkConnectivity": {
+        "SIMSlot": "Dual SIM",
+        "SIMType": "Nano SIM",
+        "WiFi": "Wi-Fi 7",
+        "NetworkSupport": "5G, 4G LTE",
+        "VoLTE": "Yes",
+        "Bluetooth": "5.4",
+        "GPS": "GPS, GLONASS, BDS",
+        "NFC": "Yes"
+      },
+      "Sensors": {
+        "Fingerprint": "In-display",
+        "FingerprintSensorType": "Optical",
+        "FingerprintSensorPosition": "Under display",
+        "OtherSensors": ["Accelerometer", "Gyroscope", "Compass", "Proximity"]
+      }
+    }
+  },
+  {
+    "name": "Motorola Edge 60 Pro",
+    "brand": "motorola",
+    "price": "49999",
+    "image": "motorola_edge_60_pro.jpg",
+    "pros": [
+      "Clean Android experience",
+      "Good battery life",
+      "Affordable",
+      "Stock Android"
+    ],
+    "cons": ["Average camera", "No fast charging", "Basic design"],
+    "faqs": [
+      {
+        "question": "Android version?",
+        "answer": "Android 15 with near-stock experience."
+      },
+      {
+        "question": "Battery life?",
+        "answer": "5500mAh battery with good all-day performance."
+      },
+      {
+        "question": "Display quality?",
+        "answer": "6.65-inch pOLED with 144Hz refresh rate."
+      },
+      {
+        "question": "Camera setup?",
+        "answer": "Triple camera with 50MP main sensor."
+      }
+    ],
+    "specs": {
+      "General": {
+        "OperatingSystem": "Android 15",
+        "CustomUI": "Near Stock Android",
+        "LaunchDate": "2026-10-20",
+        "OSUpdate": "Up to 2 years"
+      },
+      "Performance": {
+        "Chipset": "MediaTek Dimensity 9300",
+        "CPU": "Octa-core",
+        "GPU": "Immortalis-G720 MC4",
+        "RAM": "12 GB",
+        "RAMType": "LPDDR5X",
+        "Architecture": "64 bit",
+        "Fabrication": "4 nm",
+        "PerformanceTestResults": "Good",
+        "BootupTime": "22 seconds",
+        "AnTuTuScore": "750000"
+      },
+      "Storage": {
+        "InternalStorage": "256 GB",
+        "StorageType": "UFS 2.2"
+      },
+      "Display": {
+        "Type": "pOLED",
+        "Size": "6.65 inches",
+        "Resolution": "2400 x 1080",
+        "RefreshRate": "144 Hz",
+        "ScreenToBodyRatio": "87%",
+        "BezelLessDisplay": "Yes",
+        "PixelDensity": "402 PPI",
+        "PeakBrightness": "1300 nits",
+        "HBMBrightness": "900 nits",
+        "AspectRatio": "20:9"
+      },
+      "RearCamera": {
+        "Camera": {
+          "Primary": "50 MP",
+          "Secondary": "13 MP",
+          "Tertiary": "32 MP"
+        }
+      },
+      "FrontCamera": {
+        "Camera": "32 MP"
+      },
+      "Battery": {
+        "Capacity": "5500 mAh",
+        "QuickCharging": "68W",
+        "WirelessCharging": "No",
+        "BatteryChargingTime": "40 minutes to 100%"
+      },
+      "SoundAudio": {
+        "Loudspeakers": "Stereo",
+        "HeadphoneConnection": "USB Type-C",
+        "SoundTechnology": "Dolby Atmos"
+      },
+      "NetworkConnectivity": {
+        "SIMSlot": "Dual SIM",
+        "SIMType": "Nano SIM",
+        "WiFi": "Wi-Fi 6",
+        "NetworkSupport": "5G, 4G LTE",
+        "VoLTE": "Yes",
+        "Bluetooth": "5.3",
+        "GPS": "GPS, GLONASS, BDS",
+        "NFC": "Yes"
+      },
+      "Sensors": {
+        "Fingerprint": "Side-mounted",
+        "FingerprintSensorType": "Capacitive",
+        "FingerprintSensorPosition": "Side",
+        "OtherSensors": ["Accelerometer", "Gyroscope", "Compass", "Proximity"]
+      }
+    }
+  },
+  {
+    "name": "Honor Magic 8 Pro",
+    "brand": "honor",
+    "price": "79999",
+    "image": "honor_magic_8_pro.jpg",
+    "pros": [
+      "Outstanding camera",
+      "MagicOS experience",
+      "Fast charging",
+      "Premium design"
+    ],
+    "cons": ["Expensive", "Average battery life", "Heavy"],
+    "faqs": [
+      {
+        "question": "Camera quality?",
+        "answer": "Triple camera with 200MP main sensor and advanced AI."
+      },
+      {
+        "question": "MagicOS?",
+        "answer": "Honor MagicOS 9.0 with smooth performance."
+      },
+      {
+        "question": "Charging speed?",
+        "answer": "100W HONOR SuperCharge."
+      },
+      {
+        "question": "Display quality?",
+        "answer": "6.8-inch OLED with 120Hz refresh rate."
+      }
+    ],
+    "specs": {
+      "General": {
+        "OperatingSystem": "Android 15",
+        "CustomUI": "MagicOS 9.0",
+        "LaunchDate": "2026-12-01",
+        "OSUpdate": "Up to 3 years"
+      },
+      "Performance": {
+        "Chipset": "Snapdragon 8 Gen 4",
+        "CPU": "Octa-core",
+        "GPU": "Adreno 830",
+        "RAM": "16 GB",
+        "RAMType": "LPDDR5X",
+        "Architecture": "64 bit",
+        "Fabrication": "3 nm",
+        "PerformanceTestResults": "Excellent",
+        "BootupTime": "12 seconds",
+        "AnTuTuScore": "1500000"
+      },
+      "Storage": {
+        "InternalStorage": "512 GB",
+        "StorageType": "UFS 2.2"
+      },
+      "Display": {
+        "Type": "OLED",
+        "Size": "6.8 inches",
+        "Resolution": "2480 x 1116",
+        "RefreshRate": "120 Hz",
+        "ScreenToBodyRatio": "91%",
+        "BezelLessDisplay": "Yes",
+        "PixelDensity": "400 PPI",
+        "PeakBrightness": "1800 nits",
+        "HBMBrightness": "1600 nits",
+        "AspectRatio": "20:9"
+      },
+      "RearCamera": {
+        "Camera": {
+          "Primary": "200 MP",
+          "Secondary": "50 MP",
+          "Tertiary": "40 MP"
+        }
+      },
+      "FrontCamera": {
+        "Camera": "50 MP"
+      },
+      "Battery": {
+        "Capacity": "5600 mAh",
+        "QuickCharging": "100W",
+        "WirelessCharging": "80W",
+        "BatteryChargingTime": "30 minutes to 100%"
+      },
+      "SoundAudio": {
+        "Loudspeakers": "Stereo",
+        "HeadphoneConnection": "USB Type-C",
+        "SoundTechnology": "Dolby Atmos"
+      },
+      "NetworkConnectivity": {
+        "SIMSlot": "Dual SIM",
+        "SIMType": "Nano SIM",
+        "WiFi": "Wi-Fi 7",
+        "NetworkSupport": "5G, 4G LTE",
+        "VoLTE": "Yes",
+        "Bluetooth": "5.4",
+        "GPS": "GPS, GLONASS, BDS",
+        "NFC": "Yes"
+      },
+      "Sensors": {
+        "Fingerprint": "In-display",
+        "FingerprintSensorType": "Optical",
+        "FingerprintSensorPosition": "Under display",
+        "OtherSensors": ["Accelerometer", "Gyroscope", "Compass", "Proximity"]
+      }
+    }
+  },
+  {
+    "name": "Nothing Phone 3",
+    "brand": "nothing",
+    "price": "44999",
+    "image": "nothing_phone_3.jpg",
+    "pros": [
+      "Unique design",
+      "Clean Android",
+      "Good performance",
+      "Glyph interface"
+    ],
+    "cons": ["Average camera", "No fast charging", "Expensive for features"],
+    "faqs": [
+      {
+        "question": "Glyph interface?",
+        "answer": "Enhanced LED lights for notifications and music visualization."
+      },
+      {
+        "question": "Android version?",
+        "answer": "Android 15 with Nothing OS 3.0."
+      },
+      {
+        "question": "Camera quality?",
+        "answer": "Dual camera with Sony IMX890 sensor."
+      },
+      {
+        "question": "Battery life?",
+        "answer": "5000mAh battery with decent performance."
+      }
+    ],
+    "specs": {
+      "General": {
+        "OperatingSystem": "Android 15",
+        "CustomUI": "Nothing OS 3.0",
+        "LaunchDate": "2026-11-15",
+        "OSUpdate": "Up to 3 years"
+      },
+      "Performance": {
+        "Chipset": "Snapdragon 8 Gen 4",
+        "CPU": "Octa-core",
+        "GPU": "Adreno 830",
+        "RAM": "12 GB",
+        "RAMType": "LPDDR5X",
+        "Architecture": "64 bit",
+        "Fabrication": "3 nm",
+        "PerformanceTestResults": "Good",
+        "BootupTime": "20 seconds",
+        "AnTuTuScore": "1200000"
+      },
+      "Storage": {
+        "InternalStorage": "256 GB",
+        "StorageType": "UFS 2.2"
+      },
+      "Display": {
+        "Type": "AMOLED",
+        "Size": "6.7 inches",
+        "Resolution": "2412 x 1084",
+        "RefreshRate": "120 Hz",
+        "ScreenToBodyRatio": "88.6%",
+        "BezelLessDisplay": "Yes",
+        "PixelDensity": "394 PPI",
+        "PeakBrightness": "1800 nits",
+        "HBMBrightness": "1300 nits",
+        "AspectRatio": "20:9"
+      },
+      "RearCamera": {
+        "Camera": {
+          "Primary": "50 MP",
+          "Secondary": "50 MP"
+        }
+      },
+      "FrontCamera": {
+        "Camera": "32 MP"
+      },
+      "Battery": {
+        "Capacity": "5000 mAh",
+        "QuickCharging": "45W",
+        "WirelessCharging": "15W",
+        "BatteryChargingTime": "60 minutes to 100%"
+      },
+      "SoundAudio": {
+        "Loudspeakers": "Stereo",
+        "HeadphoneConnection": "USB Type-C",
+        "SoundTechnology": "Dolby Atmos"
+      },
+      "NetworkConnectivity": {
+        "SIMSlot": "Dual SIM",
+        "SIMType": "Nano SIM",
+        "WiFi": "Wi-Fi 6",
+        "NetworkSupport": "5G, 4G LTE",
+        "VoLTE": "Yes",
+        "Bluetooth": "5.4",
+        "GPS": "GPS, GLONASS, BDS",
+        "NFC": "Yes"
+      },
+      "Sensors": {
+        "Fingerprint": "In-display",
+        "FingerprintSensorType": "Optical",
+        "FingerprintSensorPosition": "Under display",
+        "OtherSensors": ["Accelerometer", "Gyroscope", "Compass", "Proximity"]
+      }
+    }
+  },
+  {
+    "name": "Poco X7 Pro",
+    "brand": "poco",
+    "price": "24999",
+    "image": "poco_x7_pro.jpg",
+    "pros": [
+      "Excellent value",
+      "Fast charging",
+      "Good display",
+      "MIUI HyperOS"
+    ],
+    "cons": ["Average camera", "No wireless charging", "Heavy"],
+    "faqs": [
+      {
+        "question": "Charging speed?",
+        "answer": "120W Turbo charging, charges quickly."
+      },
+      {
+        "question": "MIUI HyperOS?",
+        "answer": "Xiaomi's new OS with improved performance."
+      },
+      {
+        "question": "Display quality?",
+        "answer": "6.67-inch AMOLED with 120Hz refresh rate."
+      },
+      {
+        "question": "Gaming performance?",
+        "answer": "Good gaming with MediaTek Dimensity 9400."
+      }
+    ],
+    "specs": {
+      "General": {
+        "OperatingSystem": "Android 15",
+        "CustomUI": "MIUI HyperOS",
+        "LaunchDate": "2026-08-01",
+        "OSUpdate": "Up to 2 years"
+      },
+      "Performance": {
+        "Chipset": "MediaTek Dimensity 9400",
+        "CPU": "Octa-core",
+        "GPU": "Immortalis-G720 MC4",
+        "RAM": "8 GB",
+        "RAMType": "LPDDR5X",
+        "Architecture": "64 bit",
+        "Fabrication": "3 nm",
+        "PerformanceTestResults": "Good",
+        "BootupTime": "25 seconds",
+        "AnTuTuScore": "650000"
+      },
+      "Storage": {
+        "InternalStorage": "256 GB",
+        "StorageType": "UFS 2.2"
+      },
+      "Display": {
+        "Type": "AMOLED",
+        "Size": "6.67 inches",
+        "Resolution": "2400 x 1080",
+        "RefreshRate": "120 Hz",
+        "ScreenToBodyRatio": "84.6%",
+        "BezelLessDisplay": "Yes",
+        "PixelDensity": "395 PPI",
+        "PeakBrightness": "1300 nits",
+        "HBMBrightness": "1000 nits",
+        "AspectRatio": "20:9"
+      },
+      "RearCamera": {
+        "Camera": {
+          "Primary": "108 MP",
+          "Secondary": "8 MP",
+          "Tertiary": "2 MP"
+        }
+      },
+      "FrontCamera": {
+        "Camera": "16 MP"
+      },
+      "Battery": {
+        "Capacity": "5000 mAh",
+        "QuickCharging": "120W",
+        "WirelessCharging": "No",
+        "BatteryChargingTime": "35 minutes to 100%"
+      },
+      "SoundAudio": {
+        "Loudspeakers": "Stereo",
+        "HeadphoneConnection": "USB Type-C",
+        "SoundTechnology": "Dolby Atmos"
+      },
+      "NetworkConnectivity": {
+        "SIMSlot": "Dual SIM",
+        "SIMType": "Nano SIM",
+        "WiFi": "Wi-Fi 6",
+        "NetworkSupport": "5G, 4G LTE",
+        "VoLTE": "Yes",
+        "Bluetooth": "5.3",
+        "GPS": "GPS, GLONASS, BDS",
+        "NFC": "Yes"
+      },
+      "Sensors": {
+        "Fingerprint": "Side-mounted",
+        "FingerprintSensorType": "Capacitive",
+        "FingerprintSensorPosition": "Side",
+        "OtherSensors": [
+          "Accelerometer",
+          "Gyroscope",
+          "Compass",
+          "Proximity",
+          "IR Blaster"
+        ]
+      }
+    }
+  },
+  {
+    "name": "IQOO 13",
+    "brand": "iqoo",
+    "price": "59999",
+    "image": "iqoo_13.jpg",
+    "pros": [
+      "Gaming performance",
+      "Fast charging",
+      "Good display",
+      "Vivo ecosystem"
+    ],
+    "cons": ["Average camera", "Heavy", "Funtouch OS"],
+    "faqs": [
+      {
+        "question": "Gaming features?",
+        "answer": "Monster mode, shoulder triggers, excellent cooling."
+      },
+      {
+        "question": "Charging speed?",
+        "answer": "200W fast charging, 0-100% in 15 minutes."
+      },
+      {
+        "question": "Display quality?",
+        "answer": "6.78-inch AMOLED with 144Hz refresh rate."
+      },
+      {
+        "question": "Camera setup?",
+        "answer": "Triple camera with Sony IMX920 sensor."
+      }
+    ],
+    "specs": {
+      "General": {
+        "OperatingSystem": "Android 15",
+        "CustomUI": "Funtouch OS 15",
+        "LaunchDate": "2027-01-15",
+        "OSUpdate": "Up to 3 years"
+      },
+      "Performance": {
+        "Chipset": "MediaTek Dimensity 9500",
+        "CPU": "Octa-core",
+        "GPU": "Immortalis-G720 MC4",
+        "RAM": "16 GB",
+        "RAMType": "LPDDR5X",
+        "Architecture": "64 bit",
+        "Fabrication": "3 nm",
+        "PerformanceTestResults": "Excellent",
+        "BootupTime": "14 seconds",
+        "AnTuTuScore": "1400000"
+      },
+      "Storage": {
+        "InternalStorage": "512 GB",
+        "StorageType": "UFS 2.2"
+      },
+      "Display": {
+        "Type": "AMOLED",
+        "Size": "6.78 inches",
+        "Resolution": "2800 x 1260",
+        "RefreshRate": "144 Hz",
+        "ScreenToBodyRatio": "94.4%",
+        "BezelLessDisplay": "Yes",
+        "PixelDensity": "453 PPI",
+        "PeakBrightness": "2000 nits",
+        "HBMBrightness": "4200 nits",
+        "AspectRatio": "20:9"
+      },
+      "RearCamera": {
+        "Camera": {
+          "Primary": "50 MP",
+          "Secondary": "50 MP",
+          "Tertiary": "64 MP"
+        }
+      },
+      "FrontCamera": {
+        "Camera": "16 MP"
+      },
+      "Battery": {
+        "Capacity": "6000 mAh",
+        "QuickCharging": "200W",
+        "WirelessCharging": "No",
+        "BatteryChargingTime": "15 minutes to 100%"
+      },
+      "SoundAudio": {
+        "Loudspeakers": "Stereo",
+        "HeadphoneConnection": "USB Type-C",
+        "SoundTechnology": "Dolby Atmos"
+      },
+      "NetworkConnectivity": {
+        "SIMSlot": "Dual SIM",
+        "SIMType": "Nano SIM",
+        "WiFi": "Wi-Fi 7",
+        "NetworkSupport": "5G, 4G LTE",
+        "VoLTE": "Yes",
+        "Bluetooth": "5.4",
+        "GPS": "GPS, GLONASS, BDS",
+        "NFC": "Yes"
+      },
+      "Sensors": {
+        "Fingerprint": "In-display",
+        "FingerprintSensorType": "Optical",
+        "FingerprintSensorPosition": "Under display",
+        "OtherSensors": ["Accelerometer", "Gyroscope", "Compass", "Proximity"]
+      }
+    }
+  },
+  {
+    "name": "Infinix Zero 40",
+    "brand": "infinix",
+    "price": "29999",
+    "image": "infinix_zero_40.jpg",
+    "pros": ["Large battery", "Fast charging", "Good value", "Colorful design"],
+    "cons": ["Average camera", "Heavy", "XOS interface"],
+    "faqs": [
+      {
+        "question": "Battery capacity?",
+        "answer": "7000mAh battery with excellent battery life."
+      },
+      {
+        "question": "Charging speed?",
+        "answer": "68W fast charging, charges quickly."
+      },
+      {
+        "question": "Display quality?",
+        "answer": "6.78-inch AMOLED with 120Hz refresh rate."
+      },
+      {
+        "question": "Camera setup?",
+        "answer": "Triple camera with 108MP main sensor."
+      }
+    ],
+    "specs": {
+      "General": {
+        "OperatingSystem": "Android 15",
+        "CustomUI": "XOS 15",
+        "LaunchDate": "2026-07-15",
+        "OSUpdate": "Up to 2 years"
+      },
+      "Performance": {
+        "Chipset": "MediaTek Dimensity 8300",
+        "CPU": "Octa-core",
+        "GPU": "Mali-G615 MC6",
+        "RAM": "12 GB",
+        "RAMType": "LPDDR5X",
+        "Architecture": "64 bit",
+        "Fabrication": "4 nm",
+        "PerformanceTestResults": "Average",
+        "BootupTime": "30 seconds",
+        "AnTuTuScore": "500000"
+      },
+      "Storage": {
+        "InternalStorage": "256 GB",
+        "StorageType": "UFS 2.2"
+      },
+      "Display": {
+        "Type": "AMOLED",
+        "Size": "6.78 inches",
+        "Resolution": "2460 x 1080",
+        "RefreshRate": "120 Hz",
+        "ScreenToBodyRatio": "91.4%",
+        "BezelLessDisplay": "Yes",
+        "PixelDensity": "396 PPI",
+        "PeakBrightness": "1200 nits",
+        "HBMBrightness": "950 nits",
+        "AspectRatio": "20:9"
+      },
+      "RearCamera": {
+        "Camera": {
+          "Primary": "108 MP",
+          "Secondary": "13 MP",
+          "Tertiary": "2 MP"
+        }
+      },
+      "FrontCamera": {
+        "Camera": "50 MP"
+      },
+      "Battery": {
+        "Capacity": "7000 mAh",
+        "QuickCharging": "68W",
+        "WirelessCharging": "No",
+        "BatteryChargingTime": "45 minutes to 100%"
+      },
+      "SoundAudio": {
+        "Loudspeakers": "Stereo",
+        "HeadphoneConnection": "USB Type-C",
+        "SoundTechnology": "Dolby Atmos"
+      },
+      "NetworkConnectivity": {
+        "SIMSlot": "Dual SIM",
+        "SIMType": "Nano SIM",
+        "WiFi": "Wi-Fi 5",
+        "NetworkSupport": "5G, 4G LTE",
+        "VoLTE": "Yes",
+        "Bluetooth": "5.1",
+        "GPS": "GPS, GLONASS, BDS",
+        "NFC": "Yes"
+      },
+      "Sensors": {
+        "Fingerprint": "In-display",
+        "FingerprintSensorType": "Optical",
+        "FingerprintSensorPosition": "Under display",
+        "OtherSensors": ["Accelerometer", "Gyroscope", "Compass", "Proximity"]
+      }
+    }
+  },
+  {
+    "name": "Tecno Camon 30",
+    "brand": "tecno",
+    "price": "19999",
+    "image": "tecno_camon_30.jpg",
+    "pros": [
+      "Large battery",
+      "Triple camera",
+      "Affordable",
+      "Colorful options"
+    ],
+    "cons": ["Average performance", "Heavy", "HiOS interface"],
+    "faqs": [
+      {
+        "question": "Battery capacity?",
+        "answer": "6000mAh battery with good battery life."
+      },
+      {
+        "question": "Camera quality?",
+        "answer": "Triple camera with 64MP main sensor."
+      },
+      {
+        "question": "Display quality?",
+        "answer": "6.67-inch IPS LCD with 120Hz refresh rate."
+      },
+      {
+        "question": "Android version?",
+        "answer": "Android 15 with HiOS 15."
+      }
+    ],
+    "specs": {
+      "General": {
+        "OperatingSystem": "Android 15",
+        "CustomUI": "HiOS 15",
+        "LaunchDate": "2026-05-01",
+        "OSUpdate": "Up to 2 years"
+      },
+      "Performance": {
+        "Chipset": "MediaTek Helio G99",
+        "CPU": "Octa-core",
+        "GPU": "Mali-G57 MC2",
+        "RAM": "8 GB",
+        "RAMType": "LPDDR4X",
+        "Architecture": "64 bit",
+        "Fabrication": "6 nm",
+        "PerformanceTestResults": "Average",
+        "BootupTime": "35 seconds",
+        "AnTuTuScore": "400000"
+      },
+      "Storage": {
+        "InternalStorage": "256 GB",
+        "StorageType": "UFS 2.1"
+      },
+      "Display": {
+        "Type": "IPS LCD",
+        "Size": "6.67 inches",
+        "Resolution": "2400 x 1080",
+        "RefreshRate": "120 Hz",
+        "ScreenToBodyRatio": "84.6%",
+        "BezelLessDisplay": "Yes",
+        "PixelDensity": "395 PPI",
+        "PeakBrightness": "650 nits",
+        "HBMBrightness": "550 nits",
+        "AspectRatio": "20:9"
+      },
+      "RearCamera": {
+        "Camera": {
+          "Primary": "64 MP",
+          "Secondary": "2 MP",
+          "Tertiary": "QVGA"
+        }
+      },
+      "FrontCamera": {
+        "Camera": "32 MP"
+      },
+      "Battery": {
+        "Capacity": "6000 mAh",
+        "QuickCharging": "45W",
+        "WirelessCharging": "No",
+        "BatteryChargingTime": "80 minutes to 100%"
+      },
+      "SoundAudio": {
+        "Loudspeakers": "Mono",
+        "HeadphoneConnection": "USB Type-C",
+        "SoundTechnology": "Dolby Atmos"
+      },
+      "NetworkConnectivity": {
+        "SIMSlot": "Dual SIM",
+        "SIMType": "Nano SIM",
+        "WiFi": "Wi-Fi 5",
+        "NetworkSupport": "4G LTE",
+        "VoLTE": "Yes",
+        "Bluetooth": "5.1",
+        "GPS": "GPS, GLONASS, BDS",
+        "NFC": "No"
+      },
+      "Sensors": {
+        "Fingerprint": "Side-mounted",
+        "FingerprintSensorType": "Capacitive",
+        "FingerprintSensorPosition": "Side",
+        "OtherSensors": ["Accelerometer", "Proximity"]
+      }
+    }
+  },
+  {
+    "name": "Lava Agni 3",
+    "brand": "lava",
+    "price": "27999",
+    "image": "lava_agni_3.jpg",
+    "pros": ["Large battery", "Fast charging", "Good value", "Durable build"],
+    "cons": ["Average camera", "Heavy", "Basic Android experience"],
+    "faqs": [
+      {
+        "question": "Battery capacity?",
+        "answer": "7000mAh battery with excellent battery life."
+      },
+      {
+        "question": "Charging speed?",
+        "answer": "66W fast charging, charges quickly."
+      },
+      {
+        "question": "Display quality?",
+        "answer": "6.78-inch IPS LCD with 120Hz refresh rate."
+      },
+      {
+        "question": "Camera setup?",
+        "answer": "Triple camera with 50MP main sensor."
+      }
+    ],
+    "specs": {
+      "General": {
+        "OperatingSystem": "Android 15",
+        "CustomUI": "Stock Android",
+        "LaunchDate": "2026-09-01",
+        "OSUpdate": "Up to 2 years"
+      },
+      "Performance": {
+        "Chipset": "MediaTek Dimensity 8300",
+        "CPU": "Octa-core",
+        "GPU": "Mali-G615 MC6",
+        "RAM": "8 GB",
+        "RAMType": "LPDDR5X",
+        "Architecture": "64 bit",
+        "Fabrication": "4 nm",
+        "PerformanceTestResults": "Average",
+        "BootupTime": "28 seconds",
+        "AnTuTuScore": "550000"
+      },
+      "Storage": {
+        "InternalStorage": "256 GB",
+        "StorageType": "UFS 2.2"
+      },
+      "Display": {
+        "Type": "IPS LCD",
+        "Size": "6.78 inches",
+        "Resolution": "2460 x 1080",
+        "RefreshRate": "120 Hz",
+        "ScreenToBodyRatio": "83.2%",
+        "BezelLessDisplay": "Yes",
+        "PixelDensity": "396 PPI",
+        "PeakBrightness": "650 nits",
+        "HBMBrightness": "550 nits",
+        "AspectRatio": "20:9"
+      },
+      "RearCamera": {
+        "Camera": {
+          "Primary": "50 MP",
+          "Secondary": "2 MP",
+          "Tertiary": "2 MP"
+        }
+      },
+      "FrontCamera": {
+        "Camera": "16 MP"
+      },
+      "Battery": {
+        "Capacity": "7000 mAh",
+        "QuickCharging": "66W",
+        "WirelessCharging": "No",
+        "BatteryChargingTime": "50 minutes to 100%"
+      },
+      "SoundAudio": {
+        "Loudspeakers": "Stereo",
+        "HeadphoneConnection": "USB Type-C",
+        "SoundTechnology": "Dolby Atmos"
+      },
+      "NetworkConnectivity": {
+        "SIMSlot": "Dual SIM",
+        "SIMType": "Nano SIM",
+        "WiFi": "Wi-Fi 5",
+        "NetworkSupport": "5G, 4G LTE",
+        "VoLTE": "Yes",
+        "Bluetooth": "5.1",
+        "GPS": "GPS, GLONASS, BDS",
+        "NFC": "Yes"
+      },
+      "Sensors": {
+        "Fingerprint": "Side-mounted",
+        "FingerprintSensorType": "Capacitive",
+        "FingerprintSensorPosition": "Side",
+        "OtherSensors": ["Accelerometer", "Gyroscope", "Compass", "Proximity"]
+      }
+    }
+  },
+  {
+    "name": "Micromax IN 3",
+    "brand": "micromax",
+    "price": "14999",
+    "image": "micromax_in_3.jpg",
+    "pros": [
+      "Very affordable",
+      "Large battery",
+      "Expandable storage",
+      "Dual SIM"
+    ],
+    "cons": ["Basic performance", "Average camera", "Heavy"],
+    "faqs": [
+      {
+        "question": "Battery capacity?",
+        "answer": "6000mAh battery with good battery life."
+      },
+      {
+        "question": "Storage expandable?",
+        "answer": "Yes, supports microSD card up to 1TB."
+      },
+      {
+        "question": "Display quality?",
+        "answer": "6.52-inch HD+ IPS LCD display."
+      },
+      {
+        "question": "Camera quality?",
+        "answer": "Dual camera with 13MP main sensor."
+      }
+    ],
+    "specs": {
+      "General": {
+        "OperatingSystem": "Android 14",
+        "CustomUI": "Android Go",
+        "LaunchDate": "2026-03-01",
+        "OSUpdate": "Up to 1 year"
+      },
+      "Performance": {
+        "Chipset": "Unisoc T618",
+        "CPU": "Octa-core",
+        "GPU": "Mali-G52 MC2",
+        "RAM": "4 GB",
+        "RAMType": "LPDDR4X",
+        "Architecture": "64 bit",
+        "Fabrication": "12 nm",
+        "PerformanceTestResults": "Basic",
+        "BootupTime": "45 seconds",
+        "AnTuTuScore": "180000"
+      },
+      "Storage": {
+        "InternalStorage": "128 GB",
+        "StorageType": "eMMC 5.1"
+      },
+      "Display": {
+        "Type": "IPS LCD",
+        "Size": "6.52 inches",
+        "Resolution": "1600 x 720",
+        "RefreshRate": "60 Hz",
+        "ScreenToBodyRatio": "81.2%",
+        "BezelLessDisplay": "Yes",
+        "PixelDensity": "269 PPI",
+        "PeakBrightness": "450 nits",
+        "HBMBrightness": "400 nits",
+        "AspectRatio": "20:9"
+      },
+      "RearCamera": {
+        "Camera": {
+          "Primary": "13 MP",
+          "Secondary": "QVGA"
+        }
+      },
+      "FrontCamera": {
+        "Camera": "8 MP"
+      },
+      "Battery": {
+        "Capacity": "6000 mAh",
+        "QuickCharging": "10W",
+        "WirelessCharging": "No",
+        "BatteryChargingTime": "180 minutes to 100%"
+      },
+      "SoundAudio": {
+        "Loudspeakers": "Mono",
+        "HeadphoneConnection": "USB Type-C",
+        "SoundTechnology": "Basic"
+      },
+      "NetworkConnectivity": {
+        "SIMSlot": "Dual SIM",
+        "SIMType": "Nano SIM + Micro SIM",
+        "WiFi": "Wi-Fi 4",
+        "NetworkSupport": "4G LTE",
+        "VoLTE": "Yes",
+        "Bluetooth": "5.0",
+        "GPS": "GPS, GLONASS",
+        "NFC": "No"
+      },
+      "Sensors": {
+        "Fingerprint": "Rear-mounted",
+        "FingerprintSensorType": "Capacitive",
+        "FingerprintSensorPosition": "Rear",
+        "OtherSensors": ["Accelerometer", "Proximity"]
+      }
+    }
+  },
+  {
+    "name": "Asus Zenfone 11",
+    "brand": "asus",
+    "price": "79999",
+    "image": "asus_zenfone_11.jpg",
+    "pros": [
+      "Compact size",
+      "Premium build",
+      "Good performance",
+      "ZenUI experience"
+    ],
+    "cons": ["Expensive", "Average battery life", "Limited camera"],
+    "faqs": [
+      {
+        "question": "Size comparison?",
+        "answer": "One of the smallest flagship phones at 5.9-inch display."
+      },
+      {
+        "question": "Build quality?",
+        "answer": "Premium build with Gorilla Glass Victus protection."
+      },
+      {
+        "question": "Performance?",
+        "answer": "Snapdragon 8 Gen 4 with excellent performance."
+      },
+      {
+        "question": "Camera quality?",
+        "answer": "Dual camera setup with 50MP main sensor."
+      }
+    ],
+    "specs": {
+      "General": {
+        "OperatingSystem": "Android 15",
+        "CustomUI": "ZenUI",
+        "LaunchDate": "2026-08-15",
+        "OSUpdate": "Up to 2 years"
+      },
+      "Performance": {
+        "Chipset": "Snapdragon 8 Gen 4",
+        "CPU": "Octa-core",
+        "GPU": "Adreno 830",
+        "RAM": "16 GB",
+        "RAMType": "LPDDR5X",
+        "Architecture": "64 bit",
+        "Fabrication": "3 nm",
+        "PerformanceTestResults": "Excellent",
+        "BootupTime": "16 seconds",
+        "AnTuTuScore": "1350000"
+      },
+      "Storage": {
+        "InternalStorage": "512 GB",
+        "StorageType": "UFS 2.2"
+      },
+      "Display": {
+        "Type": "AMOLED",
+        "Size": "5.9 inches",
+        "Resolution": "2400 x 1080",
+        "RefreshRate": "144 Hz",
+        "ScreenToBodyRatio": "78.2%",
+        "BezelLessDisplay": "Yes",
+        "PixelDensity": "445 PPI",
+        "PeakBrightness": "1200 nits",
+        "HBMBrightness": "900 nits",
+        "AspectRatio": "20:9"
+      },
+      "RearCamera": {
+        "Camera": {
+          "Primary": "50 MP",
+          "Secondary": "13 MP"
+        }
+      },
+      "FrontCamera": {
+        "Camera": "32 MP"
+      },
+      "Battery": {
+        "Capacity": "4300 mAh",
+        "QuickCharging": "30W",
+        "WirelessCharging": "No",
+        "BatteryChargingTime": "65 minutes to 100%"
+      },
+      "SoundAudio": {
+        "Loudspeakers": "Stereo",
+        "HeadphoneConnection": "USB Type-C",
+        "SoundTechnology": "Dolby Atmos"
+      },
+      "NetworkConnectivity": {
+        "SIMSlot": "Dual SIM",
+        "SIMType": "Nano SIM",
+        "WiFi": "Wi-Fi 6",
+        "NetworkSupport": "5G, 4G LTE",
+        "VoLTE": "Yes",
+        "Bluetooth": "5.3",
+        "GPS": "GPS, GLONASS, BDS",
+        "NFC": "Yes"
+      },
+      "Sensors": {
+        "Fingerprint": "In-display",
+        "FingerprintSensorType": "Optical",
+        "FingerprintSensorPosition": "Under display",
+        "OtherSensors": ["Accelerometer", "Gyroscope", "Compass", "Proximity"]
+      }
+    }
+  },
+  {
+    "name": "Nokia X40",
+    "brand": "nokia",
+    "price": "39999",
+    "image": "nokia_x40.jpg",
+    "pros": [
+      "Pure Android",
+      "3 years updates",
+      "Durable build",
+      "Good battery life"
+    ],
+    "cons": ["Average camera", "No fast charging", "Basic design"],
+    "faqs": [
+      {
+        "question": "Android updates?",
+        "answer": "3 years of Android updates and security patches."
+      },
+      {
+        "question": "Build quality?",
+        "answer": "IP54 rating for dust and water resistance."
+      },
+      {
+        "question": "Camera quality?",
+        "answer": "Dual camera with Zeiss optics."
+      },
+      {
+        "question": "Display quality?",
+        "answer": "6.43-inch AMOLED with 120Hz refresh rate."
+      }
+    ],
+    "specs": {
+      "General": {
+        "OperatingSystem": "Android 15",
+        "CustomUI": "Stock Android",
+        "LaunchDate": "2026-10-01",
+        "OSUpdate": "Up to 3 years"
+      },
+      "Performance": {
+        "Chipset": "Snapdragon 7 Gen 3",
+        "CPU": "Octa-core",
+        "GPU": "Adreno 720",
+        "RAM": "8 GB",
+        "RAMType": "LPDDR5X",
+        "Architecture": "64 bit",
+        "Fabrication": "4 nm",
+        "PerformanceTestResults": "Good",
+        "BootupTime": "22 seconds",
+        "AnTuTuScore": "550000"
+      },
+      "Storage": {
+        "InternalStorage": "256 GB",
+        "StorageType": "UFS 2.2"
+      },
+      "Display": {
+        "Type": "AMOLED",
+        "Size": "6.43 inches",
+        "Resolution": "2400 x 1080",
+        "RefreshRate": "120 Hz",
+        "ScreenToBodyRatio": "84.2%",
+        "BezelLessDisplay": "Yes",
+        "PixelDensity": "409 PPI",
+        "PeakBrightness": "1100 nits",
+        "HBMBrightness": "850 nits",
+        "AspectRatio": "20:9"
+      },
+      "RearCamera": {
+        "Camera": {
+          "Primary": "50 MP",
+          "Secondary": "13 MP"
+        }
+      },
+      "FrontCamera": {
+        "Camera": "16 MP"
+      },
+      "Battery": {
+        "Capacity": "4500 mAh",
+        "QuickCharging": "33W",
+        "WirelessCharging": "No",
+        "BatteryChargingTime": "80 minutes to 100%"
+      },
+      "SoundAudio": {
+        "Loudspeakers": "Stereo",
+        "HeadphoneConnection": "USB Type-C",
+        "SoundTechnology": "Dolby Atmos"
+      },
+      "NetworkConnectivity": {
+        "SIMSlot": "Dual SIM",
+        "SIMType": "Nano SIM",
+        "WiFi": "Wi-Fi 5",
+        "NetworkSupport": "5G, 4G LTE",
+        "VoLTE": "Yes",
+        "Bluetooth": "5.1",
+        "GPS": "GPS, GLONASS, BDS",
+        "NFC": "Yes"
+      },
+      "Sensors": {
+        "Fingerprint": "Side-mounted",
+        "FingerprintSensorType": "Capacitive",
+        "FingerprintSensorPosition": "Side",
+        "OtherSensors": ["Accelerometer", "Gyroscope", "Compass", "Proximity"]
+      }
+    }
+  },
+  {
+    "name": "Itel A80",
+    "brand": "itel",
+    "price": "10999",
+    "image": "itel_a80.jpg",
+    "pros": [
+      "Very affordable",
+      "Large battery",
+      "Dual SIM",
+      "Expandable storage"
+    ],
+    "cons": ["Basic performance", "Average camera", "HD+ display"],
+    "faqs": [
+      {
+        "question": "Battery capacity?",
+        "answer": "5000mAh battery with decent battery life."
+      },
+      {
+        "question": "Storage expandable?",
+        "answer": "Yes, supports microSD card up to 128GB."
+      },
+      {
+        "question": "Display quality?",
+        "answer": "6.6-inch HD+ IPS LCD display."
+      },
+      {
+        "question": "Camera quality?",
+        "answer": "Dual camera with 8MP main sensor."
+      }
+    ],
+    "specs": {
+      "General": {
+        "OperatingSystem": "Android 14",
+        "CustomUI": "Android Go",
+        "LaunchDate": "2026-02-01",
+        "OSUpdate": "Up to 1 year"
+      },
+      "Performance": {
+        "Chipset": "Unisoc SC9863A",
+        "CPU": "Octa-core",
+        "GPU": "IMG8322",
+        "RAM": "4 GB",
+        "RAMType": "LPDDR4X",
+        "Architecture": "64 bit",
+        "Fabrication": "28 nm",
+        "PerformanceTestResults": "Basic",
+        "BootupTime": "55 seconds",
+        "AnTuTuScore": "90000"
+      },
+      "Storage": {
+        "InternalStorage": "64 GB",
+        "StorageType": "eMMC 5.1"
+      },
+      "Display": {
+        "Type": "IPS LCD",
+        "Size": "6.6 inches",
+        "Resolution": "1612 x 720",
+        "RefreshRate": "60 Hz",
+        "ScreenToBodyRatio": "78.8%",
+        "BezelLessDisplay": "Yes",
+        "PixelDensity": "267 PPI",
+        "PeakBrightness": "400 nits",
+        "HBMBrightness": "350 nits",
+        "AspectRatio": "20:9"
+      },
+      "RearCamera": {
+        "Camera": {
+          "Primary": "8 MP",
+          "Secondary": "QVGA"
+        }
+      },
+      "FrontCamera": {
+        "Camera": "5 MP"
+      },
+      "Battery": {
+        "Capacity": "5000 mAh",
+        "QuickCharging": "10W",
+        "WirelessCharging": "No",
+        "BatteryChargingTime": "150 minutes to 100%"
+      },
+      "SoundAudio": {
+        "Loudspeakers": "Mono",
+        "HeadphoneConnection": "USB Type-C",
+        "SoundTechnology": "Basic"
+      },
+      "NetworkConnectivity": {
+        "SIMSlot": "Dual SIM",
+        "SIMType": "Nano SIM + Micro SIM",
+        "WiFi": "Wi-Fi 4",
+        "NetworkSupport": "4G LTE",
+        "VoLTE": "Yes",
+        "Bluetooth": "5.0",
+        "GPS": "GPS, GLONASS",
+        "NFC": "No"
+      },
+      "Sensors": {
+        "Fingerprint": "Rear-mounted",
+        "FingerprintSensorType": "Capacitive",
+        "FingerprintSensorPosition": "Rear",
+        "OtherSensors": ["Accelerometer", "Proximity"]
+      }
+    }
+  },
+  {
+    "name": "Lenovo Legion Phone Duel 3",
+    "brand": "lenovo",
+    "price": "59999",
+    "image": "lenovo_legion_phone_duel_3.jpg",
+    "pros": [
+      "Gaming performance",
+      "Dual speakers",
+      "Shoulder triggers",
+      "Good cooling"
+    ],
+    "cons": ["Heavy and bulky", "Average battery life", "Expensive"],
+    "faqs": [
+      {
+        "question": "Gaming features?",
+        "answer": "Shoulder triggers, dual speakers, Legion mode."
+      },
+      {
+        "question": "Performance?",
+        "answer": "Snapdragon 8 Gen 4 with excellent gaming performance."
+      },
+      {
+        "question": "Display quality?",
+        "answer": "6.92-inch AMOLED with 144Hz refresh rate."
+      },
+      {
+        "question": "Camera quality?",
+        "answer": "Triple camera setup with 64MP main sensor."
+      }
+    ],
+    "specs": {
+      "General": {
+        "OperatingSystem": "Android 15",
+        "CustomUI": "ZUI 13.0",
+        "LaunchDate": "2026-05-01",
+        "OSUpdate": "Up to 2 years"
+      },
+      "Performance": {
+        "Chipset": "Snapdragon 8 Gen 4",
+        "CPU": "Octa-core",
+        "GPU": "Adreno 830",
+        "RAM": "16 GB",
+        "RAMType": "LPDDR5",
+        "Architecture": "64 bit",
+        "Fabrication": "3 nm",
+        "PerformanceTestResults": "Good",
+        "BootupTime": "18 seconds",
+        "AnTuTuScore": "1000000"
+      },
+      "Storage": {
+        "InternalStorage": "512 GB",
+        "StorageType": "UFS 3.1"
+      },
+      "Display": {
+        "Type": "AMOLED",
+        "Size": "6.92 inches",
+        "Resolution": "2460 x 1080",
+        "RefreshRate": "144 Hz",
+        "ScreenToBodyRatio": "84.2%",
+        "BezelLessDisplay": "Yes",
+        "PixelDensity": "387 PPI",
+        "PeakBrightness": "1400 nits",
+        "HBMBrightness": "1100 nits",
+        "AspectRatio": "19.5:9"
+      },
+      "RearCamera": {
+        "Camera": {
+          "Primary": "64 MP",
+          "Secondary": "16 MP",
+          "Tertiary": "2 MP"
+        }
+      },
+      "FrontCamera": {
+        "Camera": "44 MP"
+      },
+      "Battery": {
+        "Capacity": "6000 mAh",
+        "QuickCharging": "90W",
+        "WirelessCharging": "No",
+        "BatteryChargingTime": "30 minutes to 100%"
+      },
+      "SoundAudio": {
+        "Loudspeakers": "Stereo",
+        "HeadphoneConnection": "USB Type-C",
+        "SoundTechnology": "Dolby Atmos"
+      },
+      "NetworkConnectivity": {
+        "SIMSlot": "Dual SIM",
+        "SIMType": "Nano SIM",
+        "WiFi": "Wi-Fi 6",
+        "NetworkSupport": "5G, 4G LTE",
+        "VoLTE": "Yes",
+        "Bluetooth": "5.1",
+        "GPS": "GPS, GLONASS, BDS",
+        "NFC": "Yes"
+      },
+      "Sensors": {
+        "Fingerprint": "In-display",
+        "FingerprintSensorType": "Optical",
+        "FingerprintSensorPosition": "Under display",
+        "OtherSensors": ["Accelerometer", "Gyroscope", "Compass", "Proximity"]
+      }
+    }
+  }
+]

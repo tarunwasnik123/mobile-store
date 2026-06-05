@@ -1,0 +1,411 @@
+{
+  "info": {
+    "name": "Mobile Store API",
+    "_postman_id": "7b35eec8-2f44-4f64-a513-f40eb2cd5e21",
+    "description": "Collection for Mobile Store backend API (synced with current routes)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "url": "{{serverUrl}}/health"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Signup",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/auth/signup",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Admin\",\n  \"email\": \"{{adminEmail}}\",\n  \"password\": \"{{adminPassword}}\"\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const r = pm.response.json();",
+                  "if (r && r.token) pm.environment.set('token', r.token);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/auth/login",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{adminEmail}}\",\n  \"password\": \"{{adminPassword}}\"\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const r = pm.response.json();",
+                  "if (r && r.token) pm.environment.set('token', r.token);",
+                  "if (r && r.user && r.user.id) pm.environment.set('userId', r.user.id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Me",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/auth/me"
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/auth/logout"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Brands",
+      "item": [
+        {
+          "name": "List Brands",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/brands?page={{page}}&limit={{limit}}&q={{q}}"
+          }
+        },
+        {
+          "name": "Create Brand (admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": "{{baseUrl}}/brands",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Google\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Brand (admin)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": "{{baseUrl}}/brands/{{brandId}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Google Updated\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Brand (admin)",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/brands/{{brandId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Phones",
+      "item": [
+        {
+          "name": "List Phones",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/phones?page={{page}}&limit={{limit}}&q={{q}}&brand={{brandFilter}}&minPrice={{minPrice}}&maxPrice={{maxPrice}}&sort={{sort}}&minReleaseDate={{minReleaseDate}}"
+          }
+        },
+        {
+          "name": "Best Phones",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/phones/best?limit={{bestLimit}}&brand={{brandFilter}}&minPrice={{minPrice}}&maxPrice={{maxPrice}}&minScore={{minScore}}"
+          }
+        },
+        {
+          "name": "Get Phone",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/phones/{{phoneId}}"
+          }
+        },
+        {
+          "name": "Create Phone (admin)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/phones",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "name", "value": "Pixel 8 Test", "type": "text" },
+                { "key": "brand", "value": "google", "type": "text" },
+                { "key": "price", "value": "69999", "type": "text" },
+                {
+                  "key": "externalId",
+                  "value": "pixel-8-test",
+                  "type": "text"
+                },
+                { "key": "image", "type": "file", "src": "{{imageFilePath}}" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Phone (admin)",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/phones/{{phoneObjectId}}",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "price", "value": "64999", "type": "text" },
+                { "key": "replaceImages", "value": "false", "type": "text" },
+                { "key": "image", "type": "file", "src": "{{imageFilePath}}" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Phone (admin)",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/phones/{{phoneObjectId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Upcoming Phones",
+      "item": [
+        {
+          "name": "List Upcoming",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/upcoming?page={{page}}&limit={{limit}}&q={{q}}&brand={{brandFilter}}&minPrice={{minPrice}}&maxPrice={{maxPrice}}&sort={{sort}}"
+          }
+        },
+        {
+          "name": "Get Upcoming",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/upcoming/{{upcomingPhoneId}}"
+          }
+        },
+        {
+          "name": "Create Upcoming (admin)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/upcoming",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "name", "value": "Pixel 9 Test", "type": "text" },
+                { "key": "brand", "value": "google", "type": "text" },
+                { "key": "price", "value": "79999", "type": "text" },
+                {
+                  "key": "externalId",
+                  "value": "pixel-9-test",
+                  "type": "text"
+                },
+                { "key": "image", "type": "file", "src": "{{imageFilePath}}" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Upcoming (admin)",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/upcoming/{{upcomingObjectId}}",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "price", "value": "75999", "type": "text" },
+                { "key": "replaceImages", "value": "false", "type": "text" },
+                { "key": "image", "type": "file", "src": "{{imageFilePath}}" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Upcoming (admin)",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/upcoming/{{upcomingObjectId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "News",
+      "item": [
+        {
+          "name": "List News",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/news?page={{page}}&limit={{newsLimit}}"
+          }
+        },
+        {
+          "name": "Get News",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/news/{{newsId}}"
+          }
+        },
+        {
+          "name": "Create News (admin)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/news",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "New launch article",
+                  "type": "text"
+                },
+                { "key": "summary", "value": "Short summary", "type": "text" },
+                {
+                  "key": "content",
+                  "value": "Full article content",
+                  "type": "text"
+                },
+                { "key": "category", "value": "launch", "type": "text" },
+                { "key": "date", "value": "2026-02-20", "type": "text" },
+                { "key": "image", "type": "file", "src": "{{imageFilePath}}" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update News (admin)",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/news/{{newsObjectId}}",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "Updated launch article",
+                  "type": "text"
+                },
+                {
+                  "key": "summary",
+                  "value": "Updated summary",
+                  "type": "text"
+                },
+                {
+                  "key": "content",
+                  "value": "Updated full article content",
+                  "type": "text"
+                },
+                { "key": "image", "type": "file", "src": "{{imageFilePath}}" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete News (admin)",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/news/{{newsObjectId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin",
+      "item": [
+        {
+          "name": "Bulk Upload",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/admin/bulk/{{bulkType}}",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "file", "type": "file", "src": "{{zipFilePath}}" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Bulk Upload (Dry Run)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/admin/bulk/{{bulkType}}?dry=true",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "file", "type": "file", "src": "{{zipFilePath}}" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Bulk History",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/admin/bulk-history?limit={{historyLimit}}"
+          }
+        },
+        {
+          "name": "Run Seed",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/admin/seed"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,392 @@
+/* ===== HEADER WRAPPER ===== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* ===== TOP BAR ===== */
+.header-top {
+  background: #fff;
+}
+
+.header-inner {
+  max-width: 1200px;
+  height: 64px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+/* ===== LOGO ===== */
+.logo-btn img {
+  height: 85px;
+  display: block;
+  margin: 2px 40px -27px -43px;
+  transition: transform 0.2s ease;
+}
+
+.logo-btn:hover img {
+  transform: scale(1.02);
+}
+
+/* ===== SEARCH ===== */
+.header-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 11000;
+}
+
+.search-bar {
+  width: 520px;
+  max-width: 100%;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #f8fafc;
+  transition: all 0.2s ease;
+}
+
+.search-bar:focus-within {
+  border-color: #000;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: transparent;
+}
+
+.search-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.search-btn:hover {
+  background: #f1f5f9;
+}
+
+/* ===== SEARCH DROPDOWN ===== */
+.search-dropdown {
+  position: absolute;
+  top: 54px;
+  width: 520px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  z-index: 11000;
+  overflow: hidden;
+}
+
+.search-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 999;
+}
+
+.search-item {
+  display: flex;
+  gap: 14px;
+  padding: 12px 16px;
+  cursor: pointer;
+  align-items: center;
+  transition: all 0.15s ease;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.search-item:last-child {
+  border-bottom: none;
+}
+
+.search-item:hover {
+  background: #f8fafc;
+}
+
+.search-item img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.phone-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+}
+
+.phone-price {
+  font-size: 13px;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+.search-loading {
+  position: absolute;
+  top: 54px;
+  padding: 14px 16px;
+  font-size: 13px;
+  background: #fff;
+  color: #6b7280;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+}
+
+/* ===== USER / ADMIN ===== */
+.header-right {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.admin-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.admin-btn:hover {
+  background: #f8fafc;
+  border-color: #000;
+}
+
+/* ===== ADMIN DROPDOWN ===== */
+.admin-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  min-width: 200px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  z-index: 9000;
+}
+
+.admin-dropdown a,
+.admin-dropdown button {
+  padding: 12px 16px;
+  font-size: 14px;
+  text-align: left;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #000;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.15s ease;
+  font-weight: 500;
+}
+
+.admin-dropdown a:hover,
+.admin-dropdown button:hover {
+  background: #f8fafc;
+}
+
+.divider {
+  height: 1px;
+  background: #e5e7eb;
+  margin: 6px 8px;
+}
+
+.admin-dropdown button {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.admin-dropdown button:hover {
+  background: #fef2f2;
+}
+
+/* ===== NAV BAR ===== */
+.header-bottom {
+  background: #fff;
+  border-top: 1px solid #e5e7eb;
+  overflow: visible;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .header-inner {
+    padding: 0 16px;
+  }
+
+  .search-bar {
+    width: 100%;
+  }
+
+  .header-center {
+    position: static;
+    transform: none;
+    width: 100%;
+    left: auto;
+    margin: 0 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-inner {
+    height: 56px;
+    padding: 0 14px;
+    flex-wrap: wrap;
+  }
+
+  .logo-btn img {
+    height: 34px;
+  }
+
+  .search-bar {
+    width: 100%;
+    height: 40px;
+    font-size: 13px;
+    border-radius: 8px;
+    padding: 0 12px;
+  }
+
+  .header-center {
+    margin: 0 12px;
+  }
+
+  .search-dropdown {
+    width: 100%;
+    top: 50px;
+    border-radius: 10px;
+  }
+
+  .search-item {
+    padding: 10px 14px;
+    gap: 12px;
+  }
+
+  .search-item img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .phone-name {
+    font-size: 13px;
+  }
+
+  .phone-price {
+    font-size: 12px;
+  }
+
+  .admin-btn {
+    padding: 6px 12px;
+    font-size: 13px;
+    border-radius: 8px;
+  }
+
+  .admin-dropdown {
+    padding: 6px;
+    min-width: 180px;
+  }
+
+  .admin-dropdown a,
+  .admin-dropdown button {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-inner {
+    height: auto;
+    padding: 12px 10px 10px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo-btn {
+    order: 1;
+    margin: 0;
+  }
+
+  .logo-btn img {
+    height: 30px;
+    margin: 0;
+  }
+
+  .header-right {
+    order: 2;
+    position: static;
+    display: flex;
+    justify-content: flex-end;
+    width: auto;
+  }
+
+  .header-center {
+    position: static;
+    transform: none;
+    width: 100%;
+    margin: 0;
+    order: 3;
+  }
+
+  .search-bar {
+    width: 100%;
+    height: 38px;
+    font-size: 13px;
+  }
+
+  .search-dropdown {
+    width: calc(100vw - 24px);
+    top: 46px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+
+  .admin-btn {
+    padding: 6px 10px;
+    font-size: 12px;
+    gap: 4px;
+  }
+
+  .admin-dropdown {
+    right: 0;
+    min-width: 160px;
+  }
+
+  .admin-dropdown a,
+  .admin-dropdown button {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+}

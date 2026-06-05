@@ -1,0 +1,307 @@
+/* ===== ADMIN DASHBOARD ===== */
+.admin-dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  background: #f8fafc;
+  min-height: calc(100vh - 120px);
+}
+
+/* ===== HEADER ===== */
+.admin-dashboard h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #000;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #000;
+}
+
+/* ===== SECTIONS ===== */
+.admin-section {
+  margin-bottom: 32px;
+  background: #fff;
+  padding: 24px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.admin-section:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.admin-section h3 {
+  margin: 0 0 20px 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #000;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* ===== ADD BUTTON ===== */
+.admin-section .btn-add {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 12px 20px;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.admin-section .btn-add:hover {
+  background: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== TABLE STYLING ===== */
+.admin-section table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+
+.admin-section table th,
+.admin-section table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.admin-section table th {
+  background: #f8fafc;
+  font-weight: 600;
+  font-size: 13px;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.admin-section table td {
+  font-size: 14px;
+  color: #374151;
+}
+
+.admin-section table tr:hover {
+  background: #f8fafc;
+}
+
+.admin-section table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ===== ACTION BUTTONS ===== */
+.btn-edit,
+.btn-delete {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  margin-right: 8px;
+}
+
+.btn-edit {
+  background: #f8fafc;
+  color: #000;
+  border: 1px solid #e5e7eb;
+}
+
+.btn-edit:hover {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+.btn-delete {
+  background: #000;
+  color: #fff;
+}
+
+.btn-delete:hover {
+  background: #333;
+  transform: translateY(-1px);
+}
+
+/* ===== BRAND ADD INLINE ===== */
+.brand-add-inline {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.brand-add-inline input[type='text'] {
+  flex: 1;
+  padding: 12px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.brand-add-inline input[type='text']:focus {
+  border-color: #000;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+.brand-add-inline button {
+  padding: 12px 20px;
+  border-radius: 8px;
+  background: #000;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.brand-add-inline button:hover {
+  background: #333;
+  transform: translateY(-1px);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .admin-dashboard {
+    padding: 24px 16px;
+  }
+
+  .admin-dashboard h2 {
+    font-size: 26px;
+    margin-bottom: 32px;
+  }
+
+  .admin-section {
+    padding: 20px;
+    margin-bottom: 24px;
+  }
+
+  .admin-section h3 {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-dashboard {
+    padding: 20px 14px;
+  }
+
+  .admin-dashboard h2 {
+    font-size: 24px;
+    margin-bottom: 28px;
+  }
+
+  .admin-section {
+    padding: 16px;
+    margin-bottom: 20px;
+  }
+
+  .admin-section h3 {
+    font-size: 17px;
+    margin-bottom: 16px;
+  }
+
+  .admin-section .btn-add {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 16px;
+  }
+
+  .admin-section table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .admin-section table th,
+  .admin-section table td {
+    padding: 12px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .btn-edit,
+  .btn-delete {
+    padding: 6px 12px;
+    font-size: 12px;
+    margin-right: 6px;
+  }
+
+  .brand-add-inline {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .brand-add-inline input[type='text'],
+  .brand-add-inline button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-dashboard {
+    padding: 16px 12px;
+  }
+
+  .admin-dashboard h2 {
+    font-size: 22px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+  }
+
+  .admin-section {
+    padding: 14px;
+    margin-bottom: 16px;
+  }
+
+  .admin-section h3 {
+    font-size: 16px;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+  }
+
+  .admin-section .btn-add {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .admin-section table th,
+  .admin-section table td {
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .btn-edit,
+  .btn-delete {
+    padding: 5px 10px;
+    font-size: 11px;
+    margin-right: 4px;
+  }
+
+  .brand-add-inline input[type='text'] {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .brand-add-inline button {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+}

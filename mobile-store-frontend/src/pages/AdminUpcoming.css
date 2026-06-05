@@ -1,0 +1,274 @@
+/* ===== ADMIN UPCOMING WRAPPER ===== */
+.admin-upcoming {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: #f8fafc;
+}
+
+/* ===== FORM HEADER ===== */
+.admin-upcoming h2 {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 32px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #000;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #000;
+}
+
+/* ===== FORM CONTAINER ===== */
+.admin-upcoming form {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 32px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ===== INPUT GROUPS ===== */
+.admin-upcoming .input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.admin-upcoming .input-group label {
+  font-weight: 600;
+  color: #000;
+  font-size: 14px;
+}
+
+.admin-upcoming input,
+.admin-upcoming textarea {
+  padding: 14px 16px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  transition: all 0.2s ease;
+}
+
+.admin-upcoming input:focus,
+.admin-upcoming textarea:focus {
+  border-color: #000;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+/* ===== TEXTAREA ===== */
+.admin-upcoming textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* ===== SUBMIT BUTTON ===== */
+.admin-upcoming button[type='submit'] {
+  padding: 16px 24px;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #fff;
+  background: #000;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  margin-top: 8px;
+}
+
+.admin-upcoming button[type='submit']:hover {
+  background: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== SPEC CATEGORY ===== */
+.admin-upcoming .spec-category {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+  background: #f8fafc;
+  transition: all 0.2s ease;
+}
+
+.admin-upcoming .spec-category:hover {
+  background: #fff;
+  border-color: #000;
+}
+
+.admin-upcoming .spec-category legend {
+  font-weight: 700;
+  color: #000;
+  padding: 0 8px;
+  font-size: 16px;
+}
+
+.admin-upcoming .spec-category .input-group {
+  margin-bottom: 12px;
+}
+
+.admin-upcoming .spec-category .input-group:last-child {
+  margin-bottom: 0;
+}
+
+/* ===== IMAGE PREVIEW ===== */
+.admin-upcoming .image-preview {
+  margin-top: 16px;
+  border-radius: 12px;
+  overflow: visible;
+  max-width: 100%;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 10px;
+}
+
+.admin-upcoming .image-preview img {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+.admin-upcoming .image-thumb-wrap {
+  position: relative;
+}
+
+.admin-upcoming .remove-image-btn {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 50%;
+  background: #dc2626;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* ===== BACK BUTTON ===== */
+.admin-upcoming .back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding: 10px 16px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.admin-upcoming .back-btn:hover {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .admin-upcoming {
+    padding: 24px 16px;
+  }
+
+  .admin-upcoming h2 {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+
+  .admin-upcoming form {
+    padding: 24px 20px;
+    border-radius: 12px;
+  }
+
+  .admin-upcoming input,
+  .admin-upcoming textarea {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+
+  .admin-upcoming .spec-category {
+    padding: 16px;
+  }
+
+  .admin-upcoming .spec-category legend {
+    font-size: 15px;
+  }
+
+  .admin-upcoming button[type='submit'] {
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-upcoming {
+    padding: 16px 12px;
+  }
+
+  .admin-upcoming h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+  }
+
+  .admin-upcoming form {
+    padding: 20px 16px;
+  }
+
+  .admin-upcoming .input-group label {
+    font-size: 13px;
+  }
+
+  .admin-upcoming input,
+  .admin-upcoming textarea {
+    padding: 12px;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+
+  .admin-upcoming .spec-category {
+    padding: 14px;
+    border-radius: 10px;
+  }
+
+  .admin-upcoming .spec-category legend {
+    font-size: 14px;
+  }
+
+  .admin-upcoming button[type='submit'] {
+    padding: 12px 16px;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+
+  .admin-upcoming .image-preview {
+    max-width: 100%;
+  }
+
+  .admin-upcoming .back-btn {
+    font-size: 13px;
+    padding: 8px 14px;
+  }
+}

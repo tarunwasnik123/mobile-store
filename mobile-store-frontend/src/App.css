@@ -1,0 +1,17 @@
+/* App.css */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  padding-top: 120px; /* 64 + 56 */
+}
+
+/* Non-blocking auth banner shown while session is restoring */
+.auth-loading-banner {
+  text-align: center;
+  background: #fff3cd;
+  color: #856404;
+  padding: 6px 12px;
+  font-size: 13px;
+  border-bottom: 1px solid #ffeeba;
+}

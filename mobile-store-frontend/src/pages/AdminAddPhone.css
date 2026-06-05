@@ -1,0 +1,310 @@
+/* ===== ADMIN FORM WRAPPER ===== */
+.admin-form-wrapper {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: #f8fafc;
+}
+
+/* ===== FORM CONTAINER ===== */
+.admin-form {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 16px;
+  padding: 40px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.admin-form h2 {
+  text-align: center;
+  margin-bottom: 32px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #000;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #000;
+}
+
+/* ===== FORM ELEMENTS ===== */
+.admin-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-group label {
+  font-weight: 600;
+  color: #000;
+  font-size: 14px;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  font-size: 15px;
+  transition: all 0.2s ease;
+  background: #fff;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+  border-color: #000;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+.input-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* ===== SPEC CATEGORY ===== */
+.spec-category {
+  border: 1px solid #e5e7eb;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  background: #f8fafc;
+  transition: all 0.2s ease;
+}
+
+.spec-category:hover {
+  background: #fff;
+  border-color: #000;
+}
+
+.spec-category legend {
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0 8px;
+  color: #000;
+  font-size: 16px;
+}
+
+.spec-category .input-group {
+  margin-bottom: 12px;
+}
+
+.spec-category .input-group:last-child {
+  margin-bottom: 0;
+}
+
+/* ===== SUBMIT BUTTON ===== */
+.admin-form button[type='submit'] {
+  padding: 16px 24px;
+  border: none;
+  background: #000;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 12px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.admin-form button[type='submit']:hover {
+  background: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== IMAGE PREVIEW ===== */
+.image-preview {
+  margin-top: 16px;
+  border-radius: 12px;
+  overflow: visible;
+  max-width: 100%;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 10px;
+}
+
+.image-preview img {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+.image-thumb-wrap {
+  position: relative;
+}
+
+.remove-image-btn {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 50%;
+  background: #dc2626;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.image-preview p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+/* ===== BACK BUTTON ===== */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding: 10px 16px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+/* ===== FAQ ITEMS ===== */
+.faq-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #f9fafb;
+}
+
+.faq-item input,
+.faq-item textarea {
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.faq-item button {
+  align-self: flex-start;
+  padding: 6px 12px;
+  background: #dc2626;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.faq-item button:hover {
+  background: #b91c1c;
+}
+
+  .admin-form {
+    padding: 28px 20px;
+    border-radius: 12px;
+  }
+
+  .admin-form h2 {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+
+  .input-group input,
+  .input-group select,
+  .input-group textarea {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+
+  .spec-category {
+    padding: 16px;
+  }
+
+  .spec-category legend {
+    font-size: 15px;
+  }
+
+  .admin-form button[type='submit'] {
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-form-wrapper {
+    padding: 16px 12px;
+  }
+
+  .admin-form {
+    padding: 20px 16px;
+  }
+
+  .admin-form h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+  }
+
+  .input-group label {
+    font-size: 13px;
+  }
+
+  .input-group input,
+  .input-group select,
+  .input-group textarea {
+    padding: 12px;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+
+  .spec-category {
+    padding: 14px;
+    border-radius: 10px;
+  }
+
+  .spec-category legend {
+    font-size: 14px;
+  }
+
+  .admin-form button[type='submit'] {
+    padding: 12px 16px;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+
+  .image-preview {
+    max-width: 100%;
+  }
+
+  .back-btn {
+    font-size: 13px;
+    padding: 8px 14px;
+  }
+}

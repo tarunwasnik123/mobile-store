@@ -1,0 +1,125 @@
+/* ===== AUTHOR PROFILE PAGE ===== */
+.author-profile-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background: #f8fafc;
+  min-height: calc(100vh - 120px);
+}
+
+.author-profile-container {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+}
+
+/* BACK LINK */
+.author-profile-container .back-link {
+  display: inline-block;
+  margin-bottom: 32px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid #e5e7eb;
+  transition: 0.3s ease;
+}
+
+.author-profile-container .back-link:hover {
+  background: #111827;
+  color: #fff;
+}
+
+/* AUTHOR HEADER */
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 40px;
+  padding-bottom: 32px;
+  border-bottom: 2px solid #f1f5f9;
+}
+
+.author-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid #e5e7eb;
+  flex-shrink: 0;
+}
+
+.avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.author-info h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.author-role {
+  font-size: 18px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* AUTHOR CONTENT */
+.author-content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.author-content h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 20px;
+}
+
+.author-bio p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #374151;
+  margin-bottom: 16px;
+}
+
+.author-bio p:last-child {
+  margin-bottom: 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .author-profile-container {
+    padding: 24px;
+  }
+
+  .author-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+
+  .author-info h1 {
+    font-size: 28px;
+  }
+
+  .author-role {
+    font-size: 16px;
+  }
+}

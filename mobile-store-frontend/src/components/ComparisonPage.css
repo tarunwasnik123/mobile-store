@@ -1,0 +1,547 @@
+/* ===== COMPARISON PAGE ===== */
+.comparison-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 20px;
+  background: #f8fafc;
+  min-height: calc(100vh - 120px);
+}
+
+/* ===== HEADER ===== */
+.compare-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.compare-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #000;
+  margin: 0;
+}
+
+.clear-btn {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clear-btn:hover {
+  background: #333;
+  transform: translateY(-1px);
+}
+
+/* ===== LAYOUT ===== */
+.compare-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.compare-main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+/* ===== SELECTOR ROW ===== */
+.selector-row {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.selector-slot {
+  position: relative;
+  background: #fff;
+  border: 2px dashed #d1d5db;
+  padding: 16px;
+  border-radius: 12px;
+  min-width: 280px;
+  max-width: 320px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+  transition: all 0.2s ease;
+}
+
+.selector-slot:hover {
+  border-color: #000;
+}
+
+.selector-slot.filled {
+  border: 1px solid #e5e7eb;
+  background: #fff;
+}
+
+.slot-content {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  width: 100%;
+}
+
+.slot-content img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #f8fafc;
+  padding: 4px;
+}
+
+.slot-info {
+  flex: 1;
+}
+
+.slot-name {
+  font-weight: 700;
+  font-size: 15px;
+  color: #000;
+  margin-bottom: 4px;
+}
+
+.slot-brand {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.slot-empty {
+  color: #9ca3af;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.remove-slot {
+  margin-left: auto;
+  background: #f3f4f6;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.remove-slot:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* ===== VS BADGE ===== */
+.vs-badge {
+  /* participate in flex flow so it sits between selector slots */
+  position: relative;
+  align-self: center;
+  background: #000;
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+/* ===== COMPARE ACTION ===== */
+.compare-action-area {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0;
+}
+
+.compare-now {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 14px 40px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.compare-now:hover:not(:disabled) {
+  background: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.compare-now:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ===== SEARCH DROPDOWN ===== */
+.slot-search-dropdown {
+  position: relative;
+  width: 100%;
+}
+
+.slot-search-dropdown input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.slot-search-dropdown input:focus {
+  outline: none;
+  border-color: #000;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  max-height: 280px;
+  overflow-y: auto;
+  z-index: 100;
+  list-style: none;
+  padding: 6px;
+  margin: 6px 0 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.15s ease;
+}
+
+.dropdown-item:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* ===== COMPARISON TABLE ===== */
+.compare-table-wrapper {
+  overflow-x: auto;
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.compare-table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 700px;
+}
+
+.compare-table th,
+.compare-table td {
+  border: 1px solid #e5e7eb;
+  padding: 14px 16px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.spec-col {
+  width: 200px;
+  background: #f8fafc;
+  font-weight: 600;
+  color: #000;
+  font-size: 14px;
+}
+
+.phone-col {
+  width: 240px;
+  background: #fff;
+}
+
+/* ===== PHONE HEADER IN TABLE ===== */
+.phone-head {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.phone-head img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: #f8fafc;
+  padding: 4px;
+}
+
+.meta {
+  flex: 1;
+}
+
+.meta .name {
+  font-weight: 700;
+  font-size: 15px;
+  color: #000;
+  margin-bottom: 4px;
+}
+
+.meta .brand {
+  color: #6b7280;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.meta .price {
+  color: #000;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+/* ===== SPEC CELLS ===== */
+.spec-key {
+  font-weight: 600;
+  color: #000;
+  font-size: 14px;
+}
+
+.spec-cell {
+  color: #374151;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.spec-key.nested {
+  padding-left: 20px;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+/* ===== CATEGORY ROW ===== */
+.category-row td {
+  background: #000;
+  color: #fff;
+  font-weight: 700;
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .comparison-page {
+    padding: 20px 16px;
+  }
+
+  .compare-header h1 {
+    font-size: 24px;
+  }
+
+  .selector-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .selector-slot {
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .vs-badge {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .comparison-page {
+    padding: 16px 12px;
+  }
+
+  .compare-header {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .compare-header h1 {
+    font-size: 22px;
+  }
+
+  .clear-btn {
+    width: 100%;
+  }
+
+  .selector-slot {
+    min-height: 90px;
+    padding: 14px;
+  }
+
+  .slot-content img {
+    width: 56px;
+    height: 56px;
+  }
+
+  .slot-name {
+    font-size: 14px;
+  }
+
+  .compare-table {
+    min-width: 600px;
+    font-size: 13px;
+  }
+
+  .compare-table th,
+  .compare-table td {
+    padding: 12px;
+  }
+
+  .phone-head {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .phone-head img {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+  }
+
+  .meta .name {
+    font-size: 13px;
+  }
+
+  .meta .brand {
+    font-size: 12px;
+  }
+
+  .meta .price {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .comparison-page {
+    padding: 12px 10px;
+  }
+
+  .compare-header {
+    gap: 12px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+  }
+
+  .compare-header h1 {
+    font-size: 20px;
+  }
+
+  .clear-btn {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .selector-slot {
+    min-height: 80px;
+    padding: 12px;
+  }
+
+  .slot-content {
+    gap: 10px;
+  }
+
+  .slot-content img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .slot-name {
+    font-size: 13px;
+  }
+
+  .slot-brand {
+    font-size: 11px;
+  }
+
+  .remove-slot {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+
+  .compare-now {
+    padding: 12px 28px;
+    font-size: 14px;
+  }
+
+  .compare-table-wrapper {
+    padding: 10px;
+  }
+
+  .compare-table {
+    min-width: 500px;
+    font-size: 12px;
+  }
+
+  .compare-table th,
+  .compare-table td {
+    padding: 10px;
+  }
+
+  .spec-col {
+    width: 160px;
+  }
+
+  .phone-col {
+    width: 180px;
+  }
+
+  .phone-head img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .meta .name {
+    font-size: 12px;
+  }
+
+  .meta .price {
+    font-size: 13px;
+  }
+
+  .category-row td {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+}

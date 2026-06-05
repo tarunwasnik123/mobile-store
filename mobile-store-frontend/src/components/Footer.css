@@ -1,0 +1,276 @@
+/* ===== FOOTER ===== */
+.footer {
+  background: #0f172a;
+  color: #cbd5e1;
+  margin-top: 60px;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 14px;
+}
+
+/* ===== FOOTER CONTENT ===== */
+.footer-content {
+  padding: 50px 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+}
+
+.footer-section h4 {
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.footer-section p {
+  line-height: 1.7;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+/* ===== TRUST POINTS ===== */
+.trust-points {
+  list-style: none;
+  padding: 0;
+  margin-top: 16px;
+}
+
+.trust-points li {
+  font-size: 13px;
+  margin-bottom: 10px;
+  color: #e2e8f0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ===== LINKS ===== */
+.links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.links-list li {
+  margin-bottom: 12px;
+}
+
+.links-list a {
+  text-decoration: none;
+  color: #94a3b8;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+.links-list a:hover {
+  color: #fff;
+  padding-left: 4px;
+}
+
+.footer-loading {
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* ===== SOCIAL ICONS ===== */
+.social-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.social-links a {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: #1e293b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  transition: all 0.2s ease;
+}
+
+.social-links a:hover {
+  background: #fff;
+  color: #0f172a;
+}
+
+/* ===== FOOTER SOCIAL ===== */
+.footer-social {
+  background: #000;
+  padding: 16px 20px;
+  border-top: 1px solid #1e293b;
+  border-bottom: 1px solid #1e293b;
+}
+
+.social-content {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.social-content h5 {
+  color: #cbd5e1;
+  font-size: 13px;
+  margin: 0;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.social-links {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.social-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: #1e293b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.social-icon svg {
+  font-size: 18px;
+}
+
+.social-icon:hover {
+  background: #fff;
+  color: #0f172a;
+}
+
+/* ===== BOTTOM ===== */
+.footer-bottom {
+  border-top: 1px solid #1e293b;
+  padding: 20px;
+  text-align: center;
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    margin-top: 40px;
+  }
+
+  .footer-content {
+    padding: 40px 16px;
+  }
+
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+
+  .footer-section h4 {
+    font-size: 15px;
+    margin-bottom: 14px;
+  }
+
+  .links-list a,
+  .footer-section p {
+    font-size: 13px;
+  }
+
+  .links-list li {
+    margin-bottom: 10px;
+  }
+
+  .trust-points li {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  .social-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .social-content h5 {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    margin-top: 32px;
+  }
+
+  .footer-content {
+    padding: 32px 14px;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .footer-section h4 {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+
+  .links-list a,
+  .footer-section p {
+    font-size: 13px;
+  }
+
+  .links-list li {
+    margin-bottom: 8px;
+  }
+
+  .trust-points li {
+    font-size: 12px;
+  }
+
+  .social-links a {
+    width: 30px;
+    height: 30px;
+  }
+
+  .social-icon svg {
+    font-size: 16px;
+  }
+
+  .social-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .social-content h5 {
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .footer-bottom {
+    padding: 16px 12px;
+    font-size: 12px;
+  }
+}

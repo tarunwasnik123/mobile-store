@@ -1,0 +1,34 @@
+{
+  "name": "mobile-store-backend",
+  "version": "0.1.0",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "seed": "node scripts/seed.js",
+    "test": "mocha --file test/setupEnv.js --recursive --exit --timeout 10000"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^2.9.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.18.2",
+    "express-rate-limit": "^8.2.1",
+    "helmet": "^8.1.0",
+    "joi": "^18.0.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.5.1",
+    "morgan": "^1.10.0",
+    "multer": "^2.0.2",
+    "unzipper": "^0.12.3"
+  },
+  "devDependencies": {
+    "chai": "^4.3.7",
+    "mocha": "^11.7.5",
+    "mongodb-memory-server": "^8.16.1",
+    "nodemon": "^2.0.22",
+    "supertest": "^7.1.4"
+  }
+}

@@ -1,0 +1,188 @@
+/* ===== PHONE CARD ===== */
+.phone-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.phone-card:hover {
+  border-color: #000;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.phone-img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: #f8fafc;
+  padding: 6px;
+}
+
+.phone-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.phone-name {
+  font-weight: 700;
+  font-size: 15px;
+  color: #000;
+  margin: 0 0 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.phone-brand {
+  color: #6b7280;
+  font-size: 13px;
+  margin: 0;
+}
+
+.phone-price {
+  font-weight: 700;
+  font-size: 16px;
+  color: #000;
+  margin-top: 8px;
+}
+
+/* ===== PHONE ACTIONS ===== */
+.phone-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.phone-actions button {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.phone-actions .add {
+  background: #000;
+  color: #fff;
+}
+
+.phone-actions .add:hover {
+  background: #333;
+}
+
+.phone-actions .remove {
+  background: #f8fafc;
+  color: #000;
+  border: 1px solid #e5e7eb;
+}
+
+.phone-actions .remove:hover {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .phone-card {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .phone-img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .phone-name {
+    font-size: 14px;
+  }
+
+  .phone-brand {
+    font-size: 12px;
+  }
+
+  .phone-price {
+    font-size: 15px;
+  }
+
+  .phone-actions button {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .phone-card {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    padding: 14px;
+    gap: 10px;
+  }
+
+  .phone-img {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+  }
+
+  .phone-meta {
+    width: 100%;
+    text-align: center;
+  }
+
+  .phone-name {
+    white-space: normal;
+  }
+
+  .phone-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 8px;
+  }
+
+  .phone-actions button {
+    flex: 1;
+    max-width: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .phone-card {
+    padding: 12px;
+  }
+
+  .phone-img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .phone-name {
+    font-size: 13px;
+  }
+
+  .phone-brand {
+    font-size: 11px;
+  }
+
+  .phone-price {
+    font-size: 14px;
+    margin-top: 6px;
+  }
+
+  .phone-actions button {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+}

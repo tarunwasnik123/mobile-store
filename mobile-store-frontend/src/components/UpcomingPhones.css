@@ -1,0 +1,411 @@
+.upcoming-phones {
+  padding: 20px;
+}
+
+/* ===== LAYOUT ===== */
+.upcoming-controls {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.filters-block {
+  width: 320px;
+  background: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.04);
+}
+
+.results-block {
+  flex: 1;
+}
+
+.results-block .cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+/* ===== CARD ===== */
+.finder-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 140px 1fr 160px;
+  gap: 20px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 18px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.finder-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.08);
+}
+
+/* IMAGE */
+.finder-img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+}
+
+/* INFO */
+.finder-info h3 {
+  margin: 0 0 4px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #000;
+}
+
+.finder-info .brand {
+  font-size: 13px;
+  color: #000;
+  margin-bottom: 12px;
+}
+
+/* SPEC GRID */
+.spec-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 20px;
+}
+
+.spec-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.spec-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.spec-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
+  line-height: 1.35;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ACTIONS */
+.finder-actions {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  color: #000;
+}
+
+.buy-btn {
+  background: #000;
+  color: #ffffff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.buy-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* COMPARE BUTTON */
+.compare-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  border: 1px solid #000;
+  background: #ffffff;
+  color: #000;
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.15s ease;
+}
+
+.compare-btn:hover {
+  background: #eff6ff;
+}
+
+.compare-btn.selected {
+  background: #000;
+  color: #ffffff;
+}
+
+/* STATES */
+.loading-text {
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 14px;
+  border: 1px dashed #e5e7eb;
+  text-align: center;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.scroll-sentinel {
+  height: 1px;
+  width: 100%;
+}
+
+/* HEADER */
+.results-header {
+  background: #ffffff;
+  padding: 20px 24px;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 20px;
+}
+
+.results-header h2 {
+  margin: 0 0 6px;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+}
+
+.results-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.sort-dropdown {
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.sort-dropdown:focus {
+  outline: none;
+  border-color: #000;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .upcoming-controls {
+    flex-direction: column;
+  }
+
+  .filters-block {
+    width: 100%;
+  }
+
+  .finder-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .finder-img {
+    margin: auto;
+    width: 140px;
+    height: 140px;
+  }
+
+  .finder-actions {
+    text-align: center;
+    align-items: center;
+  }
+
+  .spec-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .spec-item {
+    align-items: center;
+  }
+
+  .compare-btn {
+    top: 12px;
+    right: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .upcoming-phones {
+    padding: 16px;
+  }
+
+  .filters-block {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .results-block .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .finder-card {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .finder-img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .finder-info h3 {
+    font-size: 16px;
+  }
+
+  .finder-info .brand {
+    font-size: 12px;
+  }
+
+  .spec-label {
+    font-size: 10px;
+  }
+
+  .spec-value {
+    font-size: 13px;
+  }
+
+  .price {
+    font-size: 18px;
+  }
+
+  .buy-btn {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+
+  .compare-btn {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+
+  .results-header {
+    padding: 16px 20px;
+  }
+
+  .results-header h2 {
+    font-size: 20px;
+  }
+
+  .results-meta {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .sort-dropdown {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .upcoming-phones {
+    padding: 12px;
+  }
+
+  .filters-block {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .results-block .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .finder-card {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .finder-img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .finder-info h3 {
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+
+  .finder-info .brand {
+    font-size: 11px;
+    margin-bottom: 8px;
+  }
+
+  .spec-grid {
+    grid-template-columns: 1fr;
+    gap: 8px 12px;
+  }
+
+  .spec-label {
+    font-size: 9px;
+  }
+
+  .spec-value {
+    font-size: 12px;
+  }
+
+  .price {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  .buy-btn {
+    padding: 8px 12px;
+    font-size: 12px;
+    width: 100%;
+  }
+
+  .compare-btn {
+    padding: 4px 8px;
+    font-size: 10px;
+    top: 10px;
+    right: 10px;
+  }
+
+  .results-header {
+    padding: 12px 16px;
+    margin-bottom: 16px;
+  }
+
+  .results-header h2 {
+    font-size: 18px;
+  }
+
+  .results-meta {
+    font-size: 12px;
+  }
+
+  .sort-dropdown {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}
