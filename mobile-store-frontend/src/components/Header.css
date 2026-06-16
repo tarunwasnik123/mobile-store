@@ -265,7 +265,8 @@
   }
 
   .logo-btn img {
-    height: 34px;
+    height: 40px;
+    margin: 0;
   }
 
   .search-bar {
