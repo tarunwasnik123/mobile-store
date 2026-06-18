@@ -1,33 +1,51 @@
-import { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import './NavMenu.css';
-import { useAuth } from '../context/AuthContext';
-import { useDispatch } from 'react-redux';
-import { setBrands, setPrice } from '../store/filterSlice';
+import { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import "./NavMenu.css";
+import { useAuth } from "../context/AuthContext";
+import { useDispatch } from "react-redux";
+import { setBrands, setPrice } from "../store/filterSlice";
 
 export default function NavMenu() {
   const [openMenu, setOpenMenu] = useState(null);
+  const [dropdownStyle, setDropdownStyle] = useState({});
   const menuRef = useRef(null);
+  const buttonRefs = useRef({});
   const { user } = useAuth();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  /* ---------- CLOSE ON OUTSIDE CLICK ---------- */
+  /* ===== CLOSE ON OUTSIDE CLICK ===== */
   useEffect(() => {
     const close = (e) => {
       if (menuRef.current && !menuRef.current.contains(e.target)) {
         setOpenMenu(null);
       }
     };
-
-    document.addEventListener('mousedown', close);
-    return () => document.removeEventListener('mousedown', close);
+    document.addEventListener("mousedown", close);
+    return () => document.removeEventListener("mousedown", close);
   }, []);
 
-  /* ---------- HANDLER: NAVIGATE AND APPLY FILTER ---------- */
+  /* ===== CALCULATE DROPDOWN POSITION ===== */
+  const openDropdown = (menuName, buttonKey) => {
+    if (openMenu === menuName) {
+      setOpenMenu(null);
+      return;
+    }
+    const btn = buttonRefs.current[buttonKey];
+    if (btn) {
+      const rect = btn.getBoundingClientRect();
+      setDropdownStyle({
+        top: rect.bottom + 6,
+        left: rect.left,
+      });
+    }
+    setOpenMenu(menuName);
+  };
+
+  /* ===== HANDLERS ===== */
   const handleBrandClick = (brand) => {
-    dispatch(setBrands([brand])); // set single brand filter
+    dispatch(setBrands([brand]));
     navigate(`/find?brand=${encodeURIComponent(brand)}`);
     setOpenMenu(null);
   };
@@ -38,51 +56,52 @@ export default function NavMenu() {
     setOpenMenu(null);
   };
 
-  /* ---------- CLOSE ON OPTION CLICK ---------- */
-  const closeMenu = () => {
-    setOpenMenu(null);
-  };
+  const closeMenu = () => setOpenMenu(null);
 
   return (
     <nav className="nav-menu" ref={menuRef}>
-      {/* Mobiles */}
+      {/* Mobiles & Tablets */}
       <div className="nav-item">
         <button
           className="menu-btn"
-          onClick={() =>
-            setOpenMenu(openMenu === 'mobiles' ? null : 'mobiles')
-          }>
+          ref={(el) => (buttonRefs.current["mobiles"] = el)}
+          onClick={() => openDropdown("mobiles", "mobiles")}
+        >
           Mobiles & Tablets <KeyboardArrowDownIcon fontSize="small" />
         </button>
 
-        {openMenu === 'mobiles' && (
-          <div className="nav-dropdown">
+        {openMenu === "mobiles" && (
+          <div className="nav-dropdown" style={dropdownStyle}>
             <button
               onClick={() => {
-                navigate('/find');
+                navigate("/find");
                 closeMenu();
-              }}>
+              }}
+            >
               All Mobiles
             </button>
             <button
               onClick={() => {
-                navigate('/best');
+                navigate("/best");
                 closeMenu();
-              }}>
+              }}
+            >
               Best Mobiles
             </button>
             <button
               onClick={() => {
-                navigate('/latest');
+                navigate("/latest");
                 closeMenu();
-              }}>
+              }}
+            >
               Latest Mobiles
             </button>
             <button
               onClick={() => {
-                navigate('/upcoming');
+                navigate("/upcoming");
                 closeMenu();
-              }}>
+              }}
+            >
               Upcoming Mobiles
             </button>
           </div>
@@ -93,47 +112,54 @@ export default function NavMenu() {
         className="nav-link"
         onClick={() => {
           closeMenu();
-          navigate('/compare');
-        }}>
+          navigate("/compare");
+        }}
+      >
         Compare
       </button>
+
       <button
         className="nav-link"
         onClick={() => {
           closeMenu();
-          navigate('/news');
-        }}>
+          navigate("/news");
+        }}
+      >
         News & Reviews
       </button>
 
-      {/* Brand */}
+      {/* By Brand */}
       <div className="nav-item">
         <button
           className="menu-btn"
-          onClick={() => setOpenMenu(openMenu === 'brand' ? null : 'brand')}>
+          ref={(el) => (buttonRefs.current["brand"] = el)}
+          onClick={() => openDropdown("brand", "brand")}
+        >
           By Brand <KeyboardArrowDownIcon fontSize="small" />
         </button>
 
-        {openMenu === 'brand' && (
-          <div className="nav-dropdown">
-            <button onClick={() => handleBrandClick('Apple')}>Apple</button>
-            <button onClick={() => handleBrandClick('Samsung')}>Samsung</button>
-            <button onClick={() => handleBrandClick('OnePlus')}>OnePlus</button>
-            <button onClick={() => handleBrandClick('Xiaomi')}>Xiaomi</button>
+        {openMenu === "brand" && (
+          <div className="nav-dropdown" style={dropdownStyle}>
+            <button onClick={() => handleBrandClick("Apple")}>Apple</button>
+            <button onClick={() => handleBrandClick("Samsung")}>Samsung</button>
+            <button onClick={() => handleBrandClick("OnePlus")}>OnePlus</button>
+            <button onClick={() => handleBrandClick("Xiaomi")}>Xiaomi</button>
           </div>
         )}
       </div>
 
-      {/* Price */}
+      {/* By Price */}
       <div className="nav-item">
         <button
           className="menu-btn"
-          onClick={() => setOpenMenu(openMenu === 'price' ? null : 'price')}>
+          ref={(el) => (buttonRefs.current["price"] = el)}
+          onClick={() => openDropdown("price", "price")}
+        >
           By Price <KeyboardArrowDownIcon fontSize="small" />
         </button>
 
-        {openMenu === 'price' && (
-          <div className="nav-dropdown">
+        {openMenu === "price" && (
+          <div className="nav-dropdown" style={dropdownStyle}>
             <button onClick={() => handlePriceClick(0, 10000)}>
               Under ₹10,000
             </button>
@@ -151,13 +177,14 @@ export default function NavMenu() {
       </div>
 
       {/* Admin */}
-      {user?.role === 'admin' && (
+      {user?.role === "admin" && (
         <button
           className="nav-link admin-link"
           onClick={() => {
             closeMenu();
-            navigate('/admin');
-          }}>
+            navigate("/admin");
+          }}
+        >
           Admin
         </button>
       )}

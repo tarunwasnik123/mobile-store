@@ -155,3 +155,38 @@
     border-radius: 12px;
   }
 }
+
+/* ===== RANK BADGE (BestPage only) ===== */
+.fp-rank-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  z-index: 2;
+}
+
+.fp-rank-badge--1 {
+  background: #fef3c7;
+  color: #92400e;
+  border: 1.5px solid #fcd34d;
+}
+
+.fp-rank-badge--2 {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1.5px solid #cbd5e1;
+}
+
+.fp-rank-badge--3 {
+  background: #fef0e6;
+  color: #9a3412;
+  border: 1.5px solid #fdba74;
+}

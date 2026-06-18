@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { createPortal } from 'react-dom';
-import api from '../api/client';
-import SEO from '../components/SEO';
-import './PhoneDetail.css';
+import React, { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import { createPortal } from "react-dom";
+import api from "../api/client";
+import "./PhoneDetail.css";
 
 export default function PhoneDetail() {
   const { id } = useParams();
@@ -13,22 +12,21 @@ export default function PhoneDetail() {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const [galleryImageIndex, setGalleryImageIndex] = useState(0);
+  const [activeSpecTab, setActiveSpecTab] = useState("General");
 
   useEffect(() => {
     let mounted = true;
-
     api
       .get(`/phones/${id}`)
       .then((res) => {
         if (mounted) setPhone(res.data || res);
       })
       .catch(() => {
-        if (mounted) setError('Failed to load phone details');
+        if (mounted) setError("Failed to load phone details");
       })
       .finally(() => {
         if (mounted) setLoading(false);
       });
-
     return () => {
       mounted = false;
     };
@@ -38,65 +36,140 @@ export default function PhoneDetail() {
     setActiveImageIndex(0);
     setGalleryImageIndex(0);
     setIsGalleryOpen(false);
-  }, [phone?._id, phone?.id, phone?.externalId]);
+    setActiveSpecTab("General");
+  }, [phone?._id]);
 
   useEffect(() => {
     if (!isGalleryOpen) return;
-    const previous = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
     return () => {
-      document.body.style.overflow = previous;
+      document.body.style.overflow = prev;
     };
   }, [isGalleryOpen]);
 
-  if (loading) {
+  if (loading)
     return (
-      <div className="page">
-        <h2>Loading...</h2>
+      <div className="pd-state">
+        <div className="pd-state-spinner" />
+        <p>Loading device details...</p>
       </div>
     );
-  }
 
-  if (error) {
+  if (error)
     return (
-      <div className="page">
-        <h2>Error</h2>
+      <div className="pd-state pd-state--error">
         <p>{error}</p>
+        <Link to="/find" className="pd-back-link">
+          ← Back to finder
+        </Link>
       </div>
     );
-  }
 
-  if (!phone) {
+  if (!phone)
     return (
-      <div className="page">
-        <h2>Phone not found</h2>
-        <Link to="/find">Back to Finder</Link>
+      <div className="pd-state">
+        <p>Phone not found.</p>
+        <Link to="/find" className="pd-back-link">
+          ← Back to finder
+        </Link>
       </div>
     );
-  }
-
-  const previewText =
-    phone.description ||
-    phone.shortDescription ||
-    phone.name ||
-    'View phone details and specifications.';
-
-  const phoneMetaTitle = phone.metaTitle || `${phone.name} | Mobile Store`;
-  const phoneMetaDescription =
-    phone.metaDescription ||
-    `Get specifications, images, and details for ${phone.name}. ${previewText}`;
 
   const specs = phone.specs || {};
-  const general = specs.General || {};
-  const performance = specs.Performance || {};
-  const storage = specs.Storage || {};
-  const display = specs.Display || {};
-  const rearCamera = specs.RearCamera || {};
-  const frontCamera = specs.FrontCamera || {};
-  const battery = specs.Battery || {};
-  const soundAudio = specs.SoundAudio || {};
-  const networkConnectivity = specs.NetworkConnectivity || {};
-  const sensors = specs.Sensors || {};
+  const sections = {
+    General: specs.General || {},
+    Performance: specs.Performance || {},
+    Storage: specs.Storage || {},
+    Display: specs.Display || {},
+    Camera: specs.RearCamera || {},
+    Battery: specs.Battery || {},
+    Audio: specs.SoundAudio || {},
+    Network: specs.NetworkConnectivity || {},
+    Sensors: specs.Sensors || {},
+  };
+
+  const specRows = {
+    General: [
+      ["Operating System", sections.General.OperatingSystem],
+      ["Custom UI", sections.General.CustomUI],
+      [
+        "Launch Date",
+        sections.General.LaunchDate
+          ? new Date(sections.General.LaunchDate).toLocaleDateString("en-GB", {
+              day: "2-digit",
+              month: "short",
+              year: "numeric",
+            })
+          : null,
+      ],
+      ["OS Update", sections.General.OSUpdate],
+    ],
+    Performance: [
+      ["Chipset", sections.Performance.Chipset],
+      ["CPU", sections.Performance.CPU],
+      ["GPU", sections.Performance.GPU],
+      ["RAM", sections.Performance.RAM],
+      ["RAM Type", sections.Performance.RAMType],
+      ["Architecture", sections.Performance.Architecture],
+      ["Fabrication", sections.Performance.Fabrication],
+      ["AnTuTu Score", sections.Performance.AnTuTuScore],
+      ["Bootup Time", sections.Performance.BootupTime],
+    ],
+    Storage: [
+      ["Internal Storage", sections.Storage.InternalStorage],
+      ["Storage Type", sections.Storage.StorageType],
+    ],
+    Display: [
+      ["Type", sections.Display.Type],
+      ["Size", sections.Display.Size],
+      ["Resolution", sections.Display.Resolution],
+      ["Refresh Rate", sections.Display.RefreshRate],
+      ["Screen-to-Body Ratio", sections.Display.ScreenToBodyRatio],
+      ["Pixel Density", sections.Display.PixelDensity],
+      ["Peak Brightness", sections.Display.PeakBrightness],
+      ["Aspect Ratio", sections.Display.AspectRatio],
+    ],
+    Camera: [
+      ["Primary", sections.Camera.Camera?.Primary],
+      ["Secondary", sections.Camera.Camera?.Secondary],
+      ["Tertiary", sections.Camera.Camera?.Tertiary],
+      ["Front Camera", (specs.FrontCamera || {}).Camera],
+    ],
+    Battery: [
+      ["Capacity", sections.Battery.Capacity],
+      ["Quick Charging", sections.Battery.QuickCharging],
+      ["Wireless Charging", sections.Battery.WirelessCharging],
+      ["Charging Time", sections.Battery.BatteryChargingTime],
+    ],
+    Audio: [
+      ["Loudspeakers", sections.Audio.Loudspeakers],
+      ["Headphone", sections.Audio.HeadphoneConnection],
+      ["Technology", sections.Audio.SoundTechnology],
+    ],
+    Network: [
+      ["SIM Slot", sections.Network.SIMSlot],
+      ["SIM Type", sections.Network.SIMType],
+      ["Wi-Fi", sections.Network.WiFi],
+      ["Network Support", sections.Network.NetworkSupport],
+      ["VoLTE", sections.Network.VoLTE],
+      ["Bluetooth", sections.Network.Bluetooth],
+      ["GPS", sections.Network.GPS],
+      ["NFC", sections.Network.NFC],
+    ],
+    Sensors: [
+      ["Fingerprint", sections.Sensors.Fingerprint],
+      ["Sensor Type", sections.Sensors.FingerprintSensorType],
+      ["Position", sections.Sensors.FingerprintSensorPosition],
+      [
+        "Other Sensors",
+        Array.isArray(sections.Sensors.OtherSensors)
+          ? sections.Sensors.OtherSensors.join(", ")
+          : sections.Sensors.OtherSensors,
+      ],
+    ],
+  };
+
   const imageList =
     Array.isArray(phone.images) && phone.images.length > 0
       ? phone.images
@@ -105,79 +178,69 @@ export default function PhoneDetail() {
         : [];
   const activeImage = imageList[activeImageIndex] || phone.image;
 
-  const showNextImage = () => {
-    if (imageList.length < 2 || activeImageIndex >= imageList.length - 1)
-      return;
-    setActiveImageIndex((prev) => prev + 1);
-  };
-
-  const showPreviousImage = () => {
-    if (imageList.length < 2 || activeImageIndex <= 0) return;
-    setActiveImageIndex((prev) => prev - 1);
-  };
-
-  const openGallery = () => {
-    setGalleryImageIndex(activeImageIndex);
-    setIsGalleryOpen(true);
-  };
-
-  const closeGallery = () => setIsGalleryOpen(false);
-
-  const showNextGalleryImage = () => {
-    if (galleryImageIndex >= imageList.length - 1) return;
-    setGalleryImageIndex((prev) => prev + 1);
-  };
-
-  const showPreviousGalleryImage = () => {
-    if (galleryImageIndex <= 0) return;
-    setGalleryImageIndex((prev) => prev - 1);
-  };
+  const keySpecs = [
+    { label: "Chipset", value: sections.Performance.Chipset },
+    {
+      label: "Display",
+      value:
+        `${sections.Display.Size || ""} ${sections.Display.Type || ""}`.trim(),
+    },
+    {
+      label: "RAM",
+      value:
+        `${sections.Performance.RAM || ""} / ${sections.Storage.InternalStorage || ""}`.trim(),
+    },
+    { label: "Battery", value: sections.Battery.Capacity },
+    { label: "Camera", value: sections.Camera.Camera?.Primary },
+    { label: "OS", value: sections.General.OperatingSystem },
+  ];
 
   const galleryModal =
-    isGalleryOpen && imageList.length > 0 && typeof document !== 'undefined'
+    isGalleryOpen && imageList.length > 0 && typeof document !== "undefined"
       ? createPortal(
-          <div className="image-dialog-backdrop" onClick={closeGallery}>
-            <div className="image-dialog" onClick={(e) => e.stopPropagation()}>
-              <div className="image-dialog-header">
-                <h3>{phone.name} Images</h3>
+          <div
+            className="pd-gallery-backdrop"
+            onClick={() => setIsGalleryOpen(false)}
+          >
+            <div
+              className="pd-gallery-modal"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="pd-gallery-header">
+                <span>{phone.name}</span>
                 <button
-                  type="button"
-                  className="dialog-close-btn"
-                  onClick={closeGallery}
-                  aria-label="Close">
-                  ×
+                  className="pd-gallery-close"
+                  onClick={() => setIsGalleryOpen(false)}
+                >
+                  ✕
                 </button>
               </div>
-              <div className="image-dialog-main">
+              <div className="pd-gallery-main">
                 {galleryImageIndex > 0 && (
                   <button
-                    type="button"
-                    className="image-arrow image-arrow-left"
-                    onClick={showPreviousGalleryImage}
-                    aria-label="Previous image">
+                    className="pd-gallery-arrow pd-gallery-arrow--left"
+                    onClick={() => setGalleryImageIndex((i) => i - 1)}
+                  >
                     ‹
                   </button>
                 )}
                 <img src={imageList[galleryImageIndex]} alt={phone.name} />
                 {galleryImageIndex < imageList.length - 1 && (
                   <button
-                    type="button"
-                    className="image-arrow image-arrow-right"
-                    onClick={showNextGalleryImage}
-                    aria-label="Next image">
+                    className="pd-gallery-arrow pd-gallery-arrow--right"
+                    onClick={() => setGalleryImageIndex((i) => i + 1)}
+                  >
                     ›
                   </button>
                 )}
               </div>
-              <div className="image-dialog-thumbs">
+              <div className="pd-gallery-thumbs">
                 {imageList.map((img, idx) => (
                   <button
-                    key={`${img}-${idx}`}
-                    type="button"
-                    className={`image-thumb-btn ${
-                      idx === galleryImageIndex ? 'active' : ''
-                    }`}
-                    onClick={() => setGalleryImageIndex(idx)}>
+                    key={idx}
+                    className={`pd-gallery-thumb ${idx === galleryImageIndex ? "active" : ""}`}
+                    onClick={() => setGalleryImageIndex(idx)}
+                  >
                     <img src={img} alt={`${phone.name} ${idx + 1}`} />
                   </button>
                 ))}
@@ -189,354 +252,160 @@ export default function PhoneDetail() {
       : null;
 
   return (
-    <div className="phone-detail page">
-      <SEO
-        title={phoneMetaTitle}
-        description={phoneMetaDescription}
-        keywords={phone.metaName}
-      />
-      <header className="detail-header">
-        <div className="detail-left">
-          <div className="detail-image-stage">
+    <div className="pd-page">
+      {/* HERO SECTION */}
+      <section className="pd-hero">
+        <div className="pd-hero-image-col">
+          <div className="pd-image-stage">
             <img src={activeImage} alt={phone.name} />
             {imageList.length > 1 && activeImageIndex > 0 && (
               <button
-                type="button"
-                className="image-arrow image-arrow-left"
-                onClick={showPreviousImage}
-                aria-label="Previous image">
+                className="pd-img-arrow pd-img-arrow--left"
+                onClick={() => setActiveImageIndex((i) => i - 1)}
+              >
                 ‹
               </button>
             )}
             {imageList.length > 1 &&
               activeImageIndex < imageList.length - 1 && (
                 <button
-                  type="button"
-                  className="image-arrow image-arrow-right"
-                  onClick={showNextImage}
-                  aria-label="Next image">
+                  className="pd-img-arrow pd-img-arrow--right"
+                  onClick={() => setActiveImageIndex((i) => i + 1)}
+                >
                   ›
                 </button>
               )}
           </div>
-          {imageList.length > 0 && (
-            <div className="image-actions">
-              <button
-                type="button"
-                className="view-all-images-btn"
-                onClick={openGallery}>
-                View All Photos ({imageList.length})
-              </button>
+
+          {imageList.length > 1 && (
+            <div className="pd-thumbstrip">
+              {imageList.slice(0, 5).map((img, idx) => (
+                <button
+                  key={idx}
+                  className={`pd-thumbstrip-btn ${idx === activeImageIndex ? "active" : ""}`}
+                  onClick={() => setActiveImageIndex(idx)}
+                >
+                  <img src={img} alt="" />
+                </button>
+              ))}
             </div>
+          )}
+
+          {imageList.length > 0 && (
+            <button
+              className="pd-gallery-trigger"
+              onClick={() => {
+                setGalleryImageIndex(activeImageIndex);
+                setIsGalleryOpen(true);
+              }}
+            >
+              View all {imageList.length} photos →
+            </button>
           )}
         </div>
 
-        <div className="detail-right">
-          <h1>{phone.name}</h1>
+        <div className="pd-hero-info-col">
+          <p className="pd-brand-label">{phone.brand || "Smartphone"}</p>
+          <h1 className="pd-title">{phone.name}</h1>
 
-          <div className="key-specs">
-            <div>
-              <strong>RAM & Storage</strong>
-              <div>
-                {performance.RAM} / {storage.InternalStorage}
-              </div>
-            </div>
-
-            <div>
-              <strong>Processor</strong>
-              <div>{performance.Chipset}</div>
-            </div>
-
-            <div>
-              <strong>Display</strong>
-              <div>
-                {display.Size} {display.Type}
-              </div>
-            </div>
-
-            <div>
-              <strong>Battery</strong>
-              <div>{battery.Capacity}</div>
-            </div>
-
-            <div>
-              <strong>OS</strong>
-              <div>
-                {general.OperatingSystem} {general.CustomUI}
-              </div>
-            </div>
-
-            <div>
-              <strong>Network</strong>
-              <div>{networkConnectivity.NetworkSupport}</div>
-            </div>
+          <div className="pd-price-row">
+            <span className="pd-price">
+              {phone.price
+                ? `₹${Number(phone.price).toLocaleString()}`
+                : "Price TBA"}
+            </span>
           </div>
 
-          <div className="buy-row">
-            <div className="price-big">
-              <strong>Price:</strong>{' '}
-              {phone.price ? `₹${Number(phone.price).toLocaleString()}` : '—'}
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <section className="pros-cons-section">
-        <h2>Pros & Cons</h2>
-        <div className="pros-cons-table">
-          <div className="pros">
-            <h3>Pros</h3>
-            <ul>
-              {phone.pros &&
-                phone.pros.map((pro, idx) => <li key={idx}>{pro}</li>)}
-            </ul>
-          </div>
-          <div className="cons">
-            <h3>Cons</h3>
-            <ul>
-              {phone.cons &&
-                phone.cons.map((con, idx) => <li key={idx}>{con}</li>)}
-            </ul>
+          <div className="pd-key-specs-grid">
+            {keySpecs
+              .filter((s) => s.value)
+              .map((spec) => (
+                <div key={spec.label} className="pd-key-spec-card">
+                  <span className="pd-key-spec-label">{spec.label}</span>
+                  <span className="pd-key-spec-value">{spec.value}</span>
+                </div>
+              ))}
           </div>
         </div>
       </section>
 
-      <section className="specs-section">
-        <h2>Specifications</h2>
+      {/* PROS & CONS */}
+      {(phone.pros?.length > 0 || phone.cons?.length > 0) && (
+        <section className="pd-section pd-pros-cons">
+          <h2 className="pd-section-title">Pros & Cons</h2>
+          <div className="pd-pros-cons-grid">
+            {phone.pros?.length > 0 && (
+              <div className="pd-pros-card">
+                <div className="pd-pc-header pd-pc-header--pros">
+                  <span className="pd-pc-dot pd-pc-dot--pros" />
+                  Pros
+                </div>
+                <ul className="pd-pc-list">
+                  {phone.pros.map((pro, i) => (
+                    <li key={i} className="pd-pc-item pd-pc-item--pro">
+                      {pro}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {phone.cons?.length > 0 && (
+              <div className="pd-cons-card">
+                <div className="pd-pc-header pd-pc-header--cons">
+                  <span className="pd-pc-dot pd-pc-dot--cons" />
+                  Cons
+                </div>
+                <ul className="pd-pc-list">
+                  {phone.cons.map((con, i) => (
+                    <li key={i} className="pd-pc-item pd-pc-item--con">
+                      {con}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
 
-        {/* GENERAL */}
-        <div className="spec-block">
-          <h3>General</h3>
-          <dl>
-            <dt>Operating System</dt>
-            <dd>{general.OperatingSystem || '—'}</dd>
+      {/* SPECIFICATIONS */}
+      <section className="pd-section pd-specs">
+        <h2 className="pd-section-title">Specifications</h2>
 
-            <dt>Custom UI</dt>
-            <dd>{general.CustomUI || '—'}</dd>
-
-            <dt>Launch Date</dt>
-            <dd>
-              {general.LaunchDate
-                ? new Date(general.LaunchDate).toLocaleDateString('en-GB', {
-                    day: '2-digit',
-                    month: 'short',
-                    year: 'numeric',
-                  })
-                : '—'}
-            </dd>
-
-            <dt>OS Update</dt>
-            <dd>{general.OSUpdate || '—'}</dd>
-          </dl>
+        <div className="pd-spec-tabs">
+          {Object.keys(specRows).map((tab) => (
+            <button
+              key={tab}
+              className={`pd-spec-tab ${activeSpecTab === tab ? "active" : ""}`}
+              onClick={() => setActiveSpecTab(tab)}
+            >
+              {tab}
+            </button>
+          ))}
         </div>
 
-        {/* PERFORMANCE */}
-        <div className="spec-block">
-          <h3>Performance</h3>
-          <dl>
-            <dt>Chipset</dt>
-            <dd>{performance.Chipset || '—'}</dd>
-
-            <dt>CPU</dt>
-            <dd>{performance.CPU || '—'}</dd>
-
-            <dt>GPU</dt>
-            <dd>{performance.GPU || '—'}</dd>
-
-            <dt>RAM</dt>
-            <dd>{performance.RAM || '—'}</dd>
-
-            <dt>RAM Type</dt>
-            <dd>{performance.RAMType || '—'}</dd>
-
-            <dt>Architecture</dt>
-            <dd>{performance.Architecture || '—'}</dd>
-
-            <dt>Fabrication</dt>
-            <dd>{performance.Fabrication || '—'}</dd>
-          </dl>
-        </div>
-
-        {/* PERFORMANCE TEST RESULTS */}
-        <div className="spec-block">
-          <h3>Performance Test Results</h3>
-          <dl>
-            <dt>Bootup Time</dt>
-            <dd>{performance.BootupTime || '—'}</dd>
-
-            <dt>AnTuTu Score</dt>
-            <dd>{performance.AnTuTuScore || '—'}</dd>
-          </dl>
-        </div>
-
-        {/* STORAGE */}
-        <div className="spec-block">
-          <h3>Storage</h3>
-          <dl>
-            <dt>Internal Storage</dt>
-            <dd>{storage.InternalStorage || '—'}</dd>
-
-            <dt>Storage Type</dt>
-            <dd>{storage.StorageType || '—'}</dd>
-          </dl>
-        </div>
-
-        {/* DISPLAY */}
-        <div className="spec-block">
-          <h3>Display</h3>
-          <dl>
-            <dt>Type</dt>
-            <dd>{display.Type || '—'}</dd>
-
-            <dt>Size</dt>
-            <dd>{display.Size || '—'}</dd>
-
-            <dt>Resolution</dt>
-            <dd>{display.Resolution || '—'}</dd>
-
-            <dt>Refresh Rate</dt>
-            <dd>{display.RefreshRate || '—'}</dd>
-
-            <dt>Screen to Body Ratio</dt>
-            <dd>{display.ScreenToBodyRatio || '—'}</dd>
-
-            <dt>Bezel-less Display</dt>
-            <dd>{display.BezelLessDisplay || '—'}</dd>
-
-            <dt>Pixel Density</dt>
-            <dd>{display.PixelDensity || '—'}</dd>
-
-            <dt>Peak Brightness</dt>
-            <dd>{display.PeakBrightness || '—'}</dd>
-
-            <dt>HBM Brightness</dt>
-            <dd>{display.HBMBrightness || '—'}</dd>
-
-            <dt>Aspect Ratio</dt>
-            <dd>{display.AspectRatio || '—'}</dd>
-          </dl>
-        </div>
-
-        {/* REAR CAMERA */}
-        <div className="spec-block">
-          <h3>Rear Camera</h3>
-          <dl>
-            <dt>Primary</dt>
-            <dd>{rearCamera.Camera?.Primary || '—'}</dd>
-
-            <dt>Secondary</dt>
-            <dd>{rearCamera.Camera?.Secondary || '—'}</dd>
-
-            <dt>Tertiary</dt>
-            <dd>{rearCamera.Camera?.Tertiary || '—'}</dd>
-          </dl>
-        </div>
-
-        {/* FRONT CAMERA */}
-        <div className="spec-block">
-          <h3>Front Camera</h3>
-          <dl>
-            <dt>Camera</dt>
-            <dd>{frontCamera.Camera || '—'}</dd>
-          </dl>
-        </div>
-
-        {/* BATTERY */}
-        <div className="spec-block">
-          <h3>Battery</h3>
-          <dl>
-            <dt>Capacity</dt>
-            <dd>{battery.Capacity || '—'}</dd>
-
-            <dt>Quick Charging</dt>
-            <dd>{battery.QuickCharging || '—'}</dd>
-
-            <dt>Wireless Charging</dt>
-            <dd>{battery.WirelessCharging || '—'}</dd>
-
-            <dt>Battery Charging Time</dt>
-            <dd>{battery.BatteryChargingTime || '—'}</dd>
-          </dl>
-        </div>
-
-        {/* SOUND & AUDIO */}
-        <div className="spec-block">
-          <h3>Sound & Audio</h3>
-          <dl>
-            <dt>Loudspeakers</dt>
-            <dd>{soundAudio.Loudspeakers || '—'}</dd>
-
-            <dt>Headphone Connection</dt>
-            <dd>{soundAudio.HeadphoneConnection || '—'}</dd>
-
-            <dt>Sound Technology</dt>
-            <dd>{soundAudio.SoundTechnology || '—'}</dd>
-          </dl>
-        </div>
-
-        {/* NETWORK & CONNECTIVITY */}
-        <div className="spec-block">
-          <h3>Network & Connectivity</h3>
-          <dl>
-            <dt>SIM Slot</dt>
-            <dd>{networkConnectivity.SIMSlot || '—'}</dd>
-
-            <dt>SIM Type</dt>
-            <dd>{networkConnectivity.SIMType || '—'}</dd>
-
-            <dt>Wi-Fi</dt>
-            <dd>{networkConnectivity.WiFi || '—'}</dd>
-
-            <dt>Network Support</dt>
-            <dd>{networkConnectivity.NetworkSupport || '—'}</dd>
-
-            <dt>VoLTE</dt>
-            <dd>{networkConnectivity.VoLTE || '—'}</dd>
-
-            <dt>Bluetooth</dt>
-            <dd>{networkConnectivity.Bluetooth || '—'}</dd>
-
-            <dt>GPS</dt>
-            <dd>{networkConnectivity.GPS || '—'}</dd>
-
-            <dt>NFC</dt>
-            <dd>{networkConnectivity.NFC || '—'}</dd>
-          </dl>
-        </div>
-
-        {/* SENSORS */}
-        <div className="spec-block">
-          <h3>Sensors</h3>
-          <dl>
-            <dt>Fingerprint</dt>
-            <dd>{sensors.Fingerprint || '—'}</dd>
-
-            <dt>Fingerprint Sensor Type</dt>
-            <dd>{sensors.FingerprintSensorType || '—'}</dd>
-
-            <dt>Fingerprint Sensor Position</dt>
-            <dd>{sensors.FingerprintSensorPosition || '—'}</dd>
-
-            <dt>Other Sensors</dt>
-            <dd>
-              {Array.isArray(sensors.OtherSensors)
-                ? sensors.OtherSensors.join(', ')
-                : sensors.OtherSensors || '—'}
-            </dd>
-          </dl>
+        <div className="pd-spec-table">
+          {specRows[activeSpecTab]
+            .filter(([, v]) => v)
+            .map(([label, value]) => (
+              <div key={label} className="pd-spec-row">
+                <span className="pd-spec-label">{label}</span>
+                <span className="pd-spec-value">{value}</span>
+              </div>
+            ))}
         </div>
       </section>
 
-      {/* FREQUENTLY ASKED QUESTIONS */}
-      {phone.faqs && phone.faqs.length > 0 && (
-        <section className="faqs-section">
-          <h2>Frequently Asked Questions</h2>
-          <div className="faqs-list">
-            {phone.faqs.map((faq, idx) => (
-              <div key={idx} className="faq-item">
-                <h4>{faq.question}</h4>
-                <p>{faq.answer}</p>
-              </div>
+      {/* FAQ */}
+      {phone.faqs?.length > 0 && (
+        <section className="pd-section pd-faqs">
+          <h2 className="pd-section-title">Frequently Asked Questions</h2>
+          <div className="pd-faq-list">
+            {phone.faqs.map((faq, i) => (
+              <details key={i} className="pd-faq-item">
+                <summary className="pd-faq-question">{faq.question}</summary>
+                <p className="pd-faq-answer">{faq.answer}</p>
+              </details>
             ))}
           </div>
         </section>

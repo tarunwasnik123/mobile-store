@@ -4,13 +4,13 @@ import React, {
   useCallback,
   useMemo,
   useRef,
-} from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { addPhone, removePhone } from '../store/compareSlice';
-import { useNavigate } from 'react-router-dom';
-import api from '../api/client';
-import FilterSidebar from '../components/FilterSidebar';
-import './UpcomingPhones.css';
+} from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { addPhone, removePhone } from "../store/compareSlice";
+import { useNavigate } from "react-router-dom";
+import api from "../api/client";
+import FilterSidebar from "../components/FilterSidebar";
+import "./UpcomingPhones.css";
 
 export default function UpcomingPhones() {
   const dispatch = useDispatch();
@@ -24,14 +24,14 @@ export default function UpcomingPhones() {
   const [loadingMore, setLoadingMore] = useState(false);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
-  const [sortBy, setSortBy] = useState('nearest');
+  const [sortBy, setSortBy] = useState("nearest");
   const sentinelRef = useRef(null);
 
   function parseReleaseDate(value) {
     if (!value) return null;
     const d = new Date(value);
     if (!isNaN(d)) return d;
-    const parts = value.split(' ');
+    const parts = value.split(" ");
     if (parts.length === 2) return new Date(`${parts[0]} 1, ${parts[1]}`);
     return null;
   }
@@ -42,11 +42,11 @@ export default function UpcomingPhones() {
   const sortedPhones = useMemo(() => {
     const list = [...phones];
     switch (sortBy) {
-      case 'priceLow':
+      case "priceLow":
         return list.sort((a, b) => (a.price || 0) - (b.price || 0));
-      case 'priceHigh':
+      case "priceHigh":
         return list.sort((a, b) => (b.price || 0) - (a.price || 0));
-      case 'nearest':
+      case "nearest":
       default:
         return list.sort((a, b) => {
           const da = parseReleaseDate(a.specs?.General?.ReleaseDate);
@@ -77,7 +77,7 @@ export default function UpcomingPhones() {
         limit: 20,
         page: pageToLoad,
       });
-      brands.forEach((b) => params.append('brand', b));
+      brands.forEach((b) => params.append("brand", b));
 
       try {
         const res = await api.get(`/upcoming?${params.toString()}`);
@@ -86,15 +86,15 @@ export default function UpcomingPhones() {
           pageToLoad === 1 ? items : [...current, ...items],
         );
 
-        const total = typeof res.total === 'number' ? res.total : undefined;
+        const total = typeof res.total === "number" ? res.total : undefined;
         const nextHasMore =
-          typeof total === 'number'
+          typeof total === "number"
             ? pageToLoad * 20 < total
             : items.length === 20;
         setHasMore(nextHasMore);
         setPage(pageToLoad);
       } catch (err) {
-        console.error('Failed to fetch upcoming phones', err);
+        console.error("Failed to fetch upcoming phones", err);
         if (pageToLoad === 1) setPhones([]);
         setHasMore(false);
       } finally {
@@ -125,7 +125,7 @@ export default function UpcomingPhones() {
           loadMoreUpcomingPhones();
         }
       },
-      { rootMargin: '200px' },
+      { rootMargin: "200px" },
     );
 
     observer.observe(sentinelRef.current);
@@ -149,7 +149,8 @@ export default function UpcomingPhones() {
               <select
                 className="sort-dropdown"
                 value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}>
+                onChange={(e) => setSortBy(e.target.value)}
+              >
                 <option value="nearest">Nearest Release</option>
                 <option value="priceLow">Price: Low to High</option>
                 <option value="priceHigh">Price: High to Low</option>
@@ -182,9 +183,8 @@ export default function UpcomingPhones() {
 
                 return (
                   <div key={phoneId} className="finder-card">
-                    {/* COMPARE BUTTON */}
                     <button
-                      className={`compare-btn ${isSelected ? 'selected' : ''}`}
+                      className={`compare-btn ${isSelected ? "selected" : ""}`}
                       onClick={() =>
                         isSelected
                           ? dispatch(removePhone(phoneId))
@@ -196,16 +196,19 @@ export default function UpcomingPhones() {
                                 price: phone.price,
                               }),
                             )
-                      }>
-                      {isSelected ? '✓ Added' : '+ Compare'}
+                      }
+                    >
+                      {isSelected ? "✓ Added" : "+ Compare"}
                     </button>
 
                     {/* IMAGE */}
-                    <img
-                      src={phone.image}
-                      alt={phone.name}
-                      className="finder-img"
-                    />
+                    <div className="finder-img-col">
+                      <img
+                        src={phone.image}
+                        alt={phone.name}
+                        className="finder-img"
+                      />
+                    </div>
 
                     {/* INFO */}
                     <div className="finder-info">
@@ -219,51 +222,40 @@ export default function UpcomingPhones() {
                         <div className="spec-item">
                           <span className="spec-label">Processor</span>
                           <span className="spec-value">
-                            {performance.Chipset || '—'}
+                            {performance.Chipset || "—"}
                           </span>
                         </div>
-
                         <div className="spec-item">
-                          <span className="spec-label">Memory & Storage</span>
+                          <span className="spec-label">RAM & Storage</span>
                           <span className="spec-value">
                             {performance.RAM && storage.InternalStorage
-                              ? `${performance.RAM} RAM, ${storage.InternalStorage} Storage`
-                              : '—'}
+                              ? `${performance.RAM} / ${storage.InternalStorage}`
+                              : "—"}
                           </span>
                         </div>
-
                         <div className="spec-item">
                           <span className="spec-label">Rear Camera</span>
                           <span className="spec-value">
-                            {rearCamera.Camera?.Primary || '—'}
+                            {rearCamera.Camera?.Primary || "—"}
                           </span>
                         </div>
-
                         <div className="spec-item">
                           <span className="spec-label">Front Camera</span>
                           <span className="spec-value">
-                            {frontCamera.Camera || '—'}
+                            {frontCamera.Camera || "—"}
                           </span>
                         </div>
-
                         <div className="spec-item">
                           <span className="spec-label">Battery</span>
                           <span className="spec-value">
-                            {battery.Capacity || '—'}
-                            {battery.QuickCharging
-                              ? ` | ${battery.QuickCharging} Fast Charging`
-                              : ''}
-                            {battery.WirelessCharging === 'Yes'
-                              ? ' | Wireless Charging'
-                              : ''}
+                            {battery.Capacity || "—"}
                           </span>
                         </div>
-
                         <div className="spec-item">
                           <span className="spec-label">Display</span>
                           <span className="spec-value">
-                            {display.Size || '—'}
-                            {display.Type ? ` | ${display.Type}` : ''}
+                            {display.Size || "—"}
+                            {display.Type ? ` ${display.Type}` : ""}
                           </span>
                         </div>
                       </div>
@@ -272,11 +264,14 @@ export default function UpcomingPhones() {
                     {/* ACTIONS */}
                     <div className="finder-actions">
                       <p className="price">
-                        ₹{phone.price?.toLocaleString() || '—'}
+                        {phone.price
+                          ? `₹${phone.price.toLocaleString()}`
+                          : "TBA"}
                       </p>
                       <button
                         className="buy-btn"
-                        onClick={() => navigate(`/upcoming/${phoneId}`)}>
+                        onClick={() => navigate(`/upcoming/${phoneId}`)}
+                      >
                         View Details
                       </button>
                     </div>

@@ -1,11 +1,6 @@
 // Prefer Vite env `VITE_API_URL` when available, fall back to legacy
 // `REACT_APP_API_URL` (for compatibility) and then the local default.
-const BASE = "/api"
-  // import.meta.env.VITE_API_URL ||
-  // (typeof process !== 'undefined' &&
-  //   process.env &&
-  //   process.env.REACT_APP_API_URL) ||
-  // 'http://localhost:5000/api';
+const BASE = import.meta.env.VITE_API_URL;
 
 async function request(path, options = {}) {
   const headers = {
@@ -14,14 +9,14 @@ async function request(path, options = {}) {
 
   // Only set Content-Type if not FormData (FormData sets its own boundary)
   if (!(options.body instanceof FormData)) {
-    headers['Content-Type'] = 'application/json';
+    headers["Content-Type"] = "application/json";
   }
 
   // Use cookies for auth (HttpOnly cookie) and include credentials
   const res = await fetch(`${BASE}${path}`, {
     ...options,
     headers,
-    credentials: 'include',
+    credentials: "include",
   });
   if (!res.ok) {
     const text = await res.text();
@@ -29,21 +24,21 @@ async function request(path, options = {}) {
     try {
       err = JSON.parse(text);
     } catch {}
-    const message = err.message || res.statusText || 'Request failed';
+    const message = err.message || res.statusText || "Request failed";
     const error = new Error(message);
     error.status = res.status;
     error.body = err;
     throw error;
   }
-  const contentType = res.headers.get('content-type') || '';
-  if (contentType.includes('application/json')) return res.json();
+  const contentType = res.headers.get("content-type") || "";
+  if (contentType.includes("application/json")) return res.json();
   return res.text();
 }
 
 export default {
-  get: (path) => request(path, { method: 'GET' }),
+  get: (path) => request(path, { method: "GET" }),
   post: (path, body) => {
-    const options = { method: 'POST' };
+    const options = { method: "POST" };
     if (body instanceof FormData) {
       options.body = body;
     } else {
@@ -52,7 +47,7 @@ export default {
     return request(path, options);
   },
   put: (path, body) => {
-    const options = { method: 'PUT' };
+    const options = { method: "PUT" };
     if (body instanceof FormData) {
       options.body = body;
     } else {
@@ -60,5 +55,5 @@ export default {
     }
     return request(path, options);
   },
-  delete: (path) => request(path, { method: 'DELETE' }),
+  delete: (path) => request(path, { method: "DELETE" }),
 };

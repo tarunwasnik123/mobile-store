@@ -1,17 +1,16 @@
-/* ================= NAV MENU ================= */
+/* ===== NAV MENU ===== */
 .nav-menu {
   max-width: 1200px;
   margin: 0 auto;
   height: 56px;
   background: #fff;
-  border-bottom: 1px solid #e5e7eb;
-
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 32px;
-
   padding: 0 20px;
+  position: relative;
+  z-index: 9999;
 }
 
 /* ===== NAV LINKS ===== */
@@ -26,6 +25,7 @@
   padding: 10px 14px;
   border-radius: 8px;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .nav-link:hover {
@@ -45,6 +45,7 @@
 /* ===== NAV ITEM ===== */
 .nav-item {
   position: relative;
+  z-index: 9999;
 }
 
 /* ===== MENU BUTTON ===== */
@@ -61,6 +62,7 @@
   padding: 10px 14px;
   border-radius: 8px;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .menu-btn:hover {
@@ -69,23 +71,21 @@
 
 /* ===== NAV DROPDOWN ===== */
 .nav-dropdown {
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 50%;
-  transform: translateX(-50%);
-
+  position: fixed;
+  top: auto;
+  left: auto;
+  transform: none;
   min-width: 200px;
   background: #fff;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
   padding: 8px;
-  z-index: 9000;
-
+  z-index: 99999;
   display: flex;
   flex-direction: column;
   gap: 4px;
+  margin-top: 8px;
 }
 
 /* ===== DROPDOWN ITEMS ===== */
@@ -105,9 +105,9 @@
   gap: 8px;
   transition: all 0.15s ease;
   border-radius: 8px;
+  white-space: nowrap;
 }
 
-/* ===== HOVER EFFECT ===== */
 .nav-dropdown a:hover,
 .nav-dropdown button:hover {
   background: #000;
@@ -130,7 +130,7 @@
 
 @media (max-width: 768px) {
   .nav-menu {
-    gap: 12px;
+    gap: 8px;
     padding: 0 12px;
     overflow-x: auto;
     height: 52px;
@@ -146,21 +146,16 @@
 
   .menu-btn {
     font-size: 13px;
-    white-space: nowrap;
     padding: 8px 10px;
   }
 
   .nav-link {
     font-size: 13px;
     padding: 8px 10px;
-    white-space: nowrap;
   }
 
   .nav-dropdown {
     min-width: 180px;
-    top: calc(100% + 6px);
-    left: 0;
-    transform: none;
     padding: 6px;
   }
 
@@ -174,8 +169,8 @@
 
 @media (max-width: 480px) {
   .nav-menu {
-    gap: 8px;
-    padding: 0 10px;
+    gap: 4px;
+    padding: 0 8px;
     height: 48px;
   }
 
@@ -191,7 +186,6 @@
 
   .nav-dropdown {
     min-width: 160px;
-    top: calc(100% + 4px);
     padding: 4px;
   }
 

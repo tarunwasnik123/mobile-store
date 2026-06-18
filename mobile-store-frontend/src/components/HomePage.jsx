@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { setPrice } from '../store/filterSlice';
-import api from '../api/client';
-import SEO from './SEO';
-import './HomePage.css';
+import React, { useEffect, useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setPrice } from "../store/filterSlice";
+import api from "../api/client";
+import SEO from "./SEO";
+import "./HomePage.css";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -32,16 +32,16 @@ const HomePage = () => {
   /* ---------------- Utility Functions ---------------- */
 
   const formatCurrency = (value) =>
-    typeof value === 'number' ? `₹${value.toLocaleString()}` : '';
+    typeof value === "number" ? `₹${value.toLocaleString()}` : "";
 
   const stripHTML = (html) => {
-    const div = document.createElement('div');
-    div.innerHTML = html || '';
-    return div.textContent || div.innerText || '';
+    const div = document.createElement("div");
+    div.innerHTML = html || "";
+    return div.textContent || div.innerText || "";
   };
 
   const getContentPreview = (content) =>
-    stripHTML(content).replace(/\s+/g, ' ').trim().substring(0, 120);
+    stripHTML(content).replace(/\s+/g, " ").trim().substring(0, 120);
 
   /* ---------------- API Calls ---------------- */
 
@@ -64,7 +64,7 @@ const HomePage = () => {
   };
 
   const fetchPhones = useCallback(async () => {
-    const cached = getCachedData('phones');
+    const cached = getCachedData("phones");
     if (cached) {
       setPhones(cached);
       setLoading(false);
@@ -72,10 +72,10 @@ const HomePage = () => {
     }
     try {
       setLoading(true);
-      const res = await api.get('/phones?limit=10&sort=-createdAt');
+      const res = await api.get("/phones?limit=10&sort=-createdAt");
       const data = res.results || res.data || [];
       setPhones(data);
-      setCachedData('phones', data);
+      setCachedData("phones", data);
     } catch (err) {
       console.error(err);
     } finally {
@@ -84,7 +84,7 @@ const HomePage = () => {
   }, []);
 
   const fetchUpcomingPhones = useCallback(async () => {
-    const cached = getCachedData('upcomingPhones');
+    const cached = getCachedData("upcomingPhones");
     if (cached) {
       setUpcomingPhones(cached);
       setUpcomingLoading(false);
@@ -92,10 +92,10 @@ const HomePage = () => {
     }
     try {
       setUpcomingLoading(true);
-      const res = await api.get('/upcoming?limit=10&sort=-createdAt');
+      const res = await api.get("/upcoming?limit=10&sort=-createdAt");
       const data = res.results || res.data || [];
       setUpcomingPhones(data);
-      setCachedData('upcomingPhones', data);
+      setCachedData("upcomingPhones", data);
     } catch (err) {
       console.error(err);
     } finally {
@@ -126,8 +126,8 @@ const HomePage = () => {
       await Promise.all([
         fetchPhones(),
         fetchUpcomingPhones(),
-        fetchNewsCategory('news', setNews, 'news'),
-        fetchNewsCategory('reviews', setReviews, 'reviews'),
+        fetchNewsCategory("news", setNews, "news"),
+        fetchNewsCategory("reviews", setReviews, "reviews"),
       ]);
     };
     loadData();
@@ -138,9 +138,24 @@ const HomePage = () => {
   const handleQuickPrice = (maxPrice) =>
     setPriceRange([priceRange[0], maxPrice]);
 
-  const handleSliderChange = (e) =>
-    setPriceRange([priceRange[0], Number(e.target.value)]);
+  const handleSliderChange = (e) => {
+    const val = Number(e.target.value);
+    const min = 0;
+    const max = 200000;
+    const percent = ((val - min) / (max - min)) * 100;
+    e.target.style.background = `linear-gradient(to right, #ff6f00 0%, #ff6f00 ${percent}%, #e5e7eb ${percent}%, #e5e7eb 100%)`;
+    setPriceRange([priceRange[0], val]);
+  };
 
+  useEffect(() => {
+    const slider = document.querySelector('input[type="range"]');
+    if (slider) {
+      const val = priceRange[1];
+      const percent = (val / 200000) * 100;
+      slider.style.background = `linear-gradient(to right, #ff6f00 0%, #ff6f00 ${percent}%, #e5e7eb ${percent}%, #e5e7eb 100%)`;
+    }
+  }, [priceRange[1]]);
+  
   const handleFindMobiles = () => {
     dispatch(setPrice([priceRange[0], priceRange[1]]));
     const query = `?minPrice=${priceRange[0]}&maxPrice=${priceRange[1]}`;
@@ -157,7 +172,8 @@ const HomePage = () => {
         className="phone-carousel-card"
         onClick={() =>
           navigate(upcoming ? `/upcoming/${phoneId}` : `/phone/${phoneId}`)
-        }>
+        }
+      >
         <div className="phone-img-wrapper">
           <img src={phone.image} alt={phone.name} loading="lazy" />
         </div>
@@ -200,7 +216,8 @@ const HomePage = () => {
           <h2>{title}</h2>
           <button
             className="view-all-btn"
-            onClick={() => navigate(viewAllLink)}>
+            onClick={() => navigate(viewAllLink)}
+          >
             View All →
           </button>
         </div>
@@ -210,7 +227,8 @@ const HomePage = () => {
             className="featured-article"
             onClick={() =>
               navigate(`${viewAllLink}/${featured._id || featured.id}`)
-            }>
+            }
+          >
             <img src={featured.image} alt={featured.title} />
             <div className="featured-content">
               <p className="article-date">
@@ -228,7 +246,8 @@ const HomePage = () => {
                 className="side-article"
                 onClick={() =>
                   navigate(`${viewAllLink}/${item._id || item.id}`)
-                }>
+                }
+              >
                 <img src={item.image} alt={item.title} />
                 <div>
                   <p className="article-date">
@@ -263,7 +282,7 @@ const HomePage = () => {
               <input
                 id="min-price"
                 type="number"
-                value={priceRange[0] || ''}
+                value={priceRange[0] || ""}
                 onChange={handleMinChange}
                 min="0"
                 max="200000"
@@ -303,8 +322,9 @@ const HomePage = () => {
             {[10000, 20000, 30000, 50000].map((price) => (
               <button
                 key={price}
-                className={priceRange[1] === price ? 'active' : ''}
-                onClick={() => handleQuickPrice(price)}>
+                className={priceRange[1] === price ? "active" : ""}
+                onClick={() => handleQuickPrice(price)}
+              >
                 ₹{price.toLocaleString()}
               </button>
             ))}
