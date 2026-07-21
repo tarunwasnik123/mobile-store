@@ -1,0 +1,364 @@
+/* ===== ADMIN NEWS FORM ===== */
+.admin-form {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 40px;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.admin-form h2 {
+  text-align: center;
+  margin-bottom: 32px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #000;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #000;
+}
+
+.admin-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.admin-form .input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.admin-form .input-group label {
+  font-weight: 600;
+  color: #000;
+  font-size: 14px;
+}
+
+.admin-form input,
+.admin-form textarea {
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  font-size: 15px;
+  background: #fff;
+  transition: all 0.2s ease;
+}
+
+.admin-form input:focus,
+.admin-form textarea:focus {
+  border-color: #000;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+.admin-form textarea {
+  min-height: 180px;
+  resize: vertical;
+}
+
+.editor-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.editor-container label {
+  font-weight: 600;
+  color: #000;
+  font-size: 14px;
+}
+
+.admin-form button[type='submit'] {
+  padding: 16px 24px;
+  border: none;
+  background: #000;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.admin-form button[type='submit']:hover {
+  background: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.editor-table-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-end;
+  margin-bottom: 0.75rem;
+}
+
+.editor-table-controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: #000;
+}
+
+.editor-table-controls input {
+  width: 90px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  font-size: 0.95rem;
+  background: #fff;
+}
+
+.table-button {
+  width: fit-content;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 1px solid #000;
+  background: #fff;
+  color: #000;
+  cursor: pointer;
+  font-weight: 700;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.table-button:hover {
+  background-color: #f4f4f4;
+  transform: translateY(-1px);
+}
+
+.ql-container .qlbt-selection-line.qlbt-selection-line-left::before {
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  content: '';
+  width: 5px;
+  height: 5px;
+  background-color: #0589f3;
+  border-radius: 5px;
+}
+
+.ql-container .qlbt-selection-line.qlbt-selection-line-right::before {
+  position: absolute;
+  right: -2px;
+  bottom: -3px;
+  content: '';
+  width: 5px;
+  height: 5px;
+  background-color: #0589f3;
+  border-radius: 5px;
+}
+
+.quill-better-table-wrapper {
+  overflow-x: auto;
+}
+
+table.quill-better-table {
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+table.quill-better-table td {
+  border: 1px solid #000;
+  padding: 2px 5px;
+}
+
+.qlbt-operation-menu {
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  font-size: 14px;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.qlbt-operation-menu .qlbt-operation-menu-dividing {
+  height: 1px;
+  background-color: #efefef;
+}
+
+.qlbt-operation-menu .qlbt-operation-menu-subtitle {
+  color: #999;
+  font-size: 14px;
+  padding: 5px 16px;
+}
+
+.qlbt-operation-menu .qlbt-operation-color-picker {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0 16px 10px;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.qlbt-operation-menu
+  .qlbt-operation-color-picker
+  .qlbt-operation-color-picker-item {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #595959;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.qlbt-operation-menu .qlbt-operation-menu-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  background-color: #fff;
+  cursor: pointer;
+  color: #595959;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.qlbt-operation-menu .qlbt-operation-menu-item:hover {
+  background-color: #efefef;
+}
+
+.qlbt-operation-menu .qlbt-operation-menu-item .qlbt-operation-menu-icon {
+  margin-right: 8px;
+  height: 20px;
+  width: 20px;
+  font-size: 0;
+}
+
+.qlbt-col-tool {
+  position: absolute;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  z-index: 99;
+  height: 16px;
+}
+
+.qlbt-col-tool .qlbt-col-tool-cell {
+  position: relative;
+  background-color: #fff;
+  border-top: 1px solid #000;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+
+.qlbt-col-tool .qlbt-col-tool-cell:first-child {
+  border-left: 1px solid #000;
+}
+
+.qlbt-col-tool .qlbt-col-tool-cell-holder {
+  position: absolute;
+  right: -1px;
+  top: 0;
+  bottom: 0;
+  z-index: 3;
+  width: 1px;
+  background-color: transparent;
+  cursor: ew-resize;
+}
+
+.qlbt-col-tool .qlbt-col-tool-cell-holder:hover {
+  background-color: #0589f3;
+}
+
+.qlbt-col-tool .qlbt-col-tool-cell-holder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -6px;
+  display: block;
+  width: 8px;
+  height: 100%;
+}
+
+.qlbt-col-tool .qlbt-col-tool-cell-holder::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -6px;
+  display: block;
+  width: 8px;
+  height: 100%;
+}
+
+/* ===== IMAGE PREVIEW ===== */
+.image-preview {
+  margin-top: 16px;
+  border-radius: 12px;
+  overflow: hidden;
+  max-width: 100%;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.image-preview img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .admin-form {
+    margin: 24px 16px;
+    padding: 28px 20px;
+    border-radius: 12px;
+  }
+
+  .admin-form h2 {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+
+  .admin-form input,
+  .admin-form textarea {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+
+  .admin-form button[type='submit'] {
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-form {
+    margin: 16px 12px;
+    padding: 20px 16px;
+  }
+
+  .admin-form h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+  }
+
+  .admin-form .input-group label {
+    font-size: 13px;
+  }
+
+  .admin-form input,
+  .admin-form textarea {
+    padding: 12px;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+
+  .admin-form textarea {
+    min-height: 150px;
+  }
+
+  .admin-form button[type='submit'] {
+    padding: 12px 16px;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+}

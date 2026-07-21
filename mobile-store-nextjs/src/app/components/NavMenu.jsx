@@ -1,0 +1,170 @@
+'use client';
+
+import { useState, useRef, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import './NavMenu.css';
+import { useAuth } from '../context/AuthContext';
+import { useDispatch } from 'react-redux';
+import { setBrands, setPrice } from '../store/filterSlice';
+
+export default function NavMenu() {
+  const [openMenu, setOpenMenu] = useState(null);
+  const [dropdownStyle, setDropdownStyle] = useState({});
+  const menuRef = useRef(null);
+  const buttonRefs = useRef({});
+  const { user } = useAuth();
+  const dispatch = useDispatch();
+  const router = useRouter();
+
+  useEffect(() => {
+    const close = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setOpenMenu(null);
+      }
+    };
+    document.addEventListener('mousedown', close);
+    return () => document.removeEventListener('mousedown', close);
+  }, []);
+
+  const openDropdown = (menuName, buttonKey) => {
+    if (openMenu === menuName) {
+      setOpenMenu(null);
+      return;
+    }
+    const btn = buttonRefs.current[buttonKey];
+    if (btn) {
+      const rect = btn.getBoundingClientRect();
+      setDropdownStyle({
+        top: rect.bottom + 6,
+        left: rect.left,
+      });
+    }
+    setOpenMenu(menuName);
+  };
+
+  const handleBrandClick = (brand) => {
+    dispatch(setBrands([brand]));
+    router.push(`/find?brand=${encodeURIComponent(brand)}`);
+    setOpenMenu(null);
+  };
+
+  const handlePriceClick = (min, max) => {
+    dispatch(setPrice([min, max]));
+    router.push(`/find?minPrice=${min}&maxPrice=${max}`);
+    setOpenMenu(null);
+  };
+
+  const closeMenu = () => setOpenMenu(null);
+
+  return (
+    <nav className="nav-menu" ref={menuRef}>
+      <div className="nav-item">
+        <button
+          className="menu-btn"
+          ref={(el) => (buttonRefs.current['mobiles'] = el)}
+          onClick={() => openDropdown('mobiles', 'mobiles')}>
+          Mobiles & Tablets <KeyboardArrowDownIcon fontSize="small" />
+        </button>
+
+        {openMenu === 'mobiles' && (
+          <div className="nav-dropdown" style={dropdownStyle}>
+            <button
+              onClick={() => {
+                router.push('/find');
+                closeMenu();
+              }}>
+              All Mobiles
+            </button>
+            <button
+              onClick={() => {
+                router.push('/best');
+                closeMenu();
+              }}>
+              Best Mobiles
+            </button>
+            <button
+              onClick={() => {
+                router.push('/latest');
+                closeMenu();
+              }}>
+              Latest Mobiles
+            </button>
+            <button
+              onClick={() => {
+                router.push('/upcoming');
+                closeMenu();
+              }}>
+              Upcoming Mobiles
+            </button>
+          </div>
+        )}
+      </div>
+
+      <button
+        className="nav-link"
+        onClick={() => {
+          closeMenu();
+          router.push('/compare');
+        }}>
+        Compare
+      </button>
+
+      <button
+        className="nav-link"
+        onClick={() => {
+          closeMenu();
+          router.push('/news');
+        }}>
+        News & Reviews
+      </button>
+
+      <div className="nav-item">
+        <button
+          className="menu-btn"
+          ref={(el) => (buttonRefs.current['brand'] = el)}
+          onClick={() => openDropdown('brand', 'brand')}>
+          By Brand <KeyboardArrowDownIcon fontSize="small" />
+        </button>
+
+        {openMenu === 'brand' && (
+          <div className="nav-dropdown" style={dropdownStyle}>
+            <button onClick={() => handleBrandClick('Apple')}>Apple</button>
+            <button onClick={() => handleBrandClick('Samsung')}>Samsung</button>
+            <button onClick={() => handleBrandClick('OnePlus')}>OnePlus</button>
+            <button onClick={() => handleBrandClick('Xiaomi')}>Xiaomi</button>
+          </div>
+        )}
+      </div>
+
+      <div className="nav-item">
+        <button
+          className="menu-btn"
+          ref={(el) => (buttonRefs.current['price'] = el)}
+          onClick={() => openDropdown('price', 'price')}>
+          By Price <KeyboardArrowDownIcon fontSize="small" />
+        </button>
+
+        {openMenu === 'price' && (
+          <div className="nav-dropdown" style={dropdownStyle}>
+            <button onClick={() => handlePriceClick(0, 10000)}>Under ₹10,000</button>
+            <button onClick={() => handlePriceClick(0, 20000)}>Under ₹20,000</button>
+            <button onClick={() => handlePriceClick(0, 30000)}>Under ₹30,000</button>
+            <button onClick={() => handlePriceClick(30001, 200000)}>Above ₹30,000</button>
+          </div>
+        )}
+      </div>
+
+      {user?.role === 'admin' && (
+        <button
+          className="nav-link admin-link"
+          onClick={() => {
+            closeMenu();
+            router.push('/admin');
+          }}>
+          Admin
+        </button>
+      )}
+    </nav>
+  );
+}

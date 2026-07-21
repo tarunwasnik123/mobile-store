@@ -1,0 +1,445 @@
+/* ===== PAGE ===== */
+.finder-page {
+  background: #f7f7f5;
+  min-height: 100vh;
+  padding: 32px 20px 80px;
+  font-family:
+    "Inter",
+    -apple-system,
+    sans-serif;
+}
+
+.finder-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+/* ===== RESULTS SECTION ===== */
+.finder-results {
+  min-width: 0;
+}
+
+/* ===== RESULTS HEADER ===== */
+.results-header {
+  background: #fff;
+  border: 1px solid #ebebeb;
+  border-radius: 16px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.results-header h2 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0d0d0d;
+  letter-spacing: -0.4px;
+  margin: 0;
+}
+
+.results-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.results-meta span {
+  font-size: 13px;
+  color: #9ca3af;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.sort-dropdown {
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1.5px solid #e5e7eb;
+  background: #f7f7f5;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.sort-dropdown:focus,
+.sort-dropdown:hover {
+  border-color: #111827;
+}
+
+/* ===== PHONE LIST ===== */
+.finder-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ===== PHONE CARD ===== */
+.finder-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 160px 1fr auto;
+  gap: 0;
+  background: #fff;
+  border: 1px solid #ebebeb;
+  border-radius: 20px;
+  overflow: hidden;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.finder-card:hover {
+  border-color: #d1d5db;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.07);
+}
+
+/* IMAGE COLUMN */
+.finder-img-col {
+  background: #f7f7f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  border-right: 1px solid #f0f0f0;
+}
+
+.finder-img {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.finder-card:hover .finder-img {
+  transform: scale(1.05);
+}
+
+/* INFO COLUMN */
+.finder-info {
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.finder-info h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #0d0d0d;
+  margin: 0 0 3px;
+  letter-spacing: -0.2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.finder-info .brand {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #ff6f00;
+  margin: 0 0 16px;
+}
+
+/* SPEC GRID */
+.spec-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px 20px;
+}
+
+.spec-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.spec-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #9ca3af;
+}
+
+.spec-value {
+  font-size: 13px;
+  font-weight: 500;
+  color: #111827;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ACTIONS COLUMN */
+.finder-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 22px 24px;
+  gap: 12px;
+  border-left: 1px solid #f0f0f0;
+  min-width: 150px;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0d0d0d;
+  letter-spacing: -0.5px;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.buy-btn {
+  background: #111827;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  width: 100%;
+  text-align: center;
+}
+
+.buy-btn:hover {
+  background: #374151;
+  transform: translateY(-1px);
+}
+
+/* COMPARE BUTTON */
+.compare-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border: 1.5px solid #e5e7eb;
+  background: #fff;
+  color: #374151;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 2;
+  white-space: nowrap;
+}
+
+.compare-btn:hover {
+  border-color: #111827;
+  color: #111827;
+}
+
+.compare-btn.selected {
+  background: #111827;
+  color: #fff;
+  border-color: #111827;
+}
+
+/* ===== LOADING ===== */
+.loading-text {
+  background: #fff;
+  border: 1px dashed #e5e7eb;
+  border-radius: 16px;
+  padding: 48px 24px;
+  text-align: center;
+  color: #9ca3af;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.scroll-sentinel {
+  height: 1px;
+  width: 100%;
+}
+
+/* ===== RESPONSIVE — Tablet ===== */
+@media (max-width: 1024px) {
+  .finder-container {
+    grid-template-columns: 220px 1fr;
+    gap: 18px;
+  }
+
+  .spec-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .finder-actions {
+    min-width: 130px;
+    padding: 18px 16px;
+  }
+
+  .price {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 860px) {
+  .finder-container {
+    grid-template-columns: 1fr;
+  }
+
+  .finder-card {
+    grid-template-columns: 130px 1fr auto;
+  }
+
+  .finder-img-col {
+    padding: 18px 12px;
+  }
+
+  .finder-img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .finder-info {
+    padding: 18px 16px;
+  }
+
+  .finder-actions {
+    padding: 18px 16px;
+    min-width: 120px;
+  }
+}
+
+/* ===== RESPONSIVE — Mobile ===== */
+@media (max-width: 600px) {
+  .finder-page {
+    padding: 16px 12px 60px;
+  }
+
+  .results-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 18px;
+    gap: 12px;
+    border-radius: 14px;
+  }
+
+  .results-header h2 {
+    font-size: 18px;
+  }
+
+  .results-meta {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .sort-dropdown {
+    font-size: 12px;
+    padding: 7px 12px;
+  }
+
+  /* Stack card vertically on mobile */
+  .finder-card {
+    grid-template-columns: 1fr;
+    border-radius: 16px;
+  }
+
+  .finder-img-col {
+    border-right: none;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 20px;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .finder-img {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+  }
+
+  .mobile-card-header {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .finder-info {
+    padding: 16px 18px;
+  }
+
+  .finder-info h3 {
+    font-size: 16px;
+  }
+
+  .finder-info .brand {
+    margin-bottom: 12px;
+  }
+
+  .spec-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 16px;
+  }
+
+  .spec-label {
+    font-size: 9px;
+  }
+
+  .spec-value {
+    font-size: 12px;
+  }
+
+  .finder-actions {
+    border-left: none;
+    border-top: 1px solid #f0f0f0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    min-width: unset;
+  }
+
+  .price {
+    font-size: 20px;
+  }
+
+  .buy-btn {
+    width: auto;
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+
+  .compare-btn {
+    top: 10px;
+    right: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .spec-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 12px;
+  }
+
+  .price {
+    font-size: 17px;
+  }
+
+  .buy-btn {
+    padding: 9px 14px;
+    font-size: 12px;
+  }
+}

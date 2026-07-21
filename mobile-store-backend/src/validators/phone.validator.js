@@ -15,6 +15,11 @@ const phoneCreate = Joi.object({
   metaTitle: Joi.string().allow('', null).optional(),
   metaName: Joi.string().allow('', null).optional(),
   metaDescription: Joi.string().allow('', null).optional(),
+  canonicalUrl: Joi.string().allow('', null).optional(),
+  schemaType: Joi.string().allow('', null).optional(),
+  ogImage: Joi.string().allow('', null).optional(),
+  twitterImage: Joi.string().allow('', null).optional(),
+  imageAltText: Joi.string().allow('', null).optional(),
   pros: Joi.array().items(Joi.string()).optional(),
   cons: Joi.array().items(Joi.string()).optional(),
   faqs: Joi.array()
@@ -38,6 +43,11 @@ const phoneUpdate = Joi.object({
   metaTitle: Joi.string().optional(),
   metaName: Joi.string().optional(),
   metaDescription: Joi.string().optional(),
+  canonicalUrl: Joi.string().allow('', null).optional(),
+  schemaType: Joi.string().allow('', null).optional(),
+  ogImage: Joi.string().allow('', null).optional(),
+  twitterImage: Joi.string().allow('', null).optional(),
+  imageAltText: Joi.string().allow('', null).optional(),
   pros: Joi.array().items(Joi.string()).optional(),
   cons: Joi.array().items(Joi.string()).optional(),
   faqs: Joi.array()

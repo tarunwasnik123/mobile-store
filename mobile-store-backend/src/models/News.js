@@ -21,7 +21,28 @@ const NewsSchema = new mongoose.Schema(
       type: String,
       trim: true,
     },
-    metaDescription: {
+   metaDescription: {
+      type: String,
+      trim: true,
+    },
+    canonicalUrl: {
+      type: String,
+      trim: true,
+    },
+    schemaType: {
+      type: String,
+      trim: true,
+      default: 'NewsArticle',
+    },
+    ogImage: {
+      type: String,
+      trim: true,
+    },
+    twitterImage: {
+      type: String,
+      trim: true,
+    },
+    imageAltText: {
       type: String,
       trim: true,
     },

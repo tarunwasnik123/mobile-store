@@ -1,0 +1,226 @@
+/* ===== COMPARE TRAY ===== */
+.compare-tray {
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  background: #fff;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 14px;
+  padding: 14px 18px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  border: 1px solid #e5e7eb;
+}
+
+/* ===== LEFT SIDE ===== */
+.tray-items {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  overflow-x: auto;
+  flex: 1;
+  min-width: 0;
+  padding: 4px 0;
+}
+
+/* ===== PHONE CARD ===== */
+.tray-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f8fafc;
+  padding: 10px 12px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  max-width: 200px;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
+}
+
+.tray-item:hover {
+  border-color: #000;
+}
+
+.tray-item img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.tname {
+  font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 110px;
+  color: #000;
+}
+
+/* ===== REMOVE BUTTON ===== */
+.tray-remove-btn {
+  background: transparent;
+  border: none;
+  color: #6b7280;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px;
+  transition: all 0.2s ease;
+  border-radius: 4px;
+}
+
+.tray-remove-btn:hover {
+  color: #000;
+  background: #f1f5f9;
+}
+
+/* ===== RIGHT SIDE ACTIONS ===== */
+.tray-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  margin-left: 16px;
+}
+
+/* ===== COMPARE BUTTON ===== */
+.tray-compare-btn {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.tray-compare-btn:hover:not(:disabled) {
+  background: #333;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.tray-compare-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ===== CLEAR BUTTON ===== */
+.tray-clear-btn {
+  background: #f8fafc;
+  color: #000;
+  border: 1px solid #e5e7eb;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.tray-clear-btn:hover {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .compare-tray {
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .tray-items {
+    width: 100%;
+    gap: 10px;
+  }
+
+  .tray-item {
+    padding: 8px 10px;
+    border-radius: 8px;
+    max-width: 160px;
+  }
+
+  .tray-item img {
+    width: 38px;
+    height: 38px;
+  }
+
+  .tname {
+    font-size: 13px;
+    max-width: 90px;
+  }
+
+  .tray-actions {
+    width: 100%;
+    margin-left: 0;
+    justify-content: stretch;
+  }
+
+  .tray-compare-btn,
+  .tray-clear-btn {
+    flex: 1;
+    padding: 10px 14px;
+    font-size: 13px;
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .compare-tray {
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    padding: 10px 12px;
+  }
+
+  .tray-items {
+    gap: 8px;
+  }
+
+  .tray-item {
+    padding: 6px 8px;
+    max-width: 140px;
+    gap: 8px;
+  }
+
+  .tray-item img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .tname {
+    font-size: 12px;
+    max-width: 70px;
+  }
+
+  .tray-remove-btn {
+    font-size: 16px;
+  }
+
+  .tray-actions {
+    gap: 8px;
+  }
+
+  .tray-compare-btn,
+  .tray-clear-btn {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+}

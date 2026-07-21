@@ -20,6 +20,27 @@ const PhoneSchema = new mongoose.Schema(
       type: String,
       trim: true,
     },
+    canonicalUrl: {
+      type: String,
+      trim: true,
+    },
+    schemaType: {
+      type: String,
+      trim: true,
+      default: 'Product',
+    },
+    ogImage: {
+      type: String,
+      trim: true,
+    },
+    twitterImage: {
+      type: String,
+      trim: true,
+    },
+    imageAltText: {
+      type: String,
+      trim: true,
+    },
     pros: [{ type: String }],
     cons: [{ type: String }],
     faqs: [
