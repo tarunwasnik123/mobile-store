@@ -226,6 +226,7 @@
   background: #b91c1c;
 }
 
+@media (max-width: 768px) {
   .admin-form {
     padding: 28px 20px;
     border-radius: 12px;
