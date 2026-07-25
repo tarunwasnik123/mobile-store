@@ -20,8 +20,8 @@ export default function RootLayout({ children }) {
         <Providers>
           <Suspense fallback={null}>
             <ScrollToTop />
+            <Header />
           </Suspense>
-          <Header />
           {children}
           <Footer />
           <CompareTray />
