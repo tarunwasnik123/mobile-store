@@ -97,7 +97,7 @@ const Header = () => {
 
   const handleLogoClick = (e) => {
     e.preventDefault();
-    window.location.href = '/';
+    router.push('/');
   };
 
   return (

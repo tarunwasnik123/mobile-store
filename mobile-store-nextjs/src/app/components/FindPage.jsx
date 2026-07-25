@@ -238,7 +238,7 @@ export default function FindPage() {
                       )}
                     </button>
 
-                    <div className="fp-card-img-wrap" style={{ position: 'relative' }}>
+                    <div className="fp-card-img-wrap" onClick={() => router.push(`/phone/${phoneId}`)} style={{ position: 'relative', cursor: 'pointer' }}>
                       <Image
                         src={phone.image}
                         alt={phone.name}
@@ -249,7 +249,7 @@ export default function FindPage() {
                       />
                     </div>
 
-                    <div className="fp-card-info">
+                    <div className="fp-card-info" onClick={() => router.push(`/phone/${phoneId}`)} style={{ cursor: 'pointer' }}>
                       <p className="fp-card-brand">
                         {phone.brand ? phone.brand.charAt(0).toUpperCase() + phone.brand.slice(1) : 'Unknown'}
                       </p>
