@@ -268,8 +268,8 @@ const HomePage = () => {
   return (
     <div className="home-page">
       <SEO
-        title="Mobile Store | Find Phones, News & Comparisons"
-        description="Search and compare smartphones, read the latest news, and explore upcoming releases on Mobile Store."
+        title="Latest Mobile News, Phone Reviews & Specs | Handset News"
+        description="Get real-time updates on mobile phone launches, specs & price comparisons. Read expert tech reviews and mobile compare blogs in easy Hinglish on Handset News!"
       />
       {/* ----------- Centered Filter ----------- */}
       <section className="top-filter-section">

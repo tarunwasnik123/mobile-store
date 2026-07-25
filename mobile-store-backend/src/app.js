@@ -33,7 +33,7 @@ app.use(
     origin: function (origin, callback) {
       // allow requests with no origin (e.g., server-to-server, tools)
       if (!origin) return callback(null, true);
-      if (allowedOrigins.indexOf(origin) !== -1) return callback(null, true);
+      if (allowedOrigins.includes('*') || allowedOrigins.indexOf(origin) !== -1) return callback(null, true);
       return callback(new Error('CORS not allowed for origin ' + origin));
     },
     // allow cookies to be sent to the API

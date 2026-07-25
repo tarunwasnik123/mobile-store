@@ -1,6 +1,6 @@
 // Prefer Vite env `VITE_API_URL` when available, fall back to legacy
-// `REACT_APP_API_URL` (for compatibility) and then the local default.
-const BASE = import.meta.env.VITE_API_URL;
+// `REACT_APP_API_URL` (for compatibility) and then the local default /api.
+const BASE = import.meta.env.VITE_API_URL || import.meta.env.REACT_APP_API_URL || '/api';
 
 async function request(path, options = {}) {
   const headers = {

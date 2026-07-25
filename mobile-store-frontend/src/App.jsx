@@ -54,9 +54,9 @@ const categoryLabels = {
 
 const pageMetaMap = {
   '/': {
-    title: 'Mobile Store | Phone Finder, News & Reviews',
+    title: 'Latest Mobile News, Phone Reviews & Specs | Handset News',
     description:
-      'Discover the latest smartphones, comparisons, reviews, and news on Mobile Store.',
+      'Get real-time updates on mobile phone launches, specs & price comparisons. Read expert tech reviews and mobile compare blogs in easy Hinglish on Handset News!',
   },
   '/find': {
     title: 'Find Phones | Mobile Store',
@@ -255,11 +255,6 @@ function App() {
           {/* Compare */}
           <Route path="/compare" element={<ComparisonPage />} />
 
-          {/* News & Reviews - Dynamic Categories */}
-          <Route path="/:category" element={<NewsList />} />
-          <Route path="/:category/:id" element={<NewsDetail />} />
-          <Route path="/author/tarun" element={<AuthorProfile />} />
-
           {/* Footer Pages */}
           <Route path="/about" element={<AboutPage />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
@@ -268,6 +263,11 @@ function App() {
           <Route path="/faq" element={<FAQsPage />} />
           <Route path="/how-we-work" element={<HowWeWorkPage />} />
           <Route path="/disclaimer" element={<DisclaimerPage />} />
+
+          {/* News & Reviews - Dynamic Categories */}
+          <Route path="/:category" element={<NewsList />} />
+          <Route path="/:category/:id" element={<NewsDetail />} />
+          <Route path="/author/tarun" element={<AuthorProfile />} />
 
           {/* User */}
           <Route

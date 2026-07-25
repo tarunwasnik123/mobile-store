@@ -8,8 +8,9 @@ import CompareTray from './components/CompareTray';
 import ScrollToTop from './components/ScrollToTop';
 
 export const metadata = {
-  title: 'Mobile Store | Phone Finder, News & Reviews',
-  description: 'Discover the latest smartphones, comparisons, reviews, and news on Mobile Store.',
+  title: 'Latest Mobile News, Phone Reviews & Specs | Handset News',
+  description:
+    'Get real-time updates on mobile phone launches, specs & price comparisons. Read expert tech reviews and mobile compare blogs in easy Hinglish on Handset News!',
 };
 
 export default function RootLayout({ children }) {

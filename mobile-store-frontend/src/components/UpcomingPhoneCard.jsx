@@ -36,12 +36,14 @@ export default function UpcomingPhoneCard({ phone }) {
 
   return (
     <article className="phone-list-item">
-      <div className="list-left">
+      <Link to={`/upcoming/${phoneId}`} className="list-left">
         <img src={phone.image} alt={phone.name} className="list-img" />
-      </div>
+      </Link>
 
       <div className="list-center">
-        <h3 className="list-title">{phone.name}</h3>
+        <Link to={`/upcoming/${phoneId}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+          <h3 className="list-title">{phone.name}</h3>
+        </Link>
 
         <div className="list-subtitle">
           {phone.brand.charAt(0).toUpperCase() + phone.brand.slice(1)}
