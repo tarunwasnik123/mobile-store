@@ -25,10 +25,15 @@
 
 /* ===== LOGO ===== */
 .logo-btn img {
-  height: 85px;
+  height: 60px;
+  width: auto;
   display: block;
-  margin: 2px 40px -27px -43px;
   transition: transform 0.2s ease;
+}
+
+.logo-btn {
+  display: flex;
+  align-items: center;
 }
 
 .logo-btn:hover img {

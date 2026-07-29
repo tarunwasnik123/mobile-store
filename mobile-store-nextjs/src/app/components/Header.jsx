@@ -105,7 +105,7 @@ const Header = () => {
       <div className="header-top">
         <div className="header-inner">
           <Link href="/" className="logo-btn" onClick={handleLogoClick}>
-            <Image src="/HandsetLogo.svg" alt="Logo" width={160} height={85} priority />
+            <Image src="/HandsetLogo.jpeg" alt="Logo" width={160} height={85} priority />
           </Link>
 
           <div className="header-center" ref={searchRef}>

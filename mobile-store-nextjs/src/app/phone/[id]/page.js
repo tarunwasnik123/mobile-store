@@ -9,7 +9,7 @@ export async function generateMetadata({ params }) {
     const res = await fetch(`${BASE}/phones/${id}`, { cache: 'no-store' });
     const phone = await res.json();
 
-    const title = phone?.metaTitle || `${phone?.name || 'Phone'} | Mobile Store`;
+    const title = phone?.metaTitle || `${phone?.name || 'Phone'} | Handsetnews`;
     const description =
       phone?.metaDescription ||
       `View full specifications, pricing, and reviews for ${phone?.name || 'this phone'}.`;
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }) {
     };
   } catch {
     return {
-      title: 'Phone Details | Mobile Store',
+      title: 'Phone Details | Handsetnews',
       description: 'View full phone specifications, pricing, and related smartphone reviews.',
     };
   }

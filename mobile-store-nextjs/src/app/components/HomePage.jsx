@@ -265,8 +265,8 @@ const HomePage = () => {
   return (
     <div className="home-page">
       <SEO
-        title="Mobile Store | Find Phones, News & Comparisons"
-        description="Search and compare smartphones, read the latest news, and explore upcoming releases on Mobile Store."
+        title="Handsetnews | Find Phones, News & Comparisons"
+        description="Search and compare smartphones, read the latest news, and explore upcoming releases on Handsetnews."
       />
       <section className="top-filter-section">
         <h1>Find Your Perfect Phone!</h1>

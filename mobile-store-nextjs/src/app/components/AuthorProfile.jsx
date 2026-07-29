@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import './AuthorProfile.css';
 
 export default function AuthorProfile() {
@@ -11,9 +12,13 @@ export default function AuthorProfile() {
 
         <div className="author-header">
           <div className="author-avatar">
-            <div className="avatar-placeholder">
-              <span>T</span>
-            </div>
+            <Image
+              src="/AuthorTarun.jpeg"
+              alt="Tarun - Founder & Editor"
+              fill
+              style={{ objectFit: 'cover' }}
+              sizes="120px"
+            />
           </div>
           <div className="author-info">
             <h1>Tarun</h1>
@@ -25,11 +30,7 @@ export default function AuthorProfile() {
           <div className="author-bio">
             <h2>About Tarun</h2>
             <p>
-              Tarun Wasnik is a Founder & Editor, tech publisher, and developer
-              with extensive experience in mobile technology and digital trends.
-              He specializes in smartphone comparisons and technical reviews,
-              ensuring every reader gets the most precise information about
-              their next gadget.
+              Tarun Wasnik is the Founder & Editor of Handsetnews, a passionate tech journalist and developer with years of hands-on experience in the mobile technology space. He has tested and reviewed hundreds of smartphones, breaking down complex specs into simple, honest insights for everyday readers. Known for his detailed comparisons and unbiased reviews, Tarun's mission is simple — help readers make smarter buying decisions with accurate, up-to-date information.
             </p>
           </div>
         </div>

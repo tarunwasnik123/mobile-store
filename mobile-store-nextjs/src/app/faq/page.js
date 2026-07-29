@@ -1,8 +1,8 @@
 import FAQsPage from '../components/FAQsPage';
 
 export const metadata = {
-  title: 'FAQ | Mobile Store',
-  description: 'Find answers to common questions about Mobile Store and smartphone guidance.',
+  title: 'FAQ | Handsetnews',
+  description: 'Find answers to common questions about Handsetnews and smartphone guidance.',
 };
 
 export default function Page() {

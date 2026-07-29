@@ -41,7 +41,7 @@ export default function NewsDetail() {
     getContentPreview(article?.content) ||
     'Read this article for the latest smartphone news, reviews, and updates.';
 
-  const articleMetaTitle = article?.metaTitle || `${article?.title} | Mobile Store`;
+  const articleMetaTitle = article?.metaTitle || `${article?.title} | Handsetnews`;
 
   const currentKeys = new Set(
     [id, article?.externalId, article?._id, article?.id].filter(Boolean).map((v) => String(v).trim()),

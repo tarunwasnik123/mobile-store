@@ -9,7 +9,7 @@ export async function generateMetadata({ params }) {
     const res = await fetch(`${BASE}/news/${id}`, { cache: 'no-store' });
     const article = await res.json();
 
-    const title = article?.metaTitle || `${article?.title || 'Article'} | Mobile Store`;
+    const title = article?.metaTitle || `${article?.title || 'Article'} | Handsetnews`;
     const description =
       article?.metaDescription ||
       article?.summary ||
@@ -39,8 +39,8 @@ export async function generateMetadata({ params }) {
     };
   } catch {
     return {
-      title: 'Article | Mobile Store',
-      description: 'Explore smartphones, reviews, news, and detailed comparisons on Mobile Store.',
+      title: 'Article | Handsetnews',
+      description: 'Explore smartphones, reviews, news, and detailed comparisons on Handsetnews.',
     };
   }
 }

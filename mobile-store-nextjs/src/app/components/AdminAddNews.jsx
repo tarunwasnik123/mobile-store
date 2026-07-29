@@ -1,9 +1,13 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import './AdminAddNews.css';
 import api from '../api/client';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { useCreateBlockNote } from '@blocknote/react';
+import { BlockNoteView } from '@blocknote/mantine';
+import '@blocknote/core/fonts/inter.css';
+import '@blocknote/mantine/style.css';
 
 export default function AdminAddNews() {
   const router = useRouter();
@@ -27,85 +31,18 @@ export default function AdminAddNews() {
   const [imageFile, setImageFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [editorContent, setEditorContent] = useState('');
-  const [tableRows, setTableRows] = useState('3');
-  const [tableColumns, setTableColumns] = useState('3');
-  const editorRef = useRef(null);
-  const quillInstance = useRef(null);
-  const fileInputRef = useRef(null);
+  const [initialBlocks, setInitialBlocks] = useState(undefined);
 
-  function imageHandler() {
-    const input = document.createElement('input');
-    input.setAttribute('type', 'file');
-    input.setAttribute('accept', 'image/*');
-    input.click();
-
-    input.onchange = async () => {
-      const file = input.files[0];
-      if (file) {
-        try {
-          const formData = new FormData();
-          formData.append('file', file);
-
-          const response = await api.post('/news/upload-image', formData, {
-            headers: { 'Content-Type': 'multipart/form-data' },
-          });
-
-          const quill = quillInstance.current;
-          if (quill) {
-            const range = quill.getSelection();
-            const index = range ? range.index : quill.getLength();
-            quill.insertEmbed(index, 'image', response.location || response.url);
-          }
-        } catch (error) {
-          console.error('Image upload failed:', error);
-          alert('Image upload failed');
-        }
-      }
-    };
-  }
-
-  function linkHandler() {
-    const range = quillInstance.current.getSelection();
-    if (range == null || range.length === 0) return;
-
-    const url = prompt('Enter the URL:');
-    if (url) {
-      let formattedUrl = url.trim();
-
-      if (!formattedUrl.match(/^https?:\/\//i)) {
-        if (formattedUrl.includes('.')) {
-          formattedUrl = 'https://' + formattedUrl;
-        } else {
-          formattedUrl = url;
-        }
-      }
-
-      quillInstance.current.format('link', formattedUrl);
-    }
-  }
-
-  function insertTable() {
-    const quill = quillInstance.current;
-    if (!quill) return;
-
-    const rows = parseInt(tableRows, 10);
-    const columns = parseInt(tableColumns, 10);
-
-    if (!Number.isInteger(rows) || rows < 1 || !Number.isInteger(columns) || columns < 1) {
-      alert('Please enter valid row and column counts of at least 1.');
-      return;
-    }
-
-    if (rows > 20 || columns > 20) {
-      alert('Please use a maximum of 20 rows and 20 columns.');
-      return;
-    }
-
-    const tableModule = quill.getModule('better-table');
-    if (tableModule) {
-      tableModule.insertTable(rows, columns);
-    }
-  }
+  const editor = useCreateBlockNote({
+    uploadFile: async (file) => {
+      const formData = new FormData();
+      formData.append('file', file);
+      const response = await api.post('/news/upload-image', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+      return response.location || response.url;
+    },
+  });
 
   useEffect(() => {
     api.get('/news?limit=200').then((data) => {
@@ -118,92 +55,30 @@ export default function AdminAddNews() {
 
   useEffect(() => {
     if (editId) {
-      api.get(`/news/${editId}`).then((data) => {
+      api.get(`/news/${editId}`).then(async (data) => {
         setNews(data);
         setEditorContent(data.content || '');
         if (data?.image) {
           setImagePreview(data.image);
         }
+        if (data?.content) {
+          try {
+            const blocks = await editor.tryParseHTMLToBlocks(data.content);
+            setInitialBlocks(blocks);
+            editor.replaceBlocks(editor.document, blocks);
+          } catch (err) {
+            console.error('Failed to parse existing content', err);
+          }
+        }
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editId]);
 
-  // Initialize Quill editor — dynamic import keeps this client-only, avoids SSR crash
-  useEffect(() => {
-    let mounted = true;
-
-    async function initQuill() {
-      const { default: Quill } = await import('quill');
-      const { default: QuillBetterTable } = await import('quill-better-table');
-      await import('quill/dist/quill.snow.css');
-
-      if (!mounted || !editorRef.current || quillInstance.current) return;
-
-      window.Quill = Quill;
-      Quill.register({ 'modules/better-table': QuillBetterTable }, true);
-
-      const toolbarOptions = [
-        [{ header: [1, 2, 3, 4, 5, 6, false] }],
-        ['bold', 'italic', 'underline', 'strike'],
-        [{ list: 'ordered' }, { list: 'bullet' }],
-        [{ indent: '-1' }, { indent: '+1' }],
-        ['link', 'image'],
-        [{ align: [] }],
-        ['clean'],
-        ['code-block'],
-      ];
-
-      quillInstance.current = new Quill(editorRef.current, {
-        theme: 'snow',
-        modules: {
-          toolbar: {
-            container: toolbarOptions,
-            handlers: {
-              link: linkHandler,
-              image: imageHandler,
-            },
-          },
-          clipboard: { matchVisual: false },
-          history: { delay: 1000, maxStack: 50, userOnly: false },
-          keyboard: { bindings: QuillBetterTable.keyboardBindings },
-          table: false,
-          'better-table': {
-            operationMenu: {
-              items: {
-                unmergeCells: { text: 'Unmerge cells' },
-              },
-              color: {
-                colors: ['#ffffff', '#f7f7f7', '#d0ebff'],
-                text: 'Cell colors',
-              },
-            },
-          },
-        },
-        placeholder: 'Write your news content here...',
-      });
-
-      quillInstance.current.on('text-change', () => {
-        const html = quillInstance.current.root.innerHTML;
-        setEditorContent(html);
-      });
-    }
-
-    initQuill();
-
-    return () => {
-      mounted = false;
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    if (quillInstance.current && editorContent) {
-      const currentContent = quillInstance.current.root.innerHTML;
-      if (currentContent !== editorContent && editorContent.trim() !== '<p><br></p>') {
-        quillInstance.current.clipboard.dangerouslyPasteHTML(editorContent);
-      }
-    }
-  }, [editorContent]);
+  const handleEditorChange = async () => {
+    const html = await editor.blocksToHTMLLossy(editor.document);
+    setEditorContent(html);
+  };
 
   const slugify = (value) =>
     String(value || '')
@@ -230,11 +105,6 @@ export default function AdminAddNews() {
     setImageFile(null);
     setImagePreview(null);
     setNews({ ...news, image: '' });
-    if (fileInputRef && fileInputRef.current) {
-      try {
-        fileInputRef.current.value = '';
-      } catch (e) {}
-    }
   };
 
   const handleChange = (e) => {
@@ -264,7 +134,8 @@ export default function AdminAddNews() {
     }
 
     try {
-      let dataToSend = { ...news, content: editorContent };
+      const finalHTML = await editor.blocksToHTMLLossy(editor.document);
+      let dataToSend = { ...news, content: finalHTML };
 
       if (dataToSend.externalId) {
         dataToSend.externalId = slugify(dataToSend.externalId);
@@ -343,7 +214,7 @@ export default function AdminAddNews() {
           placeholder="Meta Description for SEO"
           rows="3"
         />
-        <input ref={fileInputRef} name="image" type="file" accept="image/*" onChange={handleImageChange} />
+        <input name="image" type="file" accept="image/*" onChange={handleImageChange} />
         {imagePreview && (
           <div className="image-preview" style={{ position: 'relative' }}>
             <button
@@ -372,32 +243,9 @@ export default function AdminAddNews() {
         )}
         <div className="editor-container">
           <label>Content</label>
-          <div className="editor-table-controls">
-            <label>
-              Rows
-              <input
-                type="number"
-                min="1"
-                max="20"
-                value={tableRows}
-                onChange={(e) => setTableRows(e.target.value)}
-              />
-            </label>
-            <label>
-              Columns
-              <input
-                type="number"
-                min="1"
-                max="20"
-                value={tableColumns}
-                onChange={(e) => setTableColumns(e.target.value)}
-              />
-            </label>
-            <button type="button" className="table-button" onClick={insertTable}>
-              Insert table
-            </button>
+          <div style={{ border: '1px solid #e5e7eb', borderRadius: '10px', minHeight: '400px' }}>
+            <BlockNoteView editor={editor} onChange={handleEditorChange} theme="light" />
           </div>
-          <div ref={editorRef} style={{ height: '500px' }}></div>
         </div>
         <button type="submit">{editId ? 'Update' : 'Add'}</button>
       </form>
