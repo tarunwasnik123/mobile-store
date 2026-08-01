@@ -10,6 +10,11 @@ import './News.css';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.handsetnews.com';
 
+// Helper: pick the best available "slug or id" field for building a clean URL.
+// The API returns the human-readable slug in `externalId`, so that takes priority.
+const getUrlKey = (item) =>
+  item?.externalId || item?.slug || item?.urlSlug || item?.friendlyUrl || item?._id || item?.id;
+
 export default function NewsDetail() {
   const params = useParams();
   const id = params?.id;
@@ -178,18 +183,18 @@ export default function NewsDetail() {
           </span>
         </div>
         {article.image && (
-          <div style={{ position: 'relative', width: '100%', height: 400 }}>
-            <Image
-              src={article.image}
-              alt={article.imageAltText || article.title}
-              fill
-              style={{ objectFit: 'cover', borderRadius: '16px' }}
-              className="news-detail-img"
-              sizes="(max-width: 768px) 100vw, 800px"
-              priority
-            />
-          </div>
-        )}
+        <div className="news-detail-img-wrapper">
+        <Image
+          src={article.image}
+          alt={article.imageAltText || article.title}
+          fill
+          style={{ objectFit: 'contain' }}
+          className="news-detail-img"
+          sizes="(max-width: 768px) 100vw, 1200px"
+          priority
+        />
+        </div>
+       )}
         <div className="news-detail-content">
           <div dangerouslySetInnerHTML={{ __html: article.content || '' }} />
         </div>
@@ -223,12 +228,12 @@ export default function NewsDetail() {
                   <p className="news-date">
                     {newsItem.createdAt ? new Date(newsItem.createdAt).toLocaleDateString() : ''}
                   </p>
-                  <p className="news-content">{getContentPreview(newsItem.content)}...</p>
-                  <button
-                    className="read-more-btn"
-                    onClick={() => router.push(`/${category}/${getNewsKey(newsItem)}`)}>
+                  {/* <p className="news-content">{getContentPreview(newsItem.content)}...</p> */}
+                  <Link
+                    href={`/${category}/${getUrlKey(newsItem)}`}
+                    className="read-more-btn">
                     Read More
-                  </button>
+                  </Link>
                 </div>
               ))}
             </div>

@@ -115,6 +115,11 @@ export default function AdminUpcoming() {
     metaTitle: '',
     metaName: '',
     metaDescription: '',
+    canonicalUrl: '',
+    schemaType: 'Product',
+    ogImage: '',
+    twitterImage: '',
+    imageAltText: '',
     pros: [],
     cons: [],
     faqs: [
@@ -469,6 +474,56 @@ export default function AdminUpcoming() {
             onChange={handleChange}
             placeholder="Meta Description for SEO"
             rows={3}
+          />
+        </div>
+
+        <div className="input-group">
+          <label>Canonical URL</label>
+          <input
+            name="canonicalUrl"
+            value={phone.canonicalUrl}
+            onChange={handleChange}
+            placeholder="Leave empty to auto-use current page URL"
+          />
+        </div>
+
+        <div className="input-group">
+          <label>Schema Type</label>
+          <select name="schemaType" value={phone.schemaType} onChange={handleChange}>
+            <option value="Product">Mobile Listing (Product)</option>
+            <option value="NewsArticle">Blog (NewsArticle)</option>
+            <option value="Review">Review</option>
+            <option value="FAQPage">FAQ</option>
+          </select>
+        </div>
+
+        <div className="input-group">
+          <label>Open Graph Image URL</label>
+          <input
+            name="ogImage"
+            value={phone.ogImage}
+            onChange={handleChange}
+            placeholder="Leave empty to use Featured Image"
+          />
+        </div>
+
+        <div className="input-group">
+          <label>Twitter/X Image URL</label>
+          <input
+            name="twitterImage"
+            value={phone.twitterImage}
+            onChange={handleChange}
+            placeholder="Leave empty to use Featured Image"
+          />
+        </div>
+
+        <div className="input-group">
+          <label>Image Alt Text</label>
+          <input
+            name="imageAltText"
+            value={phone.imageAltText}
+            onChange={handleChange}
+            placeholder="Describe the image for accessibility & SEO"
           />
         </div>
 

@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addPhone, removePhone } from '../store/compareSlice';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link';
 import api from '../api/client';
 import FilterSidebar from '../components/FilterSidebar';
 import './FindPage.css';
@@ -187,11 +188,11 @@ export default function BestPage() {
 
                 return (
                   <div key={phoneId} className="fp-card">
-                    {rankIndex < 3 && (
+                    {/* {rankIndex < 3 && (
                       <div className={`fp-rank-badge fp-rank-badge--${rankIndex + 1}`}>
                         #{rankIndex + 1}
                       </div>
-                    )}
+                    )} */}
 
                     <button
                       className={`fp-compare-btn ${isSelected ? 'fp-compare-btn--active' : ''}`}
@@ -256,13 +257,13 @@ export default function BestPage() {
                       <span className="fp-price">
                         {phone.price ? `₹${Number(phone.price).toLocaleString('en-IN')}` : 'Price TBA'}
                       </span>
-                      <button className="fp-view-btn" onClick={() => router.push(`/phone/${phoneId}`)}>
+                      <Link href={`/phone/${phoneId}`} className="fp-view-btn">
                         View Details
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                           <line x1="5" y1="12" x2="19" y2="12" />
                           <polyline points="12 5 19 12 12 19" />
                         </svg>
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 );

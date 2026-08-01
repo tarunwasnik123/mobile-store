@@ -181,8 +181,8 @@
   background: #f8fafc;
   min-height: calc(100vh - 120px);
   display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(300px, 1fr);
-  gap: 32px;
+  grid-template-columns: minmax(0, 6fr) minmax(260px, 1fr);
+  gap: 5px;
   align-items: stretch;
 }
 
@@ -253,16 +253,23 @@
   text-decoration: underline;
 }
 
-/* IMAGE */
-.news-detail img {
+.news-detail-img-wrapper {
+  position: relative;
   width: 100%;
+  max-width: 1200px;
+  aspect-ratio: 1200 / 675;
+  margin: 28px 0 40px;
   border-radius: 16px;
-  margin: 28px 0;
-  transition: 0.3s ease;
+  overflow: hidden;
+  background: #f1f1f1;
 }
 
-.news-detail img:hover {
-  transform: scale(1.01);
+.news-detail-img-wrapper:hover .news-detail-img {
+  transform: scale(1.02);
+}
+
+.news-detail-img {
+  transition: transform 0.3s ease;
 }
 
 /* CONTENT */
@@ -286,7 +293,7 @@
   border-radius: 20px;
   padding: 22px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
-  max-width: 310px;
+  max-width: 280px;
   margin-left: auto;
   align-self: stretch;
   display: flex;
@@ -328,7 +335,7 @@
 
 .news-detail .news-card img {
   border-radius: 10px;
-  margin-bottom: 8px;
+  margin-bottom: 14px; /* increased gap between image and heading */
 }
 
 .news-detail .news-card h3 {
@@ -342,10 +349,9 @@
   margin-bottom: 6px;
 }
 
+/* Sidebar description text hidden as requested - only heading, date, button show */
 .news-detail .news-content {
-  font-size: 13px;
-  color: #6b7280;
-  margin-bottom: 10px;
+  display: none;
 }
 
 .news-detail .read-more-btn {

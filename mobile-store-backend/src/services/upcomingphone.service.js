@@ -4,6 +4,15 @@ const mongoose = require('mongoose');
 const { escapeRegExp } = require('../utils/escapeRegex');
 const { generatePhoneSlug } = require('../utils/slug');
 
+// Dono field names check karta hai (ReleaseDate ya LaunchDate, jo bhi mile)
+const getUpcomingReleaseDate = (upcoming) => {
+  return (
+    upcoming?.specs?.General?.ReleaseDate ||
+    upcoming?.specs?.General?.LaunchDate ||
+    null
+  );
+};
+
 const isReleasedPastToday = (value) => {
   if (!value) return false;
   const date = new Date(value);
@@ -21,7 +30,8 @@ const buildPhonePayloadFromUpcoming = (upcoming) => {
   delete payload.__v;
 
   if (payload.specs && payload.specs.General) {
-    const releaseDate = payload.specs.General.ReleaseDate;
+    const releaseDate =
+      payload.specs.General.ReleaseDate || payload.specs.General.LaunchDate;
     if (releaseDate != null) {
       payload.specs.General.LaunchDate = releaseDate;
       delete payload.specs.General.ReleaseDate;
@@ -32,51 +42,68 @@ const buildPhonePayloadFromUpcoming = (upcoming) => {
 };
 
 exports.migrateExpiredUpcomingPhones = async () => {
+
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
   const allUpcomingPhones = await UpcomingPhone.find({
-    'specs.General.ReleaseDate': { $exists: true },
+    $or: [
+      { 'specs.General.ReleaseDate': { $exists: true } },
+      { 'specs.General.LaunchDate': { $exists: true } },
+    ],
   }).lean();
 
+
   const expiredUpcomingPhones = allUpcomingPhones.filter((upcoming) =>
-    isReleasedPastToday(upcoming?.specs?.General?.ReleaseDate),
+    isReleasedPastToday(getUpcomingReleaseDate(upcoming)),
+  );
+
+  console.log(
+    '[DEBUG] Expired phones found:',
+    expiredUpcomingPhones.length,
+    expiredUpcomingPhones.map((p) => p.name),
   );
 
   for (const upcoming of expiredUpcomingPhones) {
-    if (!upcoming?.specs?.General?.ReleaseDate) continue;
+    try {
+      const releaseDateValue = getUpcomingReleaseDate(upcoming);
+      if (!releaseDateValue) continue;
 
-    let existingPhone = null;
-    if (upcoming.externalId) {
-      existingPhone = await Phone.findOne({ externalId: upcoming.externalId });
-    }
-    if (!existingPhone) {
-      existingPhone = await Phone.findOne({
-        name: upcoming.name,
-        brand: upcoming.brand,
-      });
-    }
-
-    if (existingPhone) {
-      if (
-        !existingPhone.specs?.General?.LaunchDate &&
-        upcoming.specs.General.ReleaseDate
-      ) {
-        await Phone.updateOne(
-          { _id: existingPhone._id },
-          {
-            $set: {
-              'specs.General.LaunchDate': upcoming.specs.General.ReleaseDate,
-            },
-          },
-        );
+      let existingPhone = null;
+      if (upcoming.externalId) {
+        existingPhone = await Phone.findOne({ externalId: upcoming.externalId });
       }
-    } else {
-      const phonePayload = buildPhonePayloadFromUpcoming(upcoming);
-      await Phone.create(phonePayload);
-    }
+      if (!existingPhone) {
+        existingPhone = await Phone.findOne({
+          name: upcoming.name,
+          brand: upcoming.brand,
+        });
+      }
 
-    await UpcomingPhone.deleteOne({ _id: upcoming._id });
+      if (existingPhone) {
+        if (!existingPhone.specs?.General?.LaunchDate) {
+          await Phone.updateOne(
+            { _id: existingPhone._id },
+            {
+              $set: {
+                'specs.General.LaunchDate': releaseDateValue,
+              },
+            },
+          );
+        }
+      } else {
+        const phonePayload = buildPhonePayloadFromUpcoming(upcoming);
+        await Phone.create(phonePayload);
+      }
+
+      await UpcomingPhone.deleteOne({ _id: upcoming._id });
+    } catch (err) {
+      console.error(
+        `[Migrate Job] Failed to promote "${upcoming?.name}":`,
+        err.message,
+      );
+      continue;
+    }
   }
 };
 
@@ -94,7 +121,6 @@ exports.list = async (queryParams) => {
 
   const filter = {};
 
-  // 🔍 Search
   if (q) {
     if (typeof q !== 'string' || q.length > 100) {
       throw { status: 400, message: 'Search query too long' };
@@ -102,7 +128,6 @@ exports.list = async (queryParams) => {
     filter.name = { $regex: escapeRegExp(q), $options: 'i' };
   }
 
-  // 🏷 Brand filter (same logic as phone.service, now case-insensitive)
   if (brand) {
     if (Array.isArray(brand)) {
       const safeBrands = brand.map((b) => {
@@ -132,7 +157,6 @@ exports.list = async (queryParams) => {
     }
   }
 
-  // 💰 Price filter
   if (minPrice || maxPrice) {
     filter.price = {};
     if (minPrice) filter.price.$gte = Number(minPrice);
@@ -144,11 +168,9 @@ exports.list = async (queryParams) => {
 
   let query = UpcomingPhone.find(filter);
 
-  // ↕ Sorting
   if (sort) {
     query = query.sort(sort);
   } else {
-    // Default sort → nearest release first
     query = query.sort({ 'specs.General.ReleaseDate': 1 });
   }
 
@@ -171,12 +193,10 @@ exports.getByIdOrExternalId = async (id) => {
 
   let phone = null;
 
-  // Try Mongo ObjectId
   if (mongoose.Types.ObjectId.isValid(id)) {
     phone = await UpcomingPhone.findById(id).lean();
   }
 
-  // Fallback to externalId
   if (!phone) {
     phone = await UpcomingPhone.findOne({ externalId: id }).lean();
   }
@@ -205,7 +225,6 @@ exports.getByIdOrExternalId = async (id) => {
 };
 
 exports.create = async (data) => {
-  // Normalize data
   if (data.name) data.name = String(data.name).trim();
   if (data.brand) data.brand = String(data.brand).toLowerCase().trim();
 
@@ -220,7 +239,6 @@ exports.update = async (id, data) => {
     throw { status: 400, message: 'Invalid upcoming phone ID' };
   }
 
-  // Normalize data
   if (data.name) data.name = String(data.name).trim();
   if (data.brand) data.brand = String(data.brand).toLowerCase().trim();
 

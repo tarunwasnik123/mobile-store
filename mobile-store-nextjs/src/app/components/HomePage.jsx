@@ -4,10 +4,16 @@ import { useEffect, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import Image from 'next/image';
+import Link from 'next/link';
 import { setPrice } from '../store/filterSlice';
 import api from '../api/client';
 import SEO from './SEO';
 import './HomePage.css';
+
+// Helper: pick the best available "slug or id" field for building a clean URL.
+// The API returns the human-readable slug in `externalId`, so that takes priority.
+const getUrlKey = (item) =>
+  item?.externalId || item?.slug || item?.urlSlug || item?.friendlyUrl || item?._id || item?.id;
 
 const HomePage = () => {
   const router = useRouter();
@@ -160,11 +166,10 @@ const HomePage = () => {
 
   const PhoneCard = ({ phone, upcoming }) => {
     const phoneId = phone.externalId || phone._id || phone.id;
+    const href = upcoming ? `/upcoming/${phoneId}` : `/phone/${phoneId}`;
 
     return (
-      <div
-        className="phone-carousel-card"
-        onClick={() => router.push(upcoming ? `/upcoming/${phoneId}` : `/phone/${phoneId}`)}>
+      <Link href={href} className="phone-carousel-card">
         <div className="phone-img-wrapper" style={{ position: 'relative' }}>
           <Image
             src={phone.image}
@@ -176,7 +181,7 @@ const HomePage = () => {
         </div>
         <h3 className="phone-name">{phone.name}</h3>
         {phone.price && <p className="phone-price">{formatCurrency(phone.price)}</p>}
-      </div>
+      </Link>
     );
   };
 
@@ -184,9 +189,9 @@ const HomePage = () => {
     <section className="phones-row-section">
       <div className="section-header">
         <h2>{title}</h2>
-        <button className="view-all-btn" onClick={() => router.push(viewAllLink)}>
+        <Link href={viewAllLink} className="view-all-btn">
           View All →
-        </button>
+        </Link>
       </div>
 
       <div className="phones-carousel">
@@ -198,69 +203,119 @@ const HomePage = () => {
   );
 
   const ArticleSection = ({ title, items, viewAllLink }) => {
-    if (!items.length) return null;
-    const [featured, ...others] = items;
+  const [page, setPage] = useState(0);
 
-    return (
-      <section className="article-section">
-        <div className="section-header">
-          <h2>{title}</h2>
-          <button className="view-all-btn" onClick={() => router.push(viewAllLink)}>
-            View All →
-          </button>
-        </div>
+  if (!items.length) return null;
 
-        <div className="article-grid">
-          <div
-            className="featured-article"
-            onClick={() => router.push(`${viewAllLink}/${featured._id || featured.id}`)}
-            style={{ position: 'relative' }}>
+  const featured = items[0];
+  const rest = items.slice(1);
+  const pageSize = 3;
+  const totalPages = Math.max(1, Math.ceil(rest.length / pageSize));
+  const visible = rest.slice(page * pageSize, page * pageSize + pageSize);
+
+  const timeAgo = (date) => {
+    const diffMs = Date.now() - new Date(date).getTime();
+    const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+    if (days <= 0) return 'Today';
+    if (days === 1) return '1 Day Ago';
+    return `${days} Days Ago`;
+  };
+
+  return (
+    <section className="article-section">
+      <div className="section-header">
+        <h2>{title}</h2>
+        <Link href={viewAllLink} className="view-all-btn">
+          View All →
+        </Link>
+      </div>
+
+      <div className="article-split">
+        {/* LEFT - Featured */}
+        <Link
+          href={`${viewAllLink}/${getUrlKey(featured)}`}
+          className="featured-article">
+          <div className="featured-img-wrapper" style={{ position: 'relative' }}>
             <Image
               src={featured.image}
               alt={featured.title}
               fill
-              style={{ objectFit: 'cover', borderRadius: '14px' }}
-              sizes="(max-width: 768px) 100vw, 60vw"
+              style={{ objectFit: 'cover' }}
+              sizes="(max-width: 768px) 100vw, 45vw"
             />
-            <div className="featured-content">
-              <p className="article-date">
-                {new Date(featured.createdAt).toLocaleDateString()}
-              </p>
-              <h3>{featured.title}</h3>
-              <p>{getContentPreview(featured.content)}...</p>
-            </div>
           </div>
+          <div className="featured-meta-row">
+            <span className="article-author">By {featured.author || 'Team'}</span>
+            <span className="article-time">{timeAgo(featured.createdAt)}</span>
+          </div>
+          <h3 className="featured-title">{featured.title}</h3>
+        </Link>
 
-          <div className="side-articles">
-            {others.slice(0, 3).map((item) => (
-              <div
-                key={item._id || item.id}
-                className="side-article"
-                onClick={() => router.push(`${viewAllLink}/${item._id || item.id}`)}>
-                <div
-                  style={{
-                    position: 'relative',
-                    width: 90,
-                    height: 68,
-                    flexShrink: 0,
-                    borderRadius: 10,
-                    overflow: 'hidden',
-                  }}>
-                  <Image src={item.image} alt={item.title} fill style={{ objectFit: 'cover' }} sizes="90px" />
-                </div>
-                <div>
-                  <p className="article-date">
-                    {new Date(item.createdAt).toLocaleDateString()}
-                  </p>
-                  <h4>{item.title}</h4>
-                </div>
+        {/* RIGHT - List of 3 */}
+        <div className="article-list">
+          {visible.map((item) => (
+            <Link
+              key={item._id || item.id}
+              href={`${viewAllLink}/${getUrlKey(item)}`}
+              className="article-list-item">
+              <div className="article-thumb-wrapper" style={{ position: 'relative' }}>
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  sizes="120px"
+                />
               </div>
-            ))}
-          </div>
+              <div className="article-list-text">
+                <div className="article-list-meta">
+                  <span className="article-author">By {item.author || 'Team'}</span>
+                  <span className="article-time">{timeAgo(item.createdAt)}</span>
+                </div>
+                <h4 className="article-list-title">{item.title}</h4>
+              </div>
+            </Link>
+          ))}
+
+          {totalPages > 1 && (
+            <div className="article-pagination">
+              <button
+                className="article-nav-btn"
+                disabled={page === 0}
+                onClick={() => setPage((p) => Math.max(0, p - 1))}>
+                ‹
+              </button>
+              <button
+                className="article-nav-btn"
+                disabled={page >= totalPages - 1}
+                onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}>
+                ›
+              </button>
+            </div>
+          )}
         </div>
-      </section>
-    );
-  };
+      </div>
+    </section>
+  );
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   return (
     <div className="home-page">

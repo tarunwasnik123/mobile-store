@@ -59,91 +59,91 @@ const pageMetaMap = {
       'Get real-time updates on mobile phone launches, specs & price comparisons. Read expert tech reviews and mobile compare blogs in easy Hinglish on Handset News!',
   },
   '/find': {
-    title: 'Find Phones | Mobile Store',
+    title: 'Find Phones | Handsetnews',
     description:
       'Search smartphones by price, brand, specs, and compare top models before you buy.',
   },
   '/latest': {
-    title: 'Latest Phones | Mobile Store',
+    title: 'Latest Phones | Handsetnews',
     description:
       'Explore the latest smartphone launches and newest mobile releases.',
   },
   '/best': {
-    title: 'Best Phones | Mobile Store',
+    title: 'Best Phones | Handsetnews',
     description:
       'See the best-rated phones by price, performance, and features in one place.',
   },
   '/upcoming': {
-    title: 'Upcoming Phones | Mobile Store',
+    title: 'Upcoming Phones | Handsetnews',
     description: 'Browse the most anticipated upcoming smartphone launches.',
   },
   '/compare': {
-    title: 'Compare Phones | Mobile Store',
+    title: 'Compare Phones | Handsetnews',
     description:
       'Compare smartphones side-by-side with specs, prices, and reviews.',
   },
   '/author/tarun': {
-    title: 'Author — Tarun | Mobile Store',
+    title: 'Author — Tarun | Handsetnews',
     description:
       'Read articles and insights from Tarun on smartphones and technology.',
   },
   '/about': {
-    title: 'About Us | Mobile Store',
+    title: 'About Us | Handsetnews',
     description:
-      'Learn about Mobile Store and how we help you choose the right phone.',
+      'Learn about Handsetnews and how we help you choose the right phone.',
   },
   '/privacy': {
-    title: 'Privacy Policy | Mobile Store',
+    title: 'Privacy Policy | Handsetnews',
     description:
-      'Review Mobile Store privacy policies and data handling practices.',
+      'Review Handsetnews privacy policies and data handling practices.',
   },
   '/terms-of-service': {
-    title: 'Terms of Service | Mobile Store',
+    title: 'Terms of Service | Handsetnews',
     description:
-      'Read the terms of use for Mobile Store services and website usage.',
+      'Read the terms of use for Handsetnews services and website usage.',
   },
   '/contact': {
-    title: 'Contact Us | Mobile Store',
+    title: 'Contact Us | Handsetnews',
     description:
-      'Get in touch with the Mobile Store team for questions and support.',
+      'Get in touch with the Handsetnews team for questions and support.',
   },
   '/faq': {
-    title: 'FAQ | Mobile Store',
+    title: 'FAQ | Handsetnews',
     description:
-      'Find answers to common questions about Mobile Store and smartphone guidance.',
+      'Find answers to common questions about Handsetnews and smartphone guidance.',
   },
   '/how-we-work': {
-    title: 'How We Work | Mobile Store',
+    title: 'How We Work | Handsetnews',
     description:
-      'Understand how Mobile Store curates phones, reviews, and comparison data.',
+      'Understand how Handsetnews curates phones, reviews, and comparison data.',
   },
   '/disclaimer': {
-    title: 'Disclaimer | Mobile Store',
+    title: 'Disclaimer | Handsetnews',
     description:
-      'Read the disclaimer and legal information for Mobile Store content.',
+      'Read the disclaimer and legal information for Handsetnews content.',
   },
   '/login': {
-    title: 'Login | Mobile Store',
+    title: 'Login | Handsetnews',
     description:
-      'Access your Mobile Store account to customize your phone search experience.',
+      'Access your Handsetnews account to customize your phone search experience.',
   },
   '/signup': {
-    title: 'Signup | Mobile Store',
+    title: 'Signup | Handsetnews',
     description:
-      'Create a Mobile Store account to save favorites and compare phones.',
+      'Create a Handsetnews account to save favorites and compare phones.',
   },
   '/profile': {
-    title: 'Profile | Mobile Store',
+    title: 'Profile | Handsetnews',
     description:
-      'Manage your Mobile Store profile, preferences, and saved comparisons.',
+      'Manage your Handsetnews profile, preferences, and saved comparisons.',
   },
   '/settings': {
-    title: 'Settings | Mobile Store',
+    title: 'Settings | Handsetnews',
     description:
-      'Update your Mobile Store account settings and notification preferences.',
+      'Update your Handsetnews account settings and notification preferences.',
   },
   '/admin': {
-    title: 'Admin Dashboard | Mobile Store',
+    title: 'Admin Dashboard | Handsetnews',
     description:
       'Manage news, phones, upcoming launches, and bulk uploads from the admin panel.',
   },
@@ -163,7 +163,7 @@ function getDefaultMeta(pathname) {
 
   const segments = pathname.split('/').filter(Boolean);
   const baseDescription =
-    'Explore smartphones, reviews, news, and detailed comparisons on Mobile Store.';
+    'Explore smartphones, reviews, news, and detailed comparisons on Handsetnews.';
 
   if (segments.length === 0) {
     return pageMetaMap['/'];
@@ -173,7 +173,7 @@ function getDefaultMeta(pathname) {
 
   if (first === 'phone' && second) {
     return {
-      title: 'Phone Details | Mobile Store',
+      title: 'Phone Details | Handsetnews',
       description:
         'View full phone specifications, pricing, and related smartphone reviews.',
     };
@@ -181,7 +181,7 @@ function getDefaultMeta(pathname) {
 
   if (first === 'upcoming' && second) {
     return {
-      title: 'Upcoming Phone Details | Mobile Store',
+      title: 'Upcoming Phone Details | Handsetnews',
       description:
         'Learn more about upcoming smartphone launches, specs, and expected release dates.',
     };
@@ -189,27 +189,27 @@ function getDefaultMeta(pathname) {
 
   if (first === 'author') {
     return {
-      title: 'Author Profile | Mobile Store',
+      title: 'Author Profile | Handsetnews',
       description: 'Read author profiles and their latest smartphone insights.',
     };
   }
 
   if (['news', 'leaks', 'reviews'].includes(first) && !second) {
     return {
-      title: `${getCategoryTitle(first)} | Mobile Store`,
-      description: `Read the latest ${getCategoryTitle(first)} and smartphone news on Mobile Store.`,
+      title: `${getCategoryTitle(first)} | Handsetnews`,
+      description: `Read the latest ${getCategoryTitle(first)} and smartphone news on Handsetnews.`,
     };
   }
 
   if (['news', 'leaks', 'reviews'].includes(first) && second) {
     return {
-      title: 'Article | Mobile Store',
+      title: 'Article | Handsetnews',
       description: baseDescription,
     };
   }
 
   return {
-    title: `Mobile Store | ${first.charAt(0).toUpperCase() + first.slice(1)}`,
+    title: `Handsetnews | ${first.charAt(0).toUpperCase() + first.slice(1)}`,
     description: baseDescription,
   };
 }

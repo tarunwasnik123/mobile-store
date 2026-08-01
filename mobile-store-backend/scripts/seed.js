@@ -55,12 +55,12 @@ async function main() {
   await mongoose.connect(uri);
   console.log('✅ Connected to', uri);
 
-  // Prefer bulk-upload JSONs if they exist (project root: "mobile store bulk upload")
+  // Prefer bulk-upload JSONs if they exist (project root: "Handsetnews bulk upload")
   const bulkRoot = path.resolve(
     __dirname,
     '..',
     '..',
-    'mobile store bulk upload',
+    'Handsetnews bulk upload',
   );
   const frontendDataRoot = path.resolve(
     __dirname,

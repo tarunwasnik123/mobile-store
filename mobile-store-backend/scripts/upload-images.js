@@ -98,7 +98,7 @@ async function main() {
     __dirname,
     '..',
     '..',
-    'mobile store bulk upload',
+    'Handsetnews bulk upload',
   );
 
   try {

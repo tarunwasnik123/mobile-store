@@ -1,4 +1,4 @@
-# Mobile Store Backend (Express + MongoDB)
+# Handsetnews Backend (Express + MongoDB)
 
 ## Setup
 

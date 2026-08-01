@@ -38,7 +38,7 @@ export default function NewsDetail() {
     'Read this article for the latest smartphone news, reviews, and updates.';
 
   const articleMetaTitle =
-    article?.metaTitle || `${article?.title} | Mobile Store`;
+    article?.metaTitle || `${article?.title} | Handsetnews`;
 
   const currentKeys = new Set(
     [id, article?.externalId, article?._id, article?.id]

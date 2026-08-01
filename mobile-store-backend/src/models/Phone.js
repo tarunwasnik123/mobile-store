@@ -5,7 +5,7 @@ const PhoneSchema = new mongoose.Schema(
     externalId: { type: String, sparse: true, unique: true, index: true },
     name: { type: String, required: true, trim: true },
     brand: { type: String, required: true, index: true },
-    price: { type: Number, required: true },
+    price: { type: Number, required: false, default: null }, // ✅ CHANGED: was required: true
     image: { type: String },
     images: [{ type: String }],
     metaTitle: {

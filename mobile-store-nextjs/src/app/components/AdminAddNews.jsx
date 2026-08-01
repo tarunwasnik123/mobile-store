@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import './AdminAddNews.css';
 import api from '../api/client';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -22,6 +22,11 @@ export default function AdminAddNews() {
     metaTitle: '',
     metaName: '',
     metaDescription: '',
+    canonicalUrl: '',
+    schemaType: 'NewsArticle',
+    ogImage: '',
+    twitterImage: '',
+    imageAltText: '',
     content: '',
     image: '',
   });
@@ -33,14 +38,26 @@ export default function AdminAddNews() {
   const [editorContent, setEditorContent] = useState('');
   const [initialBlocks, setInitialBlocks] = useState(undefined);
 
-  const editor = useCreateBlockNote({
+ const editor = useCreateBlockNote({
     uploadFile: async (file) => {
       const formData = new FormData();
       formData.append('file', file);
       const response = await api.post('/news/upload-image', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
-      return response.location || response.url;
+      const url = response.location || response.url;
+
+      setTimeout(() => {
+        const altText = prompt('Enter alt text for this image (for SEO & accessibility):');
+        if (altText) {
+          setTimeout(() => {
+            const imgs = document.querySelectorAll(`.bn-container img[src="${url}"]`);
+            imgs.forEach((img) => img.setAttribute('alt', altText));
+          }, 300);
+        }
+      }, 100);
+
+      return url;
     },
   });
 
@@ -213,6 +230,39 @@ export default function AdminAddNews() {
           onChange={handleChange}
           placeholder="Meta Description for SEO"
           rows="3"
+        />
+        <input
+          name="canonicalUrl"
+          value={news.canonicalUrl}
+          onChange={handleChange}
+          placeholder="Canonical URL (leave empty to auto-use current page URL)"
+        />
+        <label style={{ fontWeight: 600, fontSize: 14, marginTop: 8, display: 'block' }}>
+          Schema Type
+        </label>
+        <select name="schemaType" value={news.schemaType} onChange={handleChange}>
+          <option value="NewsArticle">Blog (NewsArticle)</option>
+          <option value="Product">Mobile Listing (Product)</option>
+          <option value="Review">Review</option>
+          <option value="FAQPage">FAQ</option>
+        </select>
+        <input
+          name="ogImage"
+          value={news.ogImage}
+          onChange={handleChange}
+          placeholder="Open Graph Image URL (leave empty to use Featured Image)"
+        />
+        <input
+          name="twitterImage"
+          value={news.twitterImage}
+          onChange={handleChange}
+          placeholder="Twitter/X Image URL (leave empty to use Featured Image)"
+        />
+        <input
+          name="imageAltText"
+          value={news.imageAltText}
+          onChange={handleChange}
+          placeholder="Image Alt Text (accessibility & SEO)"
         />
         <input name="image" type="file" accept="image/*" onChange={handleImageChange} />
         {imagePreview && (

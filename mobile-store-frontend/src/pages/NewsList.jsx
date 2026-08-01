@@ -67,8 +67,8 @@ export default function NewsList() {
   return (
     <div className="page news-page news-list">
       <SEO
-        title={`${getCategoryTitle(category)} | Mobile Store`}
-        description={`Browse the latest ${getCategoryTitle(category).toLowerCase()} and smartphone news on Mobile Store.`}
+        title={`${getCategoryTitle(category)} | Handsetnews`}
+        description={`Browse the latest ${getCategoryTitle(category).toLowerCase()} and smartphone news on Handsetnews.`}
       />
       <div className="news-header">
         <h2>{getCategoryTitle(category)}</h2>

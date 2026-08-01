@@ -1,8 +1,8 @@
 {
   "info": {
-    "name": "Mobile Store API",
+    "name": "Handsetnews API",
     "_postman_id": "7b35eec8-2f44-4f64-a513-f40eb2cd5e21",
-    "description": "Collection for Mobile Store backend API (synced with current routes)",
+    "description": "Collection for Handsetnews backend API (synced with current routes)",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
