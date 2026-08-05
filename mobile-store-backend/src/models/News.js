@@ -59,6 +59,11 @@ const NewsSchema = new mongoose.Schema(
       type: String,
       index: true,
     },
+     rating: {
+      type: Number,
+      min: 0,
+      max: 10,
+    },
     createdBy: {
       userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
       name: { type: String },

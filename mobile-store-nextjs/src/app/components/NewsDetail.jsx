@@ -15,6 +15,24 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.handsetnews.co
 const getUrlKey = (item) =>
   item?.externalId || item?.slug || item?.urlSlug || item?.friendlyUrl || item?._id || item?.id;
 
+// 👇 NEW - Rating helpers
+const getRatingText = (rating) => {
+  if (rating >= 9) return 'Excellent';
+  if (rating >= 7.5) return 'Very Good';
+  if (rating >= 6) return 'Good';
+  if (rating >= 4) return 'Average';
+  return 'Poor';
+};
+
+const StarRating = ({ rating }) => {
+  const percentage = Math.max(0, Math.min(100, (rating / 10) * 100));
+  return (
+    <div className="stars-outer">
+      <div className="stars-inner" style={{ width: `${percentage}%` }} />
+    </div>
+  );
+};
+
 export default function NewsDetail() {
   const params = useParams();
   const id = params?.id;
@@ -117,6 +135,12 @@ export default function NewsDetail() {
   const articleId = article.externalId || article._id;
   const pageUrl = article.canonicalUrl || `${SITE_URL}/${category}/${articleId}`;
 
+  // 👇 NEW - normalize rating, only render section if summary or rating exists
+  const ratingValue = article.rating !== undefined && article.rating !== null && article.rating !== ''
+    ? Number(article.rating)
+    : null;
+  const showSummarySection = Boolean(article.summary) || ratingValue !== null;
+
   const newsArticleSchema = {
     '@context': 'https://schema.org',
     '@type': article.schemaType || 'NewsArticle',
@@ -195,6 +219,36 @@ export default function NewsDetail() {
         />
         </div>
        )}
+
+        {/* 👇 NEW - Summary + Rating section (from admin panel) */}
+        {showSummarySection && (
+          <div className="news-summary-rating-wrapper">
+            {article.summary && (
+              <div className="news-summary-box">
+                <div className="summary-header">
+                  <span className="summary-icon" aria-hidden="true">📝</span>
+                  <h3>Summary</h3>
+                </div>
+                <p className="summary-text">{article.summary}</p>
+              </div>
+            )}
+
+            {ratingValue !== null && (
+              <div className="news-rating-box">
+                <h3 className="rating-title">
+                  HANDSET<span className="rating-title-accent">NEWS</span> RATING
+                </h3>
+                <div className="rating-score">
+                  <span className="rating-number">{ratingValue.toFixed(1)}</span>
+                  <span className="rating-outof">/10</span>
+                </div>
+                <StarRating rating={ratingValue} />
+                <div className="rating-text">{getRatingText(ratingValue)}</div>
+              </div>
+            )}
+          </div>
+        )}
+
         <div className="news-detail-content">
           <div dangerouslySetInnerHTML={{ __html: article.content || '' }} />
         </div>

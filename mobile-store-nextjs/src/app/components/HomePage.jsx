@@ -320,8 +320,8 @@ const HomePage = () => {
   return (
     <div className="home-page">
       <SEO
-        title="Handsetnews | Find Phones, News & Comparisons"
-        description="Search and compare smartphones, read the latest news, and explore upcoming releases on Handsetnews."
+        title="Mobile News, Reviews, Specs, Prices & Leaks | HandsetNews"
+        description="Get the latest mobile news, smartphone leaks, phone reviews, specifications, prices, comparisons, launch updates, and buying guides on HandsetNews."
       />
       <section className="top-filter-section">
         <h1>Find Your Perfect Phone!</h1>

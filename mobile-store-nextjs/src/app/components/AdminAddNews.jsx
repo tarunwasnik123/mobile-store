@@ -19,6 +19,7 @@ export default function AdminAddNews() {
     title: '',
     category: '',
     summary: '',
+    rating: '',
     metaTitle: '',
     metaName: '',
     metaDescription: '',
@@ -73,7 +74,7 @@ export default function AdminAddNews() {
   useEffect(() => {
     if (editId) {
       api.get(`/news/${editId}`).then(async (data) => {
-        setNews(data);
+        setNews({ ...data, rating: data.rating ?? '' });
         setEditorContent(data.content || '');
         if (data?.image) {
           setImagePreview(data.image);
@@ -150,12 +151,26 @@ export default function AdminAddNews() {
       return;
     }
 
+    if (news.rating !== '' && news.rating !== null && news.rating !== undefined) {
+      const ratingNum = Number(news.rating);
+      if (Number.isNaN(ratingNum) || ratingNum < 0 || ratingNum > 10) {
+        alert('Rating must be a number between 0 and 10');
+        return;
+      }
+    }
+
     try {
       const finalHTML = await editor.blocksToHTMLLossy(editor.document);
       let dataToSend = { ...news, content: finalHTML };
 
       if (dataToSend.externalId) {
         dataToSend.externalId = slugify(dataToSend.externalId);
+      }
+
+      if (dataToSend.rating === '') {
+        delete dataToSend.rating;
+      } else {
+        dataToSend.rating = Number(dataToSend.rating);
       }
 
       if (imageFile) {
@@ -210,6 +225,21 @@ export default function AdminAddNews() {
           ))}
         </datalist>
         <input name="summary" value={news.summary} onChange={handleChange} placeholder="Summary" />
+
+        <label style={{ fontWeight: 600, fontSize: 14, marginTop: 8, display: 'block' }}>
+          HandsetNews Rating (0 to 10)
+        </label>
+        <input
+          name="rating"
+          type="number"
+          min="0"
+          max="10"
+          step="0.1"
+          value={news.rating}
+          onChange={handleChange}
+          placeholder="e.g. 8.7"
+        />
+
         <hr />
         <h3 style={{ marginTop: '16px' }}>SEO Meta Fields</h3>
         <input
