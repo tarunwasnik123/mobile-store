@@ -467,7 +467,8 @@
 
 .news-detail-content {
   max-width: 100%;
-  overflow-x: hidden;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
@@ -481,11 +482,7 @@
 
 .news-detail-content table {
   border-collapse: collapse;
-  max-width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
   margin: 20px 0;
-  display: table;
   width: auto;
 }
 
@@ -496,6 +493,8 @@
   text-align: left;
   font-size: 14px;
   color: #374151;
+  font-weight: 400;
+  white-space: nowrap;
 }
 
 .news-detail-content table th {
