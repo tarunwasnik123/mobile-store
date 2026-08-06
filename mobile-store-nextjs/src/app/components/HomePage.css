@@ -505,6 +505,20 @@
   .home-page {
     padding: 16px 14px 48px;
   }
+  .article-split {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .featured-img-wrapper {
+    height: 200px;
+  }
+
+  .article-thumb-wrapper {
+    width: 100px;
+    height: 70px;
+  }
+
 
   .top-filter-section {
     padding: 28px 0 0;

@@ -10,12 +10,9 @@ import './News.css';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.handsetnews.com';
 
-// Helper: pick the best available "slug or id" field for building a clean URL.
-// The API returns the human-readable slug in `externalId`, so that takes priority.
 const getUrlKey = (item) =>
   item?.externalId || item?.slug || item?.urlSlug || item?.friendlyUrl || item?._id || item?.id;
 
-// 👇 NEW - Rating helpers
 const getRatingText = (rating) => {
   if (rating >= 9) return 'Excellent';
   if (rating >= 7.5) return 'Very Good';
@@ -28,7 +25,7 @@ const StarRating = ({ rating }) => {
   const percentage = Math.max(0, Math.min(100, (rating / 10) * 100));
   return (
     <div className="stars-outer">
-      <div className="stars-inner" style={{ width: `${percentage}%` }} />
+      <div className="stars-inner" style={{ width: percentage + '%' }} />
     </div>
   );
 };
@@ -43,6 +40,7 @@ export default function NewsDetail() {
   const [error, setError] = useState(null);
   const [news, setNews] = useState([]);
   const [newsError, setNewsError] = useState(null);
+  const [copied, setCopied] = useState(false);
 
   const getNewsKey = (item) => String(item?.externalId || item?._id || item?.id || '').trim();
 
@@ -64,7 +62,7 @@ export default function NewsDetail() {
     getContentPreview(article?.content) ||
     'Read this article for the latest smartphone news, reviews, and updates.';
 
-  const articleMetaTitle = article?.metaTitle || `${article?.title} | Handsetnews`;
+  const articleMetaTitle = article?.metaTitle || (article?.title + ' | Handsetnews');
 
   const currentKeys = new Set(
     [id, article?.externalId, article?._id, article?.id].filter(Boolean).map((v) => String(v).trim()),
@@ -82,7 +80,7 @@ export default function NewsDetail() {
     setLoading(true);
     setError(null);
     api
-      .get(`/news/${id}`)
+      .get('/news/' + id)
       .then((res) => {
         if (mounted) setArticle(res);
       })
@@ -97,8 +95,8 @@ export default function NewsDetail() {
     const fetchNews = async () => {
       try {
         setNewsError(null);
-        const query = `?sort=-createdAt&limit=20&category=${category}`;
-        const res = await api.get(`/news${query}`);
+        const query = '?sort=-createdAt&limit=20&category=' + category;
+        const res = await api.get('/news' + query);
         const list = res?.results || res?.data || [];
         if (mounted) setNews(list);
       } catch (err) {
@@ -110,35 +108,50 @@ export default function NewsDetail() {
     return () => (mounted = false);
   }, [category]);
 
-  if (loading)
+  if (loading) {
     return (
       <div className="page news-page">
         <h2>Loading...</h2>
       </div>
     );
+  }
 
-  if (error)
+  if (error) {
     return (
       <div className="page news-page">
         <h2>Error</h2>
         <p>{error}</p>
       </div>
     );
+  }
 
-  if (!article)
+  if (!article) {
     return (
       <div className="page news-page">
         <h2>Article not found</h2>
       </div>
     );
+  }
 
   const articleId = article.externalId || article._id;
-  const pageUrl = article.canonicalUrl || `${SITE_URL}/${category}/${articleId}`;
+  const pageUrl = article.canonicalUrl || (SITE_URL + '/' + category + '/' + articleId);
 
-  // 👇 NEW - normalize rating, only render section if summary or rating exists
-  const ratingValue = article.rating !== undefined && article.rating !== null && article.rating !== ''
-    ? Number(article.rating)
-    : null;
+  const encodedUrl = encodeURIComponent(pageUrl);
+  const shareText = encodeURIComponent(article?.title || '');
+  const linkedinUrl = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodedUrl;
+  const facebookUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + encodedUrl;
+  const twitterUrl = 'https://twitter.com/intent/tweet?url=' + encodedUrl + '&text=' + shareText;
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(pageUrl);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const ratingValue =
+    article.rating !== undefined && article.rating !== null && article.rating !== ''
+      ? Number(article.rating)
+      : null;
   const showSummarySection = Boolean(article.summary) || ratingValue !== null;
 
   const newsArticleSchema = {
@@ -151,14 +164,14 @@ export default function NewsDetail() {
     author: {
       '@type': 'Person',
       name: 'Tarun Wasnik',
-      url: `${SITE_URL}/author/tarun`,
+      url: SITE_URL + '/author/tarun',
     },
     publisher: {
       '@type': 'Organization',
       name: 'Handset News',
       logo: {
         '@type': 'ImageObject',
-        url: `${SITE_URL}/HandsetLogo.svg`,
+        url: SITE_URL + '/HandsetLogo.svg',
       },
     },
     description: articleMetaDescription,
@@ -176,7 +189,7 @@ export default function NewsDetail() {
       />
       <SEO title={articleMetaTitle} description={articleMetaDescription} keywords={article?.metaName} />
       <main className="news-main-wrapper">
-        <Link href={`/${category}`} className="back-link">
+        <Link href={'/' + category} className="back-link">
           Back to News
         </Link>
         <h1 className="news-detail-title">{article.title}</h1>
@@ -205,22 +218,78 @@ export default function NewsDetail() {
               : 'N/A'}{' '}
             IST
           </span>
-        </div>
-        {article.image && (
-        <div className="news-detail-img-wrapper">
-        <Image
-          src={article.image}
-          alt={article.imageAltText || article.title}
-          fill
-          style={{ objectFit: 'contain' }}
-          className="news-detail-img"
-          sizes="(max-width: 768px) 100vw, 1200px"
-          priority
-        />
-        </div>
-       )}
 
-        {/* 👇 NEW - Summary + Rating section (from admin panel) */}
+          <div className="news-share-icons">
+            <a
+              href={linkedinUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="share-icon share-linkedin"
+              aria-label="Share on LinkedIn"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.44-2.14 2.94v5.66H9.34V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45z" />
+              </svg>
+            </a>
+
+            <a
+              href={facebookUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="share-icon share-facebook"
+              aria-label="Share on Facebook"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                <path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.1 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94z" />
+              </svg>
+            </a>
+
+            <a
+              href={twitterUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="share-icon share-x"
+              aria-label="Share on X"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
+                <path d="M18.9 2H22l-7.6 8.7L23 22h-6.6l-5.2-6.8L5 22H1.9l8.1-9.3L1 2h6.7l4.7 6.2L18.9 2zm-2.3 18h1.8L7.5 4H5.6l11 16z" />
+              </svg>
+            </a>
+
+            <button
+              type="button"
+              onClick={handleCopyLink}
+              className="share-icon share-copy"
+              aria-label="Copy link"
+            >
+              {copied ? (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16">
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+              ) : (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16">
+                  <path d="M10 13a5 5 0 0 0 7.07 0l2.83-2.83a5 5 0 0 0-7.07-7.07L11.5 4.5" />
+                  <path d="M14 11a5 5 0 0 0-7.07 0L4.1 13.83a5 5 0 0 0 7.07 7.07L12.5 19.5" />
+                </svg>
+              )}
+            </button>
+          </div>
+        </div>
+
+        {article.image && (
+          <div className="news-detail-img-wrapper">
+            <Image
+              src={article.image}
+              alt={article.imageAltText || article.title}
+              fill
+              style={{ objectFit: 'contain' }}
+              className="news-detail-img"
+              sizes="(max-width: 768px) 100vw, 1200px"
+              priority
+            />
+          </div>
+        )}
+
         {showSummarySection && (
           <div className="news-summary-rating-wrapper">
             {article.summary && (
@@ -282,10 +351,7 @@ export default function NewsDetail() {
                   <p className="news-date">
                     {newsItem.createdAt ? new Date(newsItem.createdAt).toLocaleDateString() : ''}
                   </p>
-                  {/* <p className="news-content">{getContentPreview(newsItem.content)}...</p> */}
-                  <Link
-                    href={`/${category}/${getUrlKey(newsItem)}`}
-                    className="read-more-btn">
+                  <Link href={'/' + category + '/' + getUrlKey(newsItem)} className="read-more-btn">
                     Read More
                   </Link>
                 </div>
