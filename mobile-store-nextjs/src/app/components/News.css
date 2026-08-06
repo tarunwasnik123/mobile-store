@@ -480,27 +480,19 @@
 }
 
 .news-detail-content table {
-  display: block;
+  border-collapse: collapse;
   max-width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  border-collapse: collapse;
-  width: 100%;
   margin: 20px 0;
-}
-
-.news-detail-content table thead,
-.news-detail-content table tbody,
-.news-detail-content table tr {
   display: table;
-  width: 100%;
-  table-layout: fixed;
+  width: auto;
 }
 
 .news-detail-content table th,
 .news-detail-content table td {
   border: 1px solid #d1d5db;
-  padding: 10px 14px;
+  padding: 8px 14px;
   text-align: left;
   font-size: 14px;
   color: #374151;
