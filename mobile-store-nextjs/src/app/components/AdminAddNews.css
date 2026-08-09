@@ -362,3 +362,30 @@ table.quill-better-table td {
     border-radius: 8px;
   }
 }
+
+
+
+
+
+
+.admin-form input[name="title"] {
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  padding: 14px 16px !important;
+}
+
+.news-page .news-detail-content h2,
+.news-page .news-detail-content h2[data-level="2"] {
+  font-size: 10px !important;
+  line-height: 19px !important;
+  font-weight: 600 !important;
+  text-align: left !important;
+  margin: 15px 0 !important;
+  border-bottom: none !important;
+}
+
+.news-page .news-detail-content h2::after,
+.news-page .news-detail-content h2::before {
+  display: none !important;
+  content: none !important;
+}

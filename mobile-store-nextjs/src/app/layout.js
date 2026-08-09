@@ -1,4 +1,5 @@
 import { Suspense } from 'react';
+import Script from 'next/script';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './globals.css';
 import Providers from './components/Providers';
@@ -17,6 +18,20 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body style={{ margin: 0, padding: 0 }} suppressHydrationWarning>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-9YM4PH9ML7"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-9YM4PH9ML7');
+          `}
+        </Script>
+
         <Providers>
           <Suspense fallback={null}>
             <ScrollToTop />
