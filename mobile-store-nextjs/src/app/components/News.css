@@ -191,11 +191,11 @@
   background: #fff;
   border: 1px solid #e5e7eb;
   border-radius: 20px;
-  padding: 32px;
+  padding: 20px 32px 32px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
 }
 
-/* BACK LINK */
+/* BACK LINK
 .news-detail .back-link {
   display: inline-block;
   margin-bottom: 28px;
@@ -212,7 +212,7 @@
 .news-detail .back-link:hover {
   background: #111827;
   color: #fff;
-}
+} */
 
 /* TITLE */
 .news-detail h1 {

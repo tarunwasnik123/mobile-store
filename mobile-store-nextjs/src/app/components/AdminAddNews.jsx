@@ -4,7 +4,11 @@ import { useState, useEffect } from 'react';
 import './AdminAddNews.css';
 import api from '../api/client';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useCreateBlockNote } from '@blocknote/react';
+import {
+  useCreateBlockNote,
+  getDefaultReactSlashMenuItems,
+  SuggestionMenuController,
+} from '@blocknote/react';
 import { BlockNoteView } from '@blocknote/mantine';
 import '@blocknote/core/fonts/inter.css';
 import '@blocknote/mantine/style.css';
@@ -39,7 +43,9 @@ export default function AdminAddNews() {
   const [editorContent, setEditorContent] = useState('');
   const [initialBlocks, setInitialBlocks] = useState(undefined);
 
- const editor = useCreateBlockNote({
+  // No custom schema here — using BlockNote's built-in "heading" block
+  // (level 1/2/3) so we avoid the BlockNoteSchema.create crash entirely.
+  const editor = useCreateBlockNote({
     uploadFile: async (file) => {
       const formData = new FormData();
       formData.append('file', file);
@@ -324,7 +330,48 @@ export default function AdminAddNews() {
         <div className="editor-container">
           <label>Content</label>
           <div style={{ border: '1px solid #e5e7eb', borderRadius: '10px', minHeight: '400px' }}>
-            <BlockNoteView editor={editor} onChange={handleEditorChange} theme="light" />
+            <BlockNoteView editor={editor} onChange={handleEditorChange} theme="light" slashMenu={false}>
+              <SuggestionMenuController
+                triggerCharacter="/"
+                getItems={async (query) => {
+                  const defaultItems = getDefaultReactSlashMenuItems(editor);
+
+                  // These insert BlockNote's normal "heading" block at the
+                  // requested level — no custom block type, no schema change.
+                  // Font size is controlled purely via CSS (see AdminAddNews.css).
+                  const customItems = [
+                    {
+                      title: 'Custom Heading 2',
+                      onItemClick: () => {
+                        editor.insertBlocks(
+                          [{ type: 'heading', props: { level: 2 }, content: [] }],
+                          editor.getTextCursorPosition().block,
+                          'after',
+                        );
+                      },
+                      aliases: ['h2', 'heading2'],
+                      group: 'Headings',
+                    },
+                    {
+                      title: 'Custom Heading 3',
+                      onItemClick: () => {
+                        editor.insertBlocks(
+                          [{ type: 'heading', props: { level: 3 }, content: [] }],
+                          editor.getTextCursorPosition().block,
+                          'after',
+                        );
+                      },
+                      aliases: ['h3', 'heading3'],
+                      group: 'Headings',
+                    },
+                  ];
+
+                  return [...defaultItems, ...customItems].filter((item) =>
+                    item.title.toLowerCase().includes(query.toLowerCase()),
+                  );
+                }}
+              />
+            </BlockNoteView>
           </div>
         </div>
         <button type="submit">{editId ? 'Update' : 'Add'}</button>

@@ -389,3 +389,64 @@ table.quill-better-table td {
   display: none !important;
   content: none !important;
 }
+
+
+
+
+
+
+
+
+
+/* Paragraph (reference) */
+.bn-container [data-content-type="paragraph"] {
+  font-size: 16px;
+}
+
+/* Heading Level 2 & 3 — same size (matches your perfect H3 size) */
+.bn-container [data-content-type="heading"][data-level="2"],
+.bn-container [data-content-type="heading"][data-level="3"] {
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  line-height: 1.35 !important;
+}
+
+/* H1 (reference — BlockNote default) */
+.bn-container [data-content-type="heading"][data-level="1"] {
+  font-size: 32px !important;
+  font-weight: 700 !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Paragraph (reference) */
+.bn-container [data-content-type="paragraph"] {
+  font-size: 16px;
+}
+
+/* Heading Level 2 — P se thoda bada, pehle se chota */
+.bn-container [data-content-type="heading"][data-level="2"] {
+  font-size: 19px !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+}
+
+/* Heading Level 3 — H2 se chota, P se thoda bada */
+.bn-container [data-content-type="heading"][data-level="3"] {
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  line-height: 1.35 !important;
+}

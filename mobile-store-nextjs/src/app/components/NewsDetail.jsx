@@ -189,9 +189,9 @@ export default function NewsDetail() {
       />
       <SEO title={articleMetaTitle} description={articleMetaDescription} keywords={article?.metaName} />
       <main className="news-main-wrapper">
-        <Link href={'/' + category} className="back-link">
+        {/* <Link href={'/' + category} className="back-link">
           Back to News
-        </Link>
+        </Link> */}
         <h1 className="news-detail-title">{article.title}</h1>
         {article.category && (
           <div className="news-category-badge">
