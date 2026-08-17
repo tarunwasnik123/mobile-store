@@ -30,13 +30,13 @@ const StarRating = ({ rating }) => {
   );
 };
 
-export default function NewsDetail() {
+export default function NewsDetail({ initialArticle = null }) {
   const params = useParams();
   const id = params?.id;
   const category = params?.category || 'news';
   const router = useRouter();
-  const [article, setArticle] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [article, setArticle] = useState(initialArticle);
+  const [loading, setLoading] = useState(!initialArticle);
   const [error, setError] = useState(null);
   const [news, setNews] = useState([]);
   const [newsError, setNewsError] = useState(null);
@@ -76,6 +76,7 @@ export default function NewsDetail() {
   });
 
   useEffect(() => {
+    if (initialArticle) return; // server se already mil chuka, dobara fetch mat kar
     let mounted = true;
     setLoading(true);
     setError(null);
@@ -88,7 +89,7 @@ export default function NewsDetail() {
       .finally(() => mounted && setLoading(false));
 
     return () => (mounted = false);
-  }, [id]);
+  }, [id, initialArticle]);
 
   useEffect(() => {
     let mounted = true;

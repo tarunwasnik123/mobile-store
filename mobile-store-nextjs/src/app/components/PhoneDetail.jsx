@@ -10,10 +10,10 @@ import './PhoneDetail.css';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.handsetnews.com';
 
-export default function PhoneDetail() {
+export default function PhoneDetail({ initialPhone = null }) {
   const { id } = useParams();
-  const [phone, setPhone] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [phone, setPhone] = useState(initialPhone);
+  const [loading, setLoading] = useState(!initialPhone);
   const [error, setError] = useState(null);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
@@ -21,6 +21,7 @@ export default function PhoneDetail() {
   const [activeSpecTab, setActiveSpecTab] = useState('General');
 
   useEffect(() => {
+    if (initialPhone) return; // server se already mil chuka, dobara fetch mat kar
     let mounted = true;
     api
       .get(`/phones/${id}`)
@@ -36,7 +37,7 @@ export default function PhoneDetail() {
     return () => {
       mounted = false;
     };
-  }, [id]);
+  }, [id, initialPhone]);
 
   useEffect(() => {
     setActiveImageIndex(0);
