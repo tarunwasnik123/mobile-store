@@ -1,11 +1,21 @@
 const mongoose = require('mongoose');
 
+// Rear camera table ke extra columns (MP alag se Camera.Primary/Secondary... me aata hai)
+const cameraDetail = () => ({
+  LensFeatures: String,
+  Aperture: String,
+  Zoom: String,
+  FocalLength: String,
+});
+
 const PhoneSchema = new mongoose.Schema(
   {
     externalId: { type: String, sparse: true, unique: true, index: true },
     name: { type: String, required: true, trim: true },
     brand: { type: String, required: true, index: true },
-    price: { type: Number, required: false, default: null }, // ✅ CHANGED: was required: true
+    price: { type: Number, required: false, default: null }, // CHANGED: was required: true
+    rating: { type: Number, min: 0, max: 5 }, // admin-set rating out of 5 (e.g. 3.7)
+    colors: [{ type: String }], // e.g. ['Nebula Black', 'Moonlight Silver']
     image: { type: String },
     images: [{ type: String }],
     metaTitle: {
@@ -55,6 +65,7 @@ const PhoneSchema = new mongoose.Schema(
         CustomUI: String,
         LaunchDate: Date,
         OSUpdate: String,
+        SecurityUpdates: String,
       },
       Performance: {
         Chipset: String,
@@ -71,6 +82,15 @@ const PhoneSchema = new mongoose.Schema(
       Storage: {
         InternalStorage: String,
         StorageType: String,
+      },
+      Design: {
+        Height: String,
+        Width: String,
+        Thickness: String,
+        Weight: String,
+        BuildMaterial: String,
+        WaterResistance: String,
+        Ruggedness: String,
       },
       Display: {
         Type: String,
@@ -89,6 +109,13 @@ const PhoneSchema = new mongoose.Schema(
           Primary: String,
           Secondary: String,
           Tertiary: String,
+          Quaternary: String,
+        },
+        Details: {
+          Primary: cameraDetail(),
+          Secondary: cameraDetail(),
+          Tertiary: cameraDetail(),
+          Quaternary: cameraDetail(),
         },
       },
       FrontCamera: {
@@ -96,8 +123,10 @@ const PhoneSchema = new mongoose.Schema(
       },
       Battery: {
         Capacity: String,
+        BatteryType: String,
         QuickCharging: String,
         WirelessCharging: String,
+        ReverseCharging: String,
         BatteryChargingTime: String,
       },
       SoundAudio: {

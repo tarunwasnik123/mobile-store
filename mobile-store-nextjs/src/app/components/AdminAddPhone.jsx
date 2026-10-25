@@ -29,6 +29,7 @@ export default function AdminAddPhone() {
         CustomUI: 'ColorOS',
         LaunchDate: '2024-08-15',
         OSUpdate: 'Up to 3 major versions',
+        SecurityUpdates: 'Up to 5 years',
       },
       Performance: {
         Chipset: 'MediaTek Dimensity 8450',
@@ -44,6 +45,15 @@ export default function AdminAddPhone() {
       Storage: {
         InternalStorage: '256 GB',
         StorageType: 'UFS 3.1',
+      },
+      Design: {
+        Height: '162.76 mm',
+        Width: '75.60 mm',
+        Thickness: '7.99 mm',
+        Weight: '193 grams',
+        BuildMaterial: 'Back: Fiber Fabric',
+        WaterResistance: 'Yes, Water resistant, IP68, IP69',
+        Ruggedness: 'Dust proof',
       },
       Display: {
         Type: 'AMOLED',
@@ -62,6 +72,33 @@ export default function AdminAddPhone() {
           Primary: '200 MP',
           Secondary: '8 MP',
           Tertiary: '2 MP',
+          Quaternary: '2 MP',
+        },
+        Details: {
+          Primary: {
+            LensFeatures: 'Telephoto',
+            Aperture: 'f/4.0',
+            Zoom: 'upto 40x Digital Zoom, upto 16x Optical Zoom',
+            FocalLength: '24 mm',
+          },
+          Secondary: {
+            LensFeatures: 'Telephoto',
+            Aperture: 'f/2.88',
+            Zoom: 'upto 8x Optical Zoom',
+            FocalLength: '100 mm',
+          },
+          Tertiary: {
+            LensFeatures: 'Ultra-Wide Angle',
+            Aperture: 'f/2.2',
+            Zoom: '',
+            FocalLength: '13 mm',
+          },
+          Quaternary: {
+            LensFeatures: 'Macro',
+            Aperture: 'f/2.4',
+            Zoom: '',
+            FocalLength: '25 mm',
+          },
         },
       },
       FrontCamera: {
@@ -69,8 +106,10 @@ export default function AdminAddPhone() {
       },
       Battery: {
         Capacity: '6200 mAh',
+        BatteryType: 'Li-Polymer',
         QuickCharging: '80W',
         WirelessCharging: '50W',
+        ReverseCharging: '10W',
         BatteryChargingTime: '30 minutes to 100%',
       },
       SoundAudio: {
@@ -101,6 +140,7 @@ export default function AdminAddPhone() {
     name: '',
     brand: '',
     price: '',
+    rating: '',
     image: '',
     images: [],
     metaTitle: '',
@@ -133,6 +173,8 @@ export default function AdminAddPhone() {
   const [newImageFiles, setNewImageFiles] = useState([]);
   const [newImagePreviews, setNewImagePreviews] = useState([]);
   const [initialImageCount, setInitialImageCount] = useState(0);
+  // Colors comma-separated text ke roop me rakhte hain, save ke time array banta hai
+  const [colorsText, setColorsText] = useState('');
 
   useEffect(() => {
     api.get('/brands').then((res) => setBrands(res?.results || res || []));
@@ -154,6 +196,7 @@ export default function AdminAddPhone() {
         ];
       }
       setPhone(data);
+      setColorsText(Array.isArray(data.colors) ? data.colors.join(', ') : '');
       const existing =
         Array.isArray(data?.images) && data.images.length > 0
           ? data.images
@@ -241,6 +284,23 @@ export default function AdminAddPhone() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (isSaving) return;
+
+    // Rating: khali = null (rating hat jayegi), warna 0-5 ke beech number
+    const ratingValue =
+      phone.rating === '' || phone.rating === null || phone.rating === undefined
+        ? null
+        : Number(phone.rating);
+    if (ratingValue !== null && (Number.isNaN(ratingValue) || ratingValue < 0 || ratingValue > 5)) {
+      alert('Rating must be a number between 0 and 5');
+      return;
+    }
+
+    // Colors: "Nebula Black, Moonlight Silver" -> ['Nebula Black', 'Moonlight Silver']
+    const colorsList = colorsText
+      .split(',')
+      .map((s) => s.trim())
+      .filter(Boolean);
+
     setIsSaving(true);
 
     const list = Array.isArray(allPhones) ? allPhones : allPhones?.results || [];
@@ -258,9 +318,25 @@ export default function AdminAddPhone() {
 
     const keptImages = existingImages.map((x) => String(x).trim()).filter(Boolean);
 
+    // FormData me phone ki fields bhejne ka common tareeka (rating aur colors alag se handle hote hain)
+    const appendPhoneFields = (formData) => {
+      Object.keys(phone).forEach((key) => {
+        if (key === 'image' || key === 'images' || key === 'colors') return;
+        if (key === 'rating') {
+          formData.append('rating', ratingValue === null ? '' : String(ratingValue));
+          return;
+        }
+        if (typeof phone[key] === 'object') formData.append(key, JSON.stringify(phone[key]));
+        else formData.append(key, phone[key]);
+      });
+      formData.append('colors', JSON.stringify(colorsList));
+    };
+
     try {
       let dataToSend = {
         ...phone,
+        rating: ratingValue,
+        colors: colorsList,
         images: keptImages,
         image: keptImages[0] || null,
       };
@@ -271,12 +347,7 @@ export default function AdminAddPhone() {
           newImageFiles.forEach((file) => formData.append('images', file));
           formData.append('images', JSON.stringify(keptImages));
           formData.append('replaceImages', 'true');
-          Object.keys(phone).forEach((key) => {
-            if (key !== 'image' && key !== 'images') {
-              if (typeof phone[key] === 'object') formData.append(key, JSON.stringify(phone[key]));
-              else formData.append(key, phone[key]);
-            }
-          });
+          appendPhoneFields(formData);
           dataToSend = formData;
         } else if (keptImages.length !== initialImageCount) {
           dataToSend = { ...dataToSend, replaceImages: true };
@@ -284,12 +355,7 @@ export default function AdminAddPhone() {
       } else if (newImageFiles.length > 0) {
         const formData = new FormData();
         newImageFiles.forEach((file) => formData.append('images', file));
-        Object.keys(phone).forEach((key) => {
-          if (key !== 'image' && key !== 'images') {
-            if (typeof phone[key] === 'object') formData.append(key, JSON.stringify(phone[key]));
-            else formData.append(key, phone[key]);
-          }
-        });
+        appendPhoneFields(formData);
         dataToSend = formData;
       }
 
@@ -359,7 +425,7 @@ export default function AdminAddPhone() {
             <label>Name</label>
             <input
               name="name"
-              value={phone.name}
+              value={phone.name ?? ''}
               placeholder={dummyPhone.name}
               onChange={handleChange}
               required
@@ -368,7 +434,7 @@ export default function AdminAddPhone() {
 
           <div className="input-group">
             <label>Brand</label>
-            <select name="brand" value={phone.brand} onChange={handleChange} required>
+            <select name="brand" value={phone.brand ?? ''} onChange={handleChange} required>
               <option value="">Select Brand</option>
               {brands.map((b) => (
                 <option key={b._id} value={b.name}>
@@ -383,10 +449,35 @@ export default function AdminAddPhone() {
             <input
               name="price"
               type="number"
-              value={phone.price}
+              value={phone.price ?? ''}
               placeholder={dummyPhone.price}
               onChange={handleChange}
               required
+            />
+          </div>
+
+          <div className="input-group">
+            <label>Rating (out of 5)</label>
+            <input
+              name="rating"
+              type="number"
+              min="0"
+              max="5"
+              step="0.1"
+              value={phone.rating ?? ''}
+              placeholder="e.g. 3.7 (leave empty to hide rating)"
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="input-group">
+            <label>Colors (comma-separated)</label>
+            <input
+              name="colors"
+              type="text"
+              value={colorsText}
+              placeholder="e.g. Nebula Black, Moonlight Silver"
+              onChange={(e) => setColorsText(e.target.value)}
             />
           </div>
 
@@ -443,7 +534,7 @@ export default function AdminAddPhone() {
             <label>Meta Title</label>
             <input
               name="metaTitle"
-              value={phone.metaTitle}
+              value={phone.metaTitle ?? ''}
               onChange={handleChange}
               placeholder="Meta Title (for search results)"
             />
@@ -453,7 +544,7 @@ export default function AdminAddPhone() {
             <label>Meta Keywords</label>
             <input
               name="metaName"
-              value={phone.metaName}
+              value={phone.metaName ?? ''}
               onChange={handleChange}
               placeholder="Meta Keywords (comma-separated)"
             />
@@ -463,7 +554,7 @@ export default function AdminAddPhone() {
             <label>Meta Description</label>
             <textarea
               name="metaDescription"
-              value={phone.metaDescription}
+              value={phone.metaDescription ?? ''}
               onChange={handleChange}
               placeholder="Meta Description for SEO"
               rows={3}
@@ -474,7 +565,7 @@ export default function AdminAddPhone() {
             <label>Canonical URL</label>
             <input
               name="canonicalUrl"
-              value={phone.canonicalUrl}
+              value={phone.canonicalUrl ?? ''}
               onChange={handleChange}
               placeholder="Leave empty to auto-use current page URL"
             />
@@ -482,7 +573,7 @@ export default function AdminAddPhone() {
 
           <div className="input-group">
             <label>Schema Type</label>
-            <select name="schemaType" value={phone.schemaType} onChange={handleChange}>
+            <select name="schemaType" value={phone.schemaType ?? 'Product'} onChange={handleChange}>
               <option value="Product">Mobile Listing (Product)</option>
               <option value="NewsArticle">Blog (NewsArticle)</option>
               <option value="Review">Review</option>
@@ -494,7 +585,7 @@ export default function AdminAddPhone() {
             <label>Open Graph Image URL</label>
             <input
               name="ogImage"
-              value={phone.ogImage}
+              value={phone.ogImage ?? ''}
               onChange={handleChange}
               placeholder="Leave empty to use Featured Image"
             />
@@ -504,7 +595,7 @@ export default function AdminAddPhone() {
             <label>Twitter/X Image URL</label>
             <input
               name="twitterImage"
-              value={phone.twitterImage}
+              value={phone.twitterImage ?? ''}
               onChange={handleChange}
               placeholder="Leave empty to use Featured Image"
             />
@@ -514,7 +605,7 @@ export default function AdminAddPhone() {
             <label>Image Alt Text</label>
             <input
               name="imageAltText"
-              value={phone.imageAltText}
+              value={phone.imageAltText ?? ''}
               onChange={handleChange}
               placeholder="Describe the image for accessibility & SEO"
             />
