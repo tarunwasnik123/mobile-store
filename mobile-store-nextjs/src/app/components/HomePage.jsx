@@ -23,6 +23,8 @@ const HomePage = () => {
   const [upcomingPhones, setUpcomingPhones] = useState([]);
   const [news, setNews] = useState([]);
   const [reviews, setReviews] = useState([]);
+  const [hindiReviews, setHindiReviews] = useState([]);
+  const [comparisons, setComparisons] = useState([]);
 
   const [priceRange, setPriceRange] = useState([0, 200000]);
 
@@ -39,7 +41,7 @@ const HomePage = () => {
   const [upcomingLoading, setUpcomingLoading] = useState(true);
 
   const formatCurrency = (value) =>
-  typeof value === 'number' ? `₹${value.toLocaleString('en-IN')}` : '';
+    typeof value === 'number' ? `₹${value.toLocaleString('en-IN')}` : '';
 
   const stripHTML = (html) => {
     if (typeof document === 'undefined') return html || '';
@@ -133,6 +135,8 @@ const HomePage = () => {
         fetchUpcomingPhones(),
         fetchNewsCategory('news', setNews, 'news'),
         fetchNewsCategory('reviews', setReviews, 'reviews'),
+        fetchNewsCategory('hindi-review', setHindiReviews, 'hindiReviews'),
+        fetchNewsCategory('comparison', setComparisons, 'comparisons'),
       ]);
     };
     loadData();
@@ -203,101 +207,105 @@ const HomePage = () => {
   );
 
   const ArticleSection = ({ title, items, viewAllLink }) => {
-  const [page, setPage] = useState(0);
+    const [page, setPage] = useState(0);
 
-  if (!items.length) return null;
+    if (!items.length) return null;
 
-  const featured = items[0];
-  const rest = items.slice(1);
-  const pageSize = 3;
-  const totalPages = Math.max(1, Math.ceil(rest.length / pageSize));
-  const visible = rest.slice(page * pageSize, page * pageSize + pageSize);
+    const featured = items[0];
+    const rest = items.slice(1);
+    const pageSize = 3;
+    const totalPages = Math.max(1, Math.ceil(rest.length / pageSize));
+    const visible = rest.slice(page * pageSize, page * pageSize + pageSize);
 
-  const timeAgo = (date) => {
-    const diffMs = Date.now() - new Date(date).getTime();
-    const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-    if (days <= 0) return 'Today';
-    if (days === 1) return '1 Day Ago';
-    return `${days} Days Ago`;
-  };
+    const timeAgo = (date) => {
+      const diffMs = Date.now() - new Date(date).getTime();
+      const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+      if (days <= 0) return 'Today';
+      if (days === 1) return '1 Day Ago';
+      return `${days} Days Ago`;
+    };
 
-  return (
-    <section className="article-section">
-      <div className="section-header">
-        <h2>{title}</h2>
-        <Link href={viewAllLink} className="view-all-btn">
-          View All →
-        </Link>
-      </div>
-
-      <div className="article-split">
-        {/* LEFT - Featured */}
-        <Link
-          href={`${viewAllLink}/${getUrlKey(featured)}`}
-          className="featured-article">
-          <div className="featured-img-wrapper" style={{ position: 'relative' }}>
-            <Image
-              src={featured.image}
-              alt={featured.title}
-              fill
-              style={{ objectFit: 'cover' }}
-              sizes="(max-width: 768px) 100vw, 45vw"
-            />
-          </div>
-          <div className="featured-meta-row">
-            <span className="article-author">By {featured.author || 'Team'}</span>
-            <span className="article-time">{timeAgo(featured.createdAt)}</span>
-          </div>
-          <h3 className="featured-title">{featured.title}</h3>
-        </Link>
-
-        {/* RIGHT - List of 3 */}
-        <div className="article-list">
-          {visible.map((item) => (
-            <Link
-              key={item._id || item.id}
-              href={`${viewAllLink}/${getUrlKey(item)}`}
-              className="article-list-item">
-              <div className="article-thumb-wrapper" style={{ position: 'relative' }}>
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  sizes="120px"
-                />
-              </div>
-              <div className="article-list-text">
-                <div className="article-list-meta">
-                  <span className="article-author">By {item.author || 'Team'}</span>
-                  <span className="article-time">{timeAgo(item.createdAt)}</span>
-                </div>
-                <h4 className="article-list-title">{item.title}</h4>
-              </div>
-            </Link>
-          ))}
-
-          {totalPages > 1 && (
-            <div className="article-pagination">
-              <button
-                className="article-nav-btn"
-                disabled={page === 0}
-                onClick={() => setPage((p) => Math.max(0, p - 1))}>
-                ‹
-              </button>
-              <button
-                className="article-nav-btn"
-                disabled={page >= totalPages - 1}
-                onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}>
-                ›
-              </button>
-            </div>
-          )}
+    return (
+      <section className="article-section">
+        <div className="section-header">
+          <h2>{title}</h2>
+          <Link href={viewAllLink} className="view-all-btn">
+            View All →
+          </Link>
         </div>
-      </div>
-    </section>
-  );
-};
+
+        <div className="article-split">
+          {/* LEFT - Featured */}
+          <Link
+            href={`${viewAllLink}/${getUrlKey(featured)}`}
+            className="featured-article">
+            <div className="featured-img-wrapper" style={{ position: 'relative' }}>
+              <Image
+                src={featured.image}
+                alt={featured.title}
+                fill
+                style={{ objectFit: 'cover' }}
+                sizes="(max-width: 768px) 100vw, 45vw"
+              />
+            </div>
+            <div className="featured-meta-row">
+              {/* <span className="article-author">By {featured.author || 'Team'}</span> */}
+              <span className="article-time" style={{ marginLeft: 'auto' }}>
+                {timeAgo(featured.createdAt)}
+              </span>
+            </div>
+            <h3 className="featured-title">{featured.title}</h3>
+          </Link>
+
+          {/* RIGHT - List of 3 */}
+          <div className="article-list">
+            {visible.map((item) => (
+              <Link
+                key={item._id || item.id}
+                href={`${viewAllLink}/${getUrlKey(item)}`}
+                className="article-list-item">
+                <div className="article-thumb-wrapper" style={{ position: 'relative' }}>
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                    sizes="120px"
+                  />
+                </div>
+                <div className="article-list-text">
+                  <div className="article-list-meta">
+                    {/* <span className="article-author">By {item.author || 'Team'}</span> */}
+                    <span className="article-time" style={{ marginLeft: 'auto' }}>
+                      {timeAgo(item.createdAt)}
+                    </span>
+                  </div>
+                  <h4 className="article-list-title">{item.title}</h4>
+                </div>
+              </Link>
+            ))}
+
+            {totalPages > 1 && (
+              <div className="article-pagination">
+                <button
+                  className="article-nav-btn"
+                  disabled={page === 0}
+                  onClick={() => setPage((p) => Math.max(0, p - 1))}>
+                  ‹
+                </button>
+                <button
+                  className="article-nav-btn"
+                  disabled={page >= totalPages - 1}
+                  onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}>
+                  ›
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+    );
+  };
 
   return (
     <div className="home-page">
@@ -387,6 +395,8 @@ const HomePage = () => {
 
       <ArticleSection title="Latest News" items={news} viewAllLink="/news" />
       <ArticleSection title="Latest Reviews" items={reviews} viewAllLink="/reviews" />
+      <ArticleSection title="Latest Hindi Reviews" items={hindiReviews} viewAllLink="/hindi-review" />
+      <ArticleSection title="Latest Comparisons" items={comparisons} viewAllLink="/comparison" />
     </div>
   );
 };
