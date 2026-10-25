@@ -14,11 +14,12 @@ import { useAuth } from '../context/AuthContext';
 import api from '../api/client';
 
 const Header = () => {
-  const { user, logout } = useAuth();
+  const { user: authUser, logout } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
+  const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
@@ -26,6 +27,13 @@ const Header = () => {
 
   const dropdownRef = useRef(null);
   const searchRef = useRef(null);
+
+  // Server aur pehli client render dono me user null maana jata hai,
+  // taaki hydration mismatch na ho. Mount hone ke baad asli user dikhta hai.
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  const user = mounted ? authUser : null;
 
   useEffect(() => {
     const close = (e) => {
