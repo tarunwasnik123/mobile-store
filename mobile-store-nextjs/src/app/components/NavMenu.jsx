@@ -3,62 +3,97 @@
 import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import './NavMenu.css';
 import { useAuth } from '../context/AuthContext';
 import { useDispatch } from 'react-redux';
 import { setBrands, setPrice } from '../store/filterSlice';
 
+const PRICE_OPTIONS = [
+  { label: 'Under ₹10,000', min: 0, max: 10000 },
+  { label: 'Under ₹20,000', min: 0, max: 20000 },
+  { label: 'Under ₹30,000', min: 0, max: 30000 },
+  { label: 'Above ₹30,000', min: 30001, max: 200000 },
+];
+
+const BRAND_OPTIONS = ['Apple', 'Samsung', 'OnePlus', 'Xiaomi'];
+
+const MOBILE_LINKS = [
+  { label: 'All Mobiles', href: '/find' },
+  { label: 'Best Mobiles', href: '/best' },
+  { label: 'Latest Mobiles', href: '/latest' },
+  { label: 'Upcoming Mobiles', href: '/upcoming' },
+];
+
 export default function NavMenu() {
   const [openMenu, setOpenMenu] = useState(null);
+  // null = sirf left list dikhegi, 'price' / 'brand' = right panel bhi khulega
+  const [activeSub, setActiveSub] = useState(null);
   const [dropdownStyle, setDropdownStyle] = useState({});
+  const [mounted, setMounted] = useState(false);
   const menuRef = useRef(null);
   const buttonRefs = useRef({});
   const { user } = useAuth();
   const dispatch = useDispatch();
   const router = useRouter();
 
+  // Server aur pehli client render me admin button nahi dikhta (hydration mismatch se bachne ke liye)
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  const isAdmin = mounted && user?.role === 'admin';
+
   useEffect(() => {
     const close = (e) => {
       if (menuRef.current && !menuRef.current.contains(e.target)) {
         setOpenMenu(null);
+        setActiveSub(null);
       }
     };
     document.addEventListener('mousedown', close);
     return () => document.removeEventListener('mousedown', close);
   }, []);
 
+  const closeMenu = () => {
+    setOpenMenu(null);
+    setActiveSub(null);
+  };
+
   const openDropdown = (menuName, buttonKey) => {
     if (openMenu === menuName) {
-      setOpenMenu(null);
+      closeMenu();
       return;
     }
     const btn = buttonRefs.current[buttonKey];
     if (btn) {
       const rect = btn.getBoundingClientRect();
+      // Right panel khulne par dropdown 560px chauda hota hai, isliye utni jagah bachake rakho
+      const panelWidth = menuName === 'mobiles' ? 560 : 220;
+      const left = Math.max(8, Math.min(rect.left, window.innerWidth - panelWidth - 8));
       setDropdownStyle({
         top: rect.bottom + 6,
-        left: rect.left,
+        left,
       });
     }
+    setActiveSub(null);
     setOpenMenu(menuName);
   };
 
   const handleBrandClick = (brand) => {
     dispatch(setBrands([brand]));
     router.push(`/find?brand=${encodeURIComponent(brand)}`);
-    setOpenMenu(null);
+    closeMenu();
   };
 
   const handlePriceClick = (min, max) => {
     dispatch(setPrice([min, max]));
     router.push(`/find?minPrice=${min}&maxPrice=${max}`);
-    setOpenMenu(null);
+    closeMenu();
   };
-
-  const closeMenu = () => setOpenMenu(null);
 
   return (
     <nav className="nav-menu" ref={menuRef}>
+      {/* ===== Mobiles & Tablets (click par right panel khulta hai) ===== */}
       <div className="nav-item">
         <button
           className="menu-btn"
@@ -68,35 +103,60 @@ export default function NavMenu() {
         </button>
 
         {openMenu === 'mobiles' && (
-          <div className="nav-dropdown" style={dropdownStyle}>
-            <button
-              onClick={() => {
-                router.push('/find');
-                closeMenu();
-              }}>
-              All Mobiles
-            </button>
-            <button
-              onClick={() => {
-                router.push('/best');
-                closeMenu();
-              }}>
-              Best Mobiles
-            </button>
-            <button
-              onClick={() => {
-                router.push('/latest');
-                closeMenu();
-              }}>
-              Latest Mobiles
-            </button>
-            <button
-              onClick={() => {
-                router.push('/upcoming');
-                closeMenu();
-              }}>
-              Upcoming Mobiles
-            </button>
+          <div
+            className={`nav-dropdown nav-mega ${activeSub ? 'nav-mega--open' : ''}`}
+            style={dropdownStyle}>
+            <div className="mega-left">
+              <button
+                className={`mega-item ${activeSub === 'price' ? 'mega-item--active' : ''}`}
+                onClick={() => setActiveSub('price')}>
+                <span>Best Phones by Price</span>
+                <KeyboardArrowRightIcon fontSize="small" />
+              </button>
+
+              <button
+                className={`mega-item ${activeSub === 'brand' ? 'mega-item--active' : ''}`}
+                onClick={() => setActiveSub('brand')}>
+                <span>Popular Brands</span>
+                <KeyboardArrowRightIcon fontSize="small" />
+              </button>
+
+              {MOBILE_LINKS.map((link) => (
+                <button
+                  key={link.href}
+                  className="mega-item"
+                  onClick={() => {
+                    router.push(link.href);
+                    closeMenu();
+                  }}>
+                  <span>{link.label}</span>
+                </button>
+              ))}
+            </div>
+
+            {activeSub && (
+              <div className="mega-right">
+                {activeSub === 'price' &&
+                  PRICE_OPTIONS.map((opt) => (
+                    <button
+                      key={opt.label}
+                      className="mega-sub-item"
+                      onClick={() => handlePriceClick(opt.min, opt.max)}>
+                      {opt.label}
+                    </button>
+                  ))}
+
+                {activeSub === 'brand' &&
+                  BRAND_OPTIONS.map((brand) => (
+                    <button
+                      key={brand}
+                      className="mega-sub-item"
+                      onClick={() => handleBrandClick(brand)}>
+                      {brand}
+                    </button>
+                  ))}
+              </div>
+            )}
           </div>
         )}
       </div>
@@ -119,6 +179,7 @@ export default function NavMenu() {
         News & Reviews
       </button>
 
+      {/* ===== By Brand ===== */}
       <div className="nav-item">
         <button
           className="menu-btn"
@@ -128,15 +189,17 @@ export default function NavMenu() {
         </button>
 
         {openMenu === 'brand' && (
-          <div className="nav-dropdown" style={dropdownStyle}>
-            <button onClick={() => handleBrandClick('Apple')}>Apple</button>
-            <button onClick={() => handleBrandClick('Samsung')}>Samsung</button>
-            <button onClick={() => handleBrandClick('OnePlus')}>OnePlus</button>
-            <button onClick={() => handleBrandClick('Xiaomi')}>Xiaomi</button>
+          <div className="nav-dropdown nav-simple" style={dropdownStyle}>
+            {BRAND_OPTIONS.map((brand) => (
+              <button key={brand} onClick={() => handleBrandClick(brand)}>
+                {brand}
+              </button>
+            ))}
           </div>
         )}
       </div>
 
+      {/* ===== By Price ===== */}
       <div className="nav-item">
         <button
           className="menu-btn"
@@ -146,16 +209,17 @@ export default function NavMenu() {
         </button>
 
         {openMenu === 'price' && (
-          <div className="nav-dropdown" style={dropdownStyle}>
-            <button onClick={() => handlePriceClick(0, 10000)}>Under ₹10,000</button>
-            <button onClick={() => handlePriceClick(0, 20000)}>Under ₹20,000</button>
-            <button onClick={() => handlePriceClick(0, 30000)}>Under ₹30,000</button>
-            <button onClick={() => handlePriceClick(30001, 200000)}>Above ₹30,000</button>
+          <div className="nav-dropdown nav-simple" style={dropdownStyle}>
+            {PRICE_OPTIONS.map((opt) => (
+              <button key={opt.label} onClick={() => handlePriceClick(opt.min, opt.max)}>
+                {opt.label}
+              </button>
+            ))}
           </div>
         )}
       </div>
 
-      {user?.role === 'admin' && (
+      {isAdmin && (
         <button
           className="nav-link admin-link"
           onClick={() => {
