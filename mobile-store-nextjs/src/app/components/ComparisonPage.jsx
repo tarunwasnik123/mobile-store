@@ -1,12 +1,13 @@
 'use client';
 
-import { Fragment, useEffect, useState, useRef } from 'react';
+import { Fragment, useEffect, useMemo, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Image from 'next/image';
 import {
   addPhone as addPhoneAction,
   removePhone as removePhoneAction,
   clear as clearAction,
+  setSelected as setSelectedAction,
 } from '../store/compareSlice';
 import api from '../api/client';
 import './ComparisonPage.css';
@@ -110,19 +111,38 @@ const SPEC_CATEGORY_LABELS = {
 
 const specCategories = Object.keys(SPEC_CATEGORY_LABELS);
 
-export default function ComparisonPage() {
+export default function ComparisonPage({ initialSlugs = [] }) {
   const dispatch = useDispatch();
   const selected = useSelector((state) => state.compare.selected || []);
   const [phones, setPhones] = useState([]);
-  const [enrichedSelected, setEnrichedSelected] = useState([]);
+  const [phonesLoaded, setPhonesLoaded] = useState(false);
+  // URL se aaye slugs ko Redux me daalne ke baad hi URL sync chalu hoga
+  const [urlSynced, setUrlSynced] = useState(initialSlugs.length === 0);
+  const [pendingShow, setPendingShow] = useState(initialSlugs.length >= 2);
   const [showComparison, setShowComparison] = useState(false);
   const [activeCategory, setActiveCategory] = useState('General');
   const tableRef = useRef(null);
+
+  const enrichedSelected = useMemo(
+    () =>
+      selected.map((sel) => {
+        const full = phones.find(
+          (p) =>
+            p.id === sel.id ||
+            p._id === sel._id ||
+            p.externalId === sel.externalId ||
+            p.id === sel.externalId,
+        );
+        return full || sel;
+      }),
+    [selected, phones],
+  );
 
   const slots = [...enrichedSelected];
   while (slots.length < 3) slots.push(null);
   const filledSlots = slots.filter(Boolean);
 
+  // 1) Saare phones load karo
   useEffect(() => {
     let mounted = true;
     Promise.all([api.get('/phones?limit=500'), api.get('/upcoming?limit=500')])
@@ -132,31 +152,53 @@ export default function ComparisonPage() {
         );
         if (mounted) setPhones(allPhones);
       })
-      .catch(() => {});
+      .catch(() => {})
+      .finally(() => {
+        if (mounted) setPhonesLoaded(true);
+      });
     return () => (mounted = false);
   }, []);
 
+  // 2) URL ke slugs se phones select karo (sirf ek baar)
   useEffect(() => {
-    if (selected.length === 0) {
-      setEnrichedSelected([]);
-      return;
+    if (urlSynced || !phonesLoaded) return;
+    const matched = initialSlugs
+      .map((slug) => phones.find((p) => String(p.id).toLowerCase() === slug.toLowerCase()))
+      .filter(Boolean)
+      .filter((p, i, arr) => arr.findIndex((x) => x.id === p.id) === i)
+      .slice(0, 3);
+
+    if (matched.length > 0) dispatch(setSelectedAction(matched));
+    setPendingShow(matched.length >= 2);
+    setUrlSynced(true);
+  }, [urlSynced, phonesLoaded, phones, initialSlugs, dispatch]);
+
+  // 3) URL se aaye 2+ phones ho to comparison table seedha dikhao
+  useEffect(() => {
+    if (pendingShow && urlSynced && filledSlots.length >= 2) {
+      setShowComparison(true);
+      setPendingShow(false);
+      setTimeout(() => {
+        tableRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 300);
     }
-    const enriched = selected.map((sel) => {
-      const full = phones.find(
-        (p) =>
-          p.id === sel.id ||
-          p._id === sel._id ||
-          p.externalId === sel.externalId ||
-          p.id === sel.externalId,
-      );
-      return full || sel;
-    });
-    setEnrichedSelected(enriched);
-  }, [selected, phones]);
+  }, [pendingShow, urlSynced, filledSlots.length]);
+
+  // 4) Phone select/remove hone par URL update karo
+  useEffect(() => {
+    if (!urlSynced) return;
+    const ids = selected.map((p) => p.id).filter(Boolean);
+    const path = ids.length ? `/compare/${ids.map((id) => encodeURIComponent(id)).join('-vs-')}` : '/compare';
+    if (window.location.pathname !== path) {
+      window.history.replaceState(null, '', path);
+    }
+  }, [selected, urlSynced]);
 
   useEffect(() => {
-    if (filledSlots.length < 2 && showComparison) setShowComparison(false);
-  }, [filledSlots.length, showComparison]);
+    if (urlSynced && !pendingShow && filledSlots.length < 2 && showComparison) {
+      setShowComparison(false);
+    }
+  }, [urlSynced, pendingShow, filledSlots.length, showComparison]);
 
   const handleSelectSlot = (phone, index) => {
     const old = slots[index];

@@ -18,6 +18,12 @@ export default function CompareTray() {
 
   if (!mounted || !selected || selected.length === 0) return null;
 
+  const handleCompare = () => {
+    if (selected.length < 2) return;
+    const slugs = selected.map((p) => encodeURIComponent(p.id)).join('-vs-');
+    router.push(`/compare/${slugs}`);
+  };
+
   return (
     <div className="compare-tray">
       <div className="tray-items">
@@ -35,7 +41,7 @@ export default function CompareTray() {
       <div className="tray-actions">
         <button
           disabled={selected.length < 2}
-          onClick={() => router.push('/compare')}
+          onClick={handleCompare}
           className="tray-compare-btn">
           Compare ({selected.length})
         </button>
