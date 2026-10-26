@@ -6,6 +6,7 @@ const UpcomingPhoneSchema = new mongoose.Schema(
     name: { type: String, required: true, trim: true },
     brand: { type: String, required: true, index: true },
     price: { type: Number, required: true },
+    specScore: { type: Number, min: 0, max: 100 }, // admin-set spec score (e.g. 97)
     image: { type: String },
     images: [{ type: String }],
     metaTitle: {

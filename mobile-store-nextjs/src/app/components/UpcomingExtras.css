@@ -1,0 +1,85 @@
+/* ===== UPCOMING TAG ===== */
+.pd-upcoming-tag {
+  align-self: flex-start;
+  display: inline-block;
+  margin: -6px 0 20px;
+  padding: 6px 12px;
+  background: #ff9442;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  border-radius: 8px;
+}
+
+/* ===== EXPECTED PRICE ===== */
+.pd-price-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pd-price-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+  letter-spacing: 0.3px;
+}
+
+/* ===== SPEC SCORE BADGE (image ke top-left me) ===== */
+.pd-spec-score {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 54px;
+  padding: 6px 8px;
+  background: #3f5a0a;
+  color: #fff;
+  border-radius: 6px;
+  text-align: center;
+  line-height: 1.1;
+  pointer-events: none;
+}
+
+.pd-spec-score-value {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.pd-spec-score-label {
+  margin-top: 2px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .pd-upcoming-tag {
+    margin-bottom: 16px;
+    padding: 5px 10px;
+    font-size: 13px;
+  }
+
+  .pd-price-label {
+    font-size: 12px;
+  }
+
+  .pd-spec-score {
+    top: 8px;
+    left: 8px;
+    min-width: 46px;
+    padding: 5px 6px;
+  }
+
+  .pd-spec-score-value {
+    font-size: 15px;
+  }
+
+  .pd-spec-score-label {
+    font-size: 10px;
+  }
+}

@@ -110,6 +110,7 @@ export default function AdminUpcoming() {
     name: '',
     brand: '',
     price: '',
+    specScore: '',
     image: '',
     images: [],
     metaTitle: '',
@@ -249,6 +250,17 @@ export default function AdminUpcoming() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (isSaving) return;
+
+    // Spec Score: khali = null (badge nahi dikhega), warna 0-100 ke beech number
+    const scoreValue =
+      phone.specScore === '' || phone.specScore === null || phone.specScore === undefined
+        ? null
+        : Number(phone.specScore);
+    if (scoreValue !== null && (Number.isNaN(scoreValue) || scoreValue < 0 || scoreValue > 100)) {
+      alert('Spec score must be a number between 0 and 100');
+      return;
+    }
+
     setIsSaving(true);
 
     const releaseDate = phone?.specs?.General?.ReleaseDate;
@@ -273,9 +285,20 @@ export default function AdminUpcoming() {
 
     const keptImages = existingImages.map((x) => String(x).trim()).filter(Boolean);
 
+    // FormData me phone ki fields bhejne ka common tareeka (specScore alag se jata hai)
+    const appendPhoneFields = (formData) => {
+      Object.keys(phone).forEach((key) => {
+        if (key === 'image' || key === 'images' || key === 'specScore') return;
+        if (typeof phone[key] === 'object') formData.append(key, JSON.stringify(phone[key]));
+        else formData.append(key, phone[key]);
+      });
+      formData.append('specScore', scoreValue === null ? '' : String(scoreValue));
+    };
+
     try {
       let dataToSend = {
         ...phone,
+        specScore: scoreValue,
         images: keptImages,
         image: keptImages[0] || null,
       };
@@ -286,12 +309,7 @@ export default function AdminUpcoming() {
           newImageFiles.forEach((file) => formData.append('images', file));
           formData.append('images', JSON.stringify(keptImages));
           formData.append('replaceImages', 'true');
-          Object.keys(phone).forEach((key) => {
-            if (key !== 'image' && key !== 'images') {
-              if (typeof phone[key] === 'object') formData.append(key, JSON.stringify(phone[key]));
-              else formData.append(key, phone[key]);
-            }
-          });
+          appendPhoneFields(formData);
           dataToSend = formData;
         } else if (keptImages.length !== initialImageCount) {
           dataToSend = { ...dataToSend, replaceImages: true };
@@ -299,12 +317,7 @@ export default function AdminUpcoming() {
       } else if (newImageFiles.length > 0) {
         const formData = new FormData();
         newImageFiles.forEach((file) => formData.append('images', file));
-        Object.keys(phone).forEach((key) => {
-          if (key !== 'image' && key !== 'images') {
-            if (typeof phone[key] === 'object') formData.append(key, JSON.stringify(phone[key]));
-            else formData.append(key, phone[key]);
-          }
-        });
+        appendPhoneFields(formData);
         dataToSend = formData;
       }
 
@@ -367,7 +380,7 @@ export default function AdminUpcoming() {
           <label>Name</label>
           <input
             name="name"
-            value={phone.name}
+            value={phone.name ?? ''}
             placeholder={dummyUpcoming.name}
             onChange={handleChange}
             required
@@ -376,7 +389,7 @@ export default function AdminUpcoming() {
 
         <div className="input-group">
           <label>Brand</label>
-          <select name="brand" value={phone.brand} onChange={handleChange} required>
+          <select name="brand" value={phone.brand ?? ''} onChange={handleChange} required>
             <option value="">Select Brand</option>
             {brands.map((b) => (
               <option key={b._id} value={b.name}>
@@ -391,8 +404,22 @@ export default function AdminUpcoming() {
           <input
             name="price"
             type="number"
-            value={phone.price}
+            value={phone.price ?? ''}
             placeholder={dummyUpcoming.price}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="input-group">
+          <label>Spec Score (out of 100)</label>
+          <input
+            name="specScore"
+            type="number"
+            min="0"
+            max="100"
+            step="1"
+            value={phone.specScore ?? ''}
+            placeholder="e.g. 97 (leave empty to hide the score tag)"
             onChange={handleChange}
           />
         </div>
@@ -450,7 +477,7 @@ export default function AdminUpcoming() {
           <label>Meta Title</label>
           <input
             name="metaTitle"
-            value={phone.metaTitle}
+            value={phone.metaTitle ?? ''}
             onChange={handleChange}
             placeholder="Meta Title (for search results)"
           />
@@ -460,7 +487,7 @@ export default function AdminUpcoming() {
           <label>Meta Keywords</label>
           <input
             name="metaName"
-            value={phone.metaName}
+            value={phone.metaName ?? ''}
             onChange={handleChange}
             placeholder="Meta Keywords (comma-separated)"
           />
@@ -470,7 +497,7 @@ export default function AdminUpcoming() {
           <label>Meta Description</label>
           <textarea
             name="metaDescription"
-            value={phone.metaDescription}
+            value={phone.metaDescription ?? ''}
             onChange={handleChange}
             placeholder="Meta Description for SEO"
             rows={3}
@@ -481,7 +508,7 @@ export default function AdminUpcoming() {
           <label>Canonical URL</label>
           <input
             name="canonicalUrl"
-            value={phone.canonicalUrl}
+            value={phone.canonicalUrl ?? ''}
             onChange={handleChange}
             placeholder="Leave empty to auto-use current page URL"
           />
@@ -489,7 +516,7 @@ export default function AdminUpcoming() {
 
         <div className="input-group">
           <label>Schema Type</label>
-          <select name="schemaType" value={phone.schemaType} onChange={handleChange}>
+          <select name="schemaType" value={phone.schemaType ?? 'Product'} onChange={handleChange}>
             <option value="Product">Mobile Listing (Product)</option>
             <option value="NewsArticle">Blog (NewsArticle)</option>
             <option value="Review">Review</option>
@@ -501,7 +528,7 @@ export default function AdminUpcoming() {
           <label>Open Graph Image URL</label>
           <input
             name="ogImage"
-            value={phone.ogImage}
+            value={phone.ogImage ?? ''}
             onChange={handleChange}
             placeholder="Leave empty to use Featured Image"
           />
@@ -511,7 +538,7 @@ export default function AdminUpcoming() {
           <label>Twitter/X Image URL</label>
           <input
             name="twitterImage"
-            value={phone.twitterImage}
+            value={phone.twitterImage ?? ''}
             onChange={handleChange}
             placeholder="Leave empty to use Featured Image"
           />
@@ -521,7 +548,7 @@ export default function AdminUpcoming() {
           <label>Image Alt Text</label>
           <input
             name="imageAltText"
-            value={phone.imageAltText}
+            value={phone.imageAltText ?? ''}
             onChange={handleChange}
             placeholder="Describe the image for accessibility & SEO"
           />

@@ -23,9 +23,12 @@ module.exports = (schema) => (req, res, next) => {
   const { error, value } = schema.validate(req.body, opts);
   if (error) {
     const details = error.details.map((d) => d.message);
-    return res
-      .status(400)
-      .json({ message: 'Validation failed', errors: details });
+    // Backend terminal me bhi dikhe, aur message me bhi, taaki admin ko asli kaaran dikhe
+    console.error('[Validation failed]', req.method, req.originalUrl, details);
+    return res.status(400).json({
+      message: `Validation failed: ${details.join('; ')}`,
+      errors: details,
+    });
   }
   req.body = value;
   next();

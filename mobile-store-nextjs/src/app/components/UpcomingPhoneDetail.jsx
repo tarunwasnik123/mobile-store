@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { createPortal } from 'react-dom';
 import api from '../api/client';
 import './PhoneDetail.css';
+import './UpcomingExtras.css';
 
 export default function UpcomingPhoneDetail() {
   const { id } = useParams();
@@ -184,6 +185,14 @@ export default function UpcomingPhoneDetail() {
         : [];
   const activeImage = imageList[activeImageIndex] || phone.image;
 
+  // ===== Spec Score (admin-entered, 0-100) =====
+  const scoreNumber =
+    phone.specScore === null || phone.specScore === undefined || phone.specScore === ''
+      ? null
+      : Number(phone.specScore);
+  const hasScore = scoreNumber !== null && !Number.isNaN(scoreNumber) && scoreNumber > 0;
+  const scoreText = hasScore ? `${Math.round(Math.min(100, scoreNumber))}%` : '';
+
   const keySpecs = [
     { label: 'Chipset', value: sections.Performance.Chipset },
     {
@@ -255,6 +264,16 @@ export default function UpcomingPhoneDetail() {
       <section className="pd-hero">
         <div className="pd-hero-image-col">
           <div className="pd-image-stage">
+            {hasScore && (
+              <div className="pd-spec-score" aria-label={`Spec score ${scoreText}`}>
+                <span className="pd-spec-score-value">{scoreText}</span>
+                <span className="pd-spec-score-label">
+                  Spec
+                  <br />
+                  Score
+                </span>
+              </div>
+            )}
             <Image
               src={activeImage}
               alt={phone.imageAltText || phone.name}
@@ -308,11 +327,15 @@ export default function UpcomingPhoneDetail() {
         <div className="pd-hero-info-col">
           <p className="pd-brand-label">{phone.brand || 'Upcoming'}</p>
           <h1 className="pd-title">{phone.name}</h1>
+          <span className="pd-upcoming-tag">Upcoming</span>
 
           <div className="pd-price-row">
-            <span className="pd-price">
-              {phone.price ? `₹${Number(phone.price).toLocaleString('en-IN')}` : 'Price TBA'}
-            </span>
+            <div className="pd-price-block">
+              {phone.price && <span className="pd-price-label">Expected Price</span>}
+              <span className="pd-price">
+                {phone.price ? `₹${Number(phone.price).toLocaleString('en-IN')}` : 'Price TBA'}
+              </span>
+            </div>
           </div>
 
           <div className="pd-key-specs-grid">
