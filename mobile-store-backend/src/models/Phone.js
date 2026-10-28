@@ -16,6 +16,7 @@ const PhoneSchema = new mongoose.Schema(
     price: { type: Number, required: false, default: null }, // CHANGED: was required: true
     rating: { type: Number, min: 0, max: 5 }, // admin-set rating out of 5 (e.g. 3.7)
     colors: [{ type: String }], // e.g. ['Nebula Black', 'Moonlight Silver']
+    summary: { type: String, trim: true }, // admin manually likhta hai (phone page ke top par dikhta hai)
     image: { type: String },
     images: [{ type: String }],
     metaTitle: {

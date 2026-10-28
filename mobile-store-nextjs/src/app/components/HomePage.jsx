@@ -9,11 +9,24 @@ import { setPrice } from '../store/filterSlice';
 import api from '../api/client';
 import SEO from './SEO';
 import './HomePage.css';
+import './HomeSkeleton.css';
 
 // Helper: pick the best available "slug or id" field for building a clean URL.
 // The API returns the human-readable slug in `externalId`, so that takes priority.
 const getUrlKey = (item) =>
   item?.externalId || item?.slug || item?.urlSlug || item?.friendlyUrl || item?._id || item?.id;
+
+// Data aane tak ka placeholder: sirf grey bars, koi text nahi
+const RowSkeleton = () => (
+  <section className="phones-row-section" aria-hidden="true">
+    <div className="hp-skel-title" />
+    <div className="hp-skel-cards">
+      {[1, 2, 3, 4, 5].map((n) => (
+        <div key={n} className="hp-skel-card" />
+      ))}
+    </div>
+  </section>
+);
 
 const HomePage = () => {
   const router = useRouter();
@@ -377,13 +390,13 @@ const HomePage = () => {
       </section>
 
       {loading ? (
-        <p className="status-text">Loading phones...</p>
+        <RowSkeleton />
       ) : (
         <PhonesRow title="Latest Phones" items={phones} viewAllLink="/find" />
       )}
 
       {upcomingLoading ? (
-        <p className="status-text">Loading upcoming phones...</p>
+        <RowSkeleton />
       ) : (
         <PhonesRow
           title="Upcoming Mobiles"

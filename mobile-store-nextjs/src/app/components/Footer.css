@@ -74,9 +74,23 @@
   padding-left: 4px;
 }
 
-.footer-loading {
-  font-size: 13px;
-  color: #64748b;
+/* Top Phones ka data aane tak ka placeholder (koi text nahi) */
+.footer-skel {
+  height: 12px;
+  width: 70%;
+  border-radius: 4px;
+  background: #1e293b;
+  animation: footer-skel-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes footer-skel-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
 /* ===== SOCIAL ICONS ===== */

@@ -1,0 +1,43 @@
+/* ===== Home page: data aane tak ka placeholder (koi text nahi) ===== */
+.hp-skel-title {
+  width: 180px;
+  height: 22px;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  background: #e5e7eb;
+}
+
+.hp-skel-cards {
+  display: flex;
+  gap: 16px;
+  overflow: hidden;
+}
+
+.hp-skel-card {
+  flex: 0 0 190px;
+  height: 250px;
+  border-radius: 12px;
+  background: #eef0f3;
+}
+
+.hp-skel-title,
+.hp-skel-card {
+  animation: hp-skel-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes hp-skel-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+@media (max-width: 600px) {
+  .hp-skel-card {
+    flex-basis: 150px;
+    height: 210px;
+  }
+}

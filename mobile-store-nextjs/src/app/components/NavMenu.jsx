@@ -25,9 +25,19 @@ const MOBILE_LINKS = [
   { label: 'Upcoming Mobiles', href: '/upcoming' },
 ];
 
+// News & Articles dropdown. value = category slug, page /<value> pe khulta hai
+const NEWS_LINKS = [
+  { label: 'News', value: 'news' },
+  { label: 'Leaks', value: 'leaks' },
+  { label: 'Reviews', value: 'reviews' },
+  { label: 'Hindi-review', value: 'hindi-review' },
+  { label: 'Comparison', value: 'comparison' },
+  { label: 'Buying-guide-hindi', value: 'buying-guide-hindi' },
+];
+
 export default function NavMenu() {
   const [openMenu, setOpenMenu] = useState(null);
-  // null = sirf left list dikhegi, 'price' / 'brand' = right panel bhi khulega
+  // null = sirf left list dikhegi, 'price' / 'brand' = right panel bhi khulega (Explore menu me)
   const [activeSub, setActiveSub] = useState(null);
   const [dropdownStyle, setDropdownStyle] = useState({});
   const [mounted, setMounted] = useState(false);
@@ -67,8 +77,8 @@ export default function NavMenu() {
     const btn = buttonRefs.current[buttonKey];
     if (btn) {
       const rect = btn.getBoundingClientRect();
-      // Right panel khulne par dropdown 560px chauda hota hai, isliye utni jagah bachake rakho
-      const panelWidth = menuName === 'mobiles' ? 560 : 220;
+      // Explore me right panel khulne par dropdown 560px chauda hota hai, isliye utni jagah bachake rakho
+      const panelWidth = menuName === 'explore' ? 560 : 220;
       const left = Math.max(8, Math.min(rect.left, window.innerWidth - panelWidth - 8));
       setDropdownStyle({
         top: rect.bottom + 6,
@@ -91,9 +101,14 @@ export default function NavMenu() {
     closeMenu();
   };
 
+  const handleNewsClick = (value) => {
+    router.push(`/${value}`);
+    closeMenu();
+  };
+
   return (
     <nav className="nav-menu" ref={menuRef}>
-      {/* ===== Mobiles & Tablets (click par right panel khulta hai) ===== */}
+      {/* ===== Mobiles & Tablets (simple dropdown) ===== */}
       <div className="nav-item">
         <button
           className="menu-btn"
@@ -103,6 +118,31 @@ export default function NavMenu() {
         </button>
 
         {openMenu === 'mobiles' && (
+          <div className="nav-dropdown nav-simple" style={dropdownStyle}>
+            {MOBILE_LINKS.map((link) => (
+              <button
+                key={link.href}
+                onClick={() => {
+                  router.push(link.href);
+                  closeMenu();
+                }}>
+                {link.label}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* ===== Explore (Best Phones by Price + Popular Brands, click par right panel khulta hai) ===== */}
+      <div className="nav-item">
+        <button
+          className="menu-btn"
+          ref={(el) => (buttonRefs.current['explore'] = el)}
+          onClick={() => openDropdown('explore', 'explore')}>
+          Explore <KeyboardArrowDownIcon fontSize="small" />
+        </button>
+
+        {openMenu === 'explore' && (
           <div
             className={`nav-dropdown nav-mega ${activeSub ? 'nav-mega--open' : ''}`}
             style={dropdownStyle}>
@@ -120,18 +160,6 @@ export default function NavMenu() {
                 <span>Popular Brands</span>
                 <KeyboardArrowRightIcon fontSize="small" />
               </button>
-
-              {MOBILE_LINKS.map((link) => (
-                <button
-                  key={link.href}
-                  className="mega-item"
-                  onClick={() => {
-                    router.push(link.href);
-                    closeMenu();
-                  }}>
-                  <span>{link.label}</span>
-                </button>
-              ))}
             </div>
 
             {activeSub && (
@@ -161,23 +189,35 @@ export default function NavMenu() {
         )}
       </div>
 
+      {/* ===== Mobile Compare ===== */}
       <button
         className="nav-link"
         onClick={() => {
           closeMenu();
           router.push('/compare');
         }}>
-        Compare
+        Mobile Compare
       </button>
 
-      <button
-        className="nav-link"
-        onClick={() => {
-          closeMenu();
-          router.push('/news');
-        }}>
-        News & Reviews
-      </button>
+      {/* ===== News & Articles (dropdown) ===== */}
+      <div className="nav-item">
+        <button
+          className="menu-btn"
+          ref={(el) => (buttonRefs.current['news'] = el)}
+          onClick={() => openDropdown('news', 'news')}>
+          News & Articles <KeyboardArrowDownIcon fontSize="small" />
+        </button>
+
+        {openMenu === 'news' && (
+          <div className="nav-dropdown nav-simple" style={dropdownStyle}>
+            {NEWS_LINKS.map((item) => (
+              <button key={item.value} onClick={() => handleNewsClick(item.value)}>
+                {item.label}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
 
       {/* ===== By Brand ===== */}
       <div className="nav-item">

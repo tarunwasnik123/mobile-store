@@ -141,6 +141,7 @@ export default function AdminAddPhone() {
     brand: '',
     price: '',
     rating: '',
+    summary: '',
     image: '',
     images: [],
     metaTitle: '',
@@ -301,6 +302,9 @@ export default function AdminAddPhone() {
       .map((s) => s.trim())
       .filter(Boolean);
 
+    // Summary: khali ho to '' jayega (phone page par specs se auto summary dikhegi)
+    const summaryValue = (phone.summary || '').trim();
+
     setIsSaving(true);
 
     const list = Array.isArray(allPhones) ? allPhones : allPhones?.results || [];
@@ -318,12 +322,16 @@ export default function AdminAddPhone() {
 
     const keptImages = existingImages.map((x) => String(x).trim()).filter(Boolean);
 
-    // FormData me phone ki fields bhejne ka common tareeka (rating aur colors alag se handle hote hain)
+    // FormData me phone ki fields bhejne ka common tareeka (rating, colors aur summary alag se handle hote hain)
     const appendPhoneFields = (formData) => {
       Object.keys(phone).forEach((key) => {
         if (key === 'image' || key === 'images' || key === 'colors') return;
         if (key === 'rating') {
           formData.append('rating', ratingValue === null ? '' : String(ratingValue));
+          return;
+        }
+        if (key === 'summary') {
+          formData.append('summary', summaryValue);
           return;
         }
         if (typeof phone[key] === 'object') formData.append(key, JSON.stringify(phone[key]));
@@ -337,6 +345,7 @@ export default function AdminAddPhone() {
         ...phone,
         rating: ratingValue,
         colors: colorsList,
+        summary: summaryValue,
         images: keptImages,
         image: keptImages[0] || null,
       };
@@ -467,6 +476,17 @@ export default function AdminAddPhone() {
               value={phone.rating ?? ''}
               placeholder="e.g. 3.7 (leave empty to hide rating)"
               onChange={handleChange}
+            />
+          </div>
+
+          <div className="input-group">
+            <label>Summary</label>
+            <textarea
+              name="summary"
+              value={phone.summary ?? ''}
+              placeholder="Write a short summary of this phone (leave empty to auto-generate from specs)"
+              onChange={handleChange}
+              rows={5}
             />
           </div>
 

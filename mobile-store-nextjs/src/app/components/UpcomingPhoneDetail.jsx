@@ -8,6 +8,21 @@ import { createPortal } from 'react-dom';
 import api from '../api/client';
 import './PhoneDetail.css';
 import './UpcomingExtras.css';
+import './UpcomingMore.css';
+
+// "Latest Phones" me max itne phones
+const LATEST_PHONES_LIMIT = 4;
+
+const formatDate = (value) => {
+  if (!value) return '';
+  const d = new Date(value);
+  if (Number.isNaN(d.getTime())) return '';
+  return d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+};
+
+const capitalize = (s) => (s ? String(s).charAt(0).toUpperCase() + String(s).slice(1) : '');
+
+const toId = (p) => p.externalId || p._id;
 
 export default function UpcomingPhoneDetail() {
   const { id } = useParams();
@@ -18,6 +33,8 @@ export default function UpcomingPhoneDetail() {
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const [galleryImageIndex, setGalleryImageIndex] = useState(0);
   const [activeSpecTab, setActiveSpecTab] = useState('General');
+  const [latestPhones, setLatestPhones] = useState([]);
+  const [allUpcoming, setAllUpcoming] = useState([]);
 
   useEffect(() => {
     let mounted = true;
@@ -52,6 +69,32 @@ export default function UpcomingPhoneDetail() {
       document.body.style.overflow = prev;
     };
   }, [isGalleryOpen]);
+
+  // Left section: latest phones (existing /phones API)
+  // Right section: saare upcoming phones (existing /upcoming API)
+  useEffect(() => {
+    let on = true;
+
+    api
+      .get(`/phones?limit=${LATEST_PHONES_LIMIT}&sort=-createdAt`)
+      .then((res) => {
+        const list = Array.isArray(res) ? res : res?.results || res?.data || [];
+        if (on) setLatestPhones(list.slice(0, LATEST_PHONES_LIMIT));
+      })
+      .catch((err) => console.error('Latest phones fetch failed', err));
+
+    api
+      .get('/upcoming?limit=100')
+      .then((res) => {
+        const list = Array.isArray(res) ? res : res?.results || res?.data || [];
+        if (on) setAllUpcoming(list);
+      })
+      .catch((err) => console.error('Upcoming phones fetch failed', err));
+
+    return () => {
+      on = false;
+    };
+  }, []);
 
   if (loading)
     return (
@@ -207,6 +250,13 @@ export default function UpcomingPhoneDetail() {
     { label: 'Camera', value: sections.Camera.Camera?.Primary },
     { label: 'OS', value: sections.General.OperatingSystem },
   ];
+
+  // ===== Specifications ke neeche wala section =====
+  // Right side: abhi khule phone ko chhodke baaki saare upcoming phones
+  const otherUpcoming = allUpcoming.filter(
+    (u) => String(u._id) !== String(phone._id) && toId(u) !== toId(phone),
+  );
+  const showMoreSection = latestPhones.length > 0 || otherUpcoming.length > 0;
 
   const galleryModal =
     isGalleryOpen && imageList.length > 0 && typeof document !== 'undefined'
@@ -414,6 +464,77 @@ export default function UpcomingPhoneDetail() {
             ))}
         </div>
       </section>
+
+      {/* ===== Naya section: left me Latest Phones, right me saare Upcoming Phones ===== */}
+      {showMoreSection && (
+        <section className="pd-section um-section">
+          <div className="um-grid">
+            {latestPhones.length > 0 && (
+              <div className="um-box">
+                <div className="um-head">
+                  <h3 className="um-title">Latest Phones</h3>
+                  <Link href="/find" className="um-view-all">
+                    View All →
+                  </Link>
+                </div>
+                <ul className="um-list">
+                  {latestPhones.map((p) => (
+                    <li key={p._id || toId(p)}>
+                      <Link href={`/phone/${toId(p)}`} className="um-item">
+                        <span className="um-thumb">
+                          {p.image && (
+                            <Image src={p.image} alt={p.name} fill style={{ objectFit: 'contain' }} sizes="52px" />
+                          )}
+                        </span>
+                        <span className="um-text">
+                          <span className="um-name">{p.name}</span>
+                          <span className="um-meta">
+                            {[p.brand && capitalize(p.brand), p.price && `₹${Number(p.price).toLocaleString('en-IN')}`]
+                              .filter(Boolean)
+                              .join(' · ')}
+                          </span>
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {otherUpcoming.length > 0 && (
+              <div className="um-box">
+                <div className="um-head">
+                  <h3 className="um-title">Upcoming Phones</h3>
+                </div>
+                <ul className="um-list um-list--scroll">
+                  {otherUpcoming.map((u) => {
+                    const launch = formatDate(u.specs?.General?.LaunchDate);
+                    return (
+                      <li key={u._id || toId(u)}>
+                        <Link href={`/upcoming/${toId(u)}`} className="um-item">
+                          <span className="um-thumb">
+                            {u.image && (
+                              <Image src={u.image} alt={u.name} fill style={{ objectFit: 'contain' }} sizes="52px" />
+                            )}
+                          </span>
+                          <span className="um-text">
+                            <span className="um-name">{u.name}</span>
+                            <span className="um-meta">
+                              {[u.brand && capitalize(u.brand), launch ? `Launch ${launch}` : 'Upcoming']
+                                .filter(Boolean)
+                                .join(' · ')}
+                            </span>
+                          </span>
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
 
       {phone.faqs?.length > 0 && (
         <section className="pd-section pd-faqs">

@@ -52,17 +52,17 @@ const Footer = () => {
           <div className="footer-section">
             <h4>Top Phones</h4>
             <ul className="links-list">
-              {loading ? (
-                <li className="footer-loading">Loading…</li>
-              ) : (
-                topPhones.map((phone) => (
-                  <li key={phone._id || phone.externalId}>
-                    <Link href={`/phone/${phone.slug || phone.externalId || phone._id}`}>
-                      {phone.name}
-                    </Link>
-                  </li>
-                ))
-              )}
+              {loading
+                ? [1, 2, 3, 4, 5].map((n) => (
+                    <li key={n} className="footer-skel" aria-hidden="true" />
+                  ))
+                : topPhones.map((phone) => (
+                    <li key={phone._id || phone.externalId}>
+                      <Link href={`/phone/${phone.slug || phone.externalId || phone._id}`}>
+                        {phone.name}
+                      </Link>
+                    </li>
+                  ))}
             </ul>
           </div>
 
