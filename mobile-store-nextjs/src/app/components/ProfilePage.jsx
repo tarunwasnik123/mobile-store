@@ -6,7 +6,7 @@ import { useAuth } from '../context/AuthContext';
 export default function ProfilePage() {
   const { user } = useAuth();
 
-  if (!user) {
+  if (!user) {usesearchparams
     return (
       <div className="page">
         <p>Loading profile...</p>

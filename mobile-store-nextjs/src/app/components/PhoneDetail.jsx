@@ -1006,7 +1006,7 @@ export default function PhoneDetail({ initialPhone = null }) {
                 {pros.length > 0 && (
                   <div className="ph-card ph-box" id="ph-features">
                     <div className="ph-box-head">
-                      <h3 className="ph-box-title">Key Features</h3>
+                      <h3 className="ph-box-title">Pros</h3>
                     </div>
                     <ul className="ph-check-list ph-check-list--pro">
                       {pros.map((pro, i) => (
